@@ -1,0 +1,249 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* BODY */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b1f3a, #1f4e79);
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  color: #fff;
+}
+
+.logo i {
+  font-size: 22px;
+  color: #d4af37;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links li:hover {
+  color: #1abc9c;
+}
+
+/* SEARCH BOX */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  padding: 5px;
+}
+
+.search-box i {
+  color: #fff;
+}
+
+/* MAIN CONTAINER */
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* LOGIN CARD */
+.login-card {
+  width: 380px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  color: #fff;
+}
+
+/* TOGGLE BUTTONS */
+.toggle {
+  display: flex;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.toggle button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.toggle button.active {
+  background: #1abc9c;
+  color: #fff;
+}
+
+/* FORMS */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+form input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* EXTRA OPTIONS */
+.extra {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.extra a {
+  color: #1abc9c;
+  text-decoration: none;
+}
+
+/* BUTTON */
+form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #d4af37;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #c19a2e;
+}
+
+/* HIDE CLASS */
+.hidden {
+  display: none;
+}
+
+/* DIVIDER */
+.divider {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 12px;
+  color: #ddd;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icons i {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons i:hover {
+  background: #1abc9c;
+}
+form {
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+.error-msg {
+  font-size: 11px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+input {
+  transition: 0.2s;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s ease;
+  font-size: 16px;
+}
+
+/* Facebook */
+.social-btn.facebook {
+  background: #1877f2;
+}
+
+.social-btn.facebook:hover {
+  transform: scale(1.1);
+  background: #0f5bd3;
+}
+
+/* Google */
+.social-btn.google {
+  background: #db4437;
+}
+
+.social-btn.google:hover {
+  transform: scale(1.1);
+  background: #b8342a;
+}
