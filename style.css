@@ -3306,3 +3306,2167 @@ html {
   color: #1ABC9C;
   font-weight: bold;
 }
+/* =========================================================
+   VANTYX STUDIOS KENYA
+   RESPONSIVE MASTER STYLESHEET
+   Desktop • Laptop • Tablet • Mobile
+   ========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+/* =========================================================
+   2. GENERAL CONTAINER
+   ========================================================= */
+
+section,
+header,
+footer {
+  width: 100%;
+}
+
+section {
+  position: relative;
+}
+
+.section-header,
+.about-container,
+.founder-container,
+.services-grid,
+.blog-grid,
+.portfolio-grid,
+.pricing-grid,
+.contact-container,
+.faq-container,
+.features,
+.process,
+.services-cta,
+.portfolio-cta,
+.pricing-trust,
+.pricing-cta {
+  width: min(1200px, calc(100% - 40px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-divider {
+  width: min(1200px, calc(100% - 40px));
+  height: 1px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   3. HEADER / NAVIGATION
+   ========================================================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  min-height: 80px;
+  padding: 12px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: 100%;
+}
+
+.brand {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brand span {
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* Navigation */
+
+header nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+header nav a {
+  display: inline-block;
+  padding: 7px 3px;
+  white-space: nowrap;
+}
+
+
+/* Right-side controls */
+
+.nav-actions {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+
+  min-width: 0;
+}
+
+
+/* Search */
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-box {
+  position: relative;
+  width: 230px;
+}
+
+.search-box input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  outline: none;
+}
+
+.suggestions-box {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+
+  z-index: 9999;
+}
+
+
+/* Cart */
+
+.cart-icon,
+.account-icon {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+}
+
+.cart-icon {
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+
+  min-width: 18px;
+  height: 18px;
+
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 10px;
+  font-weight: bold;
+}
+
+
+/* Language */
+
+.dropdown {
+  position: relative;
+  flex-shrink: 0;
+}
+
+#langBtn {
+  white-space: nowrap;
+}
+
+.dropdown-content {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+
+  min-width: 190px;
+
+  z-index: 9999;
+}
+
+
+/* CTA */
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   4. HERO
+   ========================================================= */
+
+.hero {
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 100px 20px 70px;
+}
+
+.hero-content {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  max-width: 100%;
+  padding: 8px 14px;
+
+  border-radius: 50px;
+}
+
+.hero-badge p {
+  margin: 0;
+}
+
+.hero-content h1 {
+  margin: 20px auto;
+
+  max-width: 900px;
+
+  font-size: clamp(2.3rem, 6vw, 5rem);
+  line-height: 1.05;
+}
+
+.hero-content > p {
+  width: min(700px, 100%);
+  margin: 0 auto 30px;
+
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  min-width: 160px;
+  min-height: 48px;
+
+  padding: 12px 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+}
+
+
+/* Hero social proof */
+
+.hero-social-proof {
+  width: min(1100px, 100%);
+  margin: 70px auto 0;
+
+  text-align: center;
+}
+
+.trust-text {
+  margin-bottom: 25px;
+}
+
+.trust-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.metric {
+  min-width: 0;
+}
+
+.metric h3 {
+  margin: 0 0 5px;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.metric p {
+  margin: 0;
+}
+
+.trusted-logos {
+  margin-top: 40px;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+
+  gap: 30px;
+}
+
+.trusted-logos img {
+  width: 100%;
+  max-width: 130px;
+  max-height: 65px;
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   5. ABOUT
+   ========================================================= */
+
+.about-section {
+  padding: 100px 0;
+}
+
+.section-title {
+  width: min(1000px, calc(100% - 40px));
+  margin: 0 auto 60px;
+
+  text-align: center;
+
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  gap: 60px;
+  align-items: center;
+}
+
+.about-text {
+  min-width: 0;
+}
+
+.about-text h2 {
+  margin-top: 0;
+
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.about-text p {
+  font-size: 1.05rem;
+}
+
+.about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.about-media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.about-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   6. FOUNDER
+   ========================================================= */
+
+.founder-section {
+  padding: 100px 0;
+}
+
+.founder-container {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+
+  gap: 60px;
+  align-items: center;
+}
+
+.founder-image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.founder-image img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.founder-content {
+  min-width: 0;
+}
+
+.founder-content h2 {
+  margin-bottom: 5px;
+
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.founder-content h3 {
+  margin-top: 0;
+}
+
+.founder-statement {
+  max-width: 750px;
+}
+
+.founder-credentials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+  margin: 30px 0;
+}
+
+.credential {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.credential span {
+  overflow-wrap: anywhere;
+}
+
+.founder-roles {
+  margin: 25px 0;
+}
+
+.founder-roles li {
+  margin-bottom: 8px;
+}
+
+.founder-signature img {
+  width: 180px;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   7. SERVICES
+   ========================================================= */
+
+.services-section {
+  padding: 100px 0;
+}
+
+.section-header {
+  margin-bottom: 55px;
+  text-align: center;
+}
+
+.section-header h2 {
+  margin: 0 0 15px;
+
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+}
+
+.section-header p {
+  width: min(750px, 100%);
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+.service-card {
+  min-width: 0;
+  padding: 30px;
+
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 10px;
+}
+
+.service-card h3 {
+  margin-top: 0;
+}
+
+.service-card p {
+  flex: 1;
+}
+
+.learn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 15px;
+}
+
+
+/* Features */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+
+  margin-top: 70px;
+}
+
+.feature {
+  min-width: 0;
+}
+
+
+/* Process */
+
+.process {
+  margin-top: 80px;
+}
+
+.process > h3 {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.step {
+  min-width: 0;
+}
+
+
+/* Services CTA */
+
+.services-cta {
+  margin-top: 70px;
+  padding: 50px 30px;
+
+  text-align: center;
+
+  border-radius: 18px;
+}
+
+.services-cta button {
+  margin: 8px;
+}
+
+
+/* =========================================================
+   8. BLOG
+   ========================================================= */
+
+.blog-section {
+  padding: 100px 0;
+}
+
+.blog-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.blog-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.blog-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.blog-card h3,
+.blog-card p,
+.blog-card a {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.blog-card h3 {
+  margin-top: 20px;
+}
+
+.blog-card a {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   9. PORTFOLIO
+   ========================================================= */
+
+.portfolio-section {
+  padding: 100px 0;
+}
+
+.portfolio-filters {
+  width: min(900px, calc(100% - 40px));
+  margin: 0 auto 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.portfolio-filters button {
+  min-height: 42px;
+  padding: 8px 18px;
+
+  border-radius: 30px;
+}
+
+.portfolio-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.portfolio-card {
+  position: relative;
+
+  min-width: 0;
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+}
+
+.portfolio-card > img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover > img {
+  transform: scale(1.04);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay h3,
+.portfolio-overlay p {
+  margin: 0 0 5px;
+}
+
+.portfolio-cta {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.portfolio-cta button {
+  margin: 8px;
+}
+
+
+/* =========================================================
+   10. PRICING
+   ========================================================= */
+
+.pricing-section {
+  padding: 100px 0;
+}
+
+.pricing-toggle {
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
+}
+
+.pricing-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.pricing-card {
+  position: relative;
+
+  min-width: 0;
+  padding: 35px 28px;
+
+  border-radius: 18px;
+}
+
+.pricing-card h1 {
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  margin: 10px 0;
+}
+
+.pricing-card ul {
+  margin: 25px 0;
+}
+
+.pricing-card li {
+  margin-bottom: 10px;
+}
+
+.pricing-card button {
+  width: 100%;
+  min-height: 48px;
+
+  border-radius: 8px;
+}
+
+.pricing-card .badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+}
+
+.pricing-table {
+  width: min(1000px, calc(100% - 40px));
+
+  margin: 60px auto 0;
+
+  overflow-x: auto;
+}
+
+.pricing-table table {
+  width: 100%;
+  min-width: 650px;
+
+  border-collapse: collapse;
+}
+
+.pricing-table th,
+.pricing-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.pricing-trust {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
+
+  margin-top: 30px;
+}
+
+.pricing-cta {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.pricing-cta button {
+  margin: 8px;
+}
+
+
+/* =========================================================
+   11. CONTACT
+   ========================================================= */
+
+.contact-section {
+  padding: 100px 0;
+}
+
+.contact-container {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  gap: 50px;
+}
+
+.contact-form,
+.contact-info {
+  min-width: 0;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  resize: vertical;
+}
+
+.contact-form button {
+  min-height: 48px;
+  border-radius: 8px;
+}
+
+.contact-info a {
+  overflow-wrap: anywhere;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+
+  margin: 20px 0;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  margin: 25px 0;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hours {
+  margin-top: 30px;
+}
+
+.map {
+  width: min(1200px, calc(100% - 40px));
+
+  margin: 50px auto 0;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+}
+
+.map iframe {
+  display: block;
+  width: 100%;
+  min-height: 300px;
+  border: 0;
+}
+
+
+/* =========================================================
+   12. FAQ
+   ========================================================= */
+
+.faq-section {
+  padding: 100px 0;
+}
+
+.faq-container {
+  width: min(850px, calc(100% - 40px));
+}
+
+.faq-item {
+  margin-bottom: 12px;
+
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+
+  padding: 18px 20px;
+
+  text-align: left;
+
+  border: 0;
+}
+
+.faq-answer {
+  padding: 0 20px 20px;
+}
+
+.faq-help {
+  width: min(850px, calc(100% - 40px));
+
+  margin: 60px auto 0;
+
+  text-align: center;
+}
+
+.faq-help button {
+  margin: 8px;
+}
+
+
+/* =========================================================
+   13. FOOTER
+   ========================================================= */
+
+.footer {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 1.3fr 1fr 1fr;
+
+  gap: 50px;
+
+  padding: 80px max(20px, 5vw) 30px;
+}
+
+.footer-brand,
+.footer-links,
+.footer-contact {
+  min-width: 0;
+}
+
+.footer-brand img {
+  width: 160px;
+  max-width: 100%;
+}
+
+.footer-brand p {
+  max-width: 420px;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-socials a {
+  margin-right: 12px;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.footer-links > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  margin-top: 0;
+}
+
+.footer-contact p {
+  overflow-wrap: anywhere;
+}
+
+.newsletter {
+  margin-top: 30px;
+}
+
+.newsletter form {
+  display: flex;
+  gap: 8px;
+}
+
+.newsletter input {
+  min-width: 0;
+  flex: 1;
+
+  padding: 12px;
+}
+
+.newsletter button {
+  flex-shrink: 0;
+}
+
+.footer-bottom {
+  grid-column: 1 / -1;
+
+  margin-top: 30px;
+}
+
+.footer-bottom hr {
+  border: 0;
+  border-top: 1px solid currentColor;
+  opacity: 0.2;
+}
+
+.legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 15px;
+}
+
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+
+/* =========================================================
+   14. MODALS
+   ========================================================= */
+
+.cart-modal,
+.account-modal,
+.learn-modal,
+.case-modal,
+.modal,
+.custom-modal,
+.privacy-modal,
+.blog-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 10000;
+
+  display: none;
+
+  padding: 20px;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: auto;
+}
+
+.cart-content,
+.account-content,
+.learn-content,
+.case-content,
+.modal-content,
+.privacy-content,
+.blog-modal-content {
+  width: min(700px, 100%);
+  max-height: calc(100vh - 40px);
+
+  overflow-y: auto;
+
+  padding: 30px;
+
+  border-radius: 15px;
+}
+
+.modal-content.large {
+  width: min(1000px, 100%);
+}
+
+.cart-header,
+.account-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.cart-header button,
+.account-header button,
+.learn-close,
+.close,
+.modal-close,
+.close-btn,
+.blog-close,
+.case-close {
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.card-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.person-card,
+.job-card,
+.press-card {
+  min-width: 0;
+}
+
+.person-card img,
+.job-card img,
+.press-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   15. ACCOUNT FORMS
+   ========================================================= */
+
+.account-body input {
+  width: 100%;
+
+  padding: 13px;
+  margin-bottom: 12px;
+
+  border-radius: 8px;
+}
+
+.account-body button {
+  width: 100%;
+
+  min-height: 45px;
+
+  margin-bottom: 10px;
+
+  border-radius: 8px;
+}
+
+.social-login {
+  margin-top: 20px;
+}
+
+.divider {
+  text-align: center;
+}
+
+
+/* =========================================================
+   16. AI ASSISTANT
+   ========================================================= */
+
+.ai-system {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+
+  z-index: 9998;
+}
+
+.ai-orb-container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ai-orb {
+  width: 65px;
+  height: 65px;
+
+  border-radius: 50%;
+  border: 0;
+}
+
+.ai-orb-ring {
+  position: absolute;
+  inset: -5px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.ai-orb-core {
+  width: 20px;
+  height: 20px;
+
+  margin: auto;
+
+  border-radius: 50%;
+}
+
+.ai-orb-label {
+  margin-top: 8px;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+.ai-chat {
+  position: absolute;
+
+  right: 0;
+  bottom: 95px;
+
+  width: min(380px, calc(100vw - 30px));
+  height: min(550px, calc(100vh - 130px));
+
+  display: none;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+}
+
+.ai-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px;
+
+  gap: 10px;
+}
+
+.ai-header h3 {
+  margin: 0;
+
+  font-size: 15px;
+}
+
+.ai-header button {
+  border: 0;
+  background: transparent;
+}
+
+.ai-body {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 15px;
+}
+
+.ai-message {
+  max-width: 85%;
+
+  margin-bottom: 12px;
+
+  padding: 10px 13px;
+
+  border-radius: 10px;
+}
+
+.ai-input {
+  display: flex;
+
+  gap: 8px;
+
+  padding: 10px;
+}
+
+.ai-input input {
+  min-width: 0;
+  flex: 1;
+
+  padding: 11px;
+}
+
+.ai-input button {
+  flex-shrink: 0;
+
+  padding: 10px 15px;
+}
+
+
+/* =========================================================
+   17. LARGE TABLETS / SMALL LAPTOPS
+   1200px
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  header nav ul {
+    gap: 12px;
+  }
+
+  .search-box {
+    width: 190px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-contact {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* =========================================================
+   18. TABLETS
+   992px
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+  /* Header */
+
+  header {
+    min-height: 70px;
+    flex-wrap: wrap;
+  }
+
+  header nav {
+    order: 3;
+
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  header nav ul {
+    padding: 8px 0;
+
+    overflow-x: auto;
+    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+
+    scrollbar-width: none;
+  }
+
+  header nav ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  .search-box {
+    width: 180px;
+  }
+
+  /* Hero */
+
+  .hero {
+    min-height: auto;
+    padding-top: 80px;
+  }
+
+  .trust-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trusted-logos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* About */
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-media {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Founder */
+
+  .founder-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .founder-image {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  /* Services */
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+
+  /* Blog */
+
+  .blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Pricing */
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact */
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+
+  .footer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* =========================================================
+   19. MOBILE
+   768px
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  html {
+    scroll-padding-top: 75px;
+  }
+
+  /* Header */
+
+  header {
+    padding: 10px 15px;
+
+    gap: 10px;
+  }
+
+  .brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand span {
+    max-width: 150px;
+
+    white-space: normal;
+
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .search-wrapper {
+    display: none;
+  }
+
+  .account-icon,
+  .cart-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .dropdown {
+    display: none;
+  }
+
+  .cta-btn {
+    min-height: 38px;
+    padding: 8px 12px;
+
+    font-size: 12px;
+  }
+
+  header nav {
+    overflow: hidden;
+  }
+
+  header nav ul {
+    gap: 18px;
+
+    justify-content: flex-start;
+  }
+
+  header nav a {
+    font-size: 13px;
+  }
+
+  /* General */
+
+  .section-header,
+  .about-container,
+  .founder-container,
+  .services-grid,
+  .blog-grid,
+  .portfolio-grid,
+  .pricing-grid,
+  .contact-container,
+  .faq-container,
+  .features,
+  .process,
+  .services-cta,
+  .portfolio-cta,
+  .pricing-trust,
+  .pricing-cta {
+    width: min(100% - 30px, 700px);
+  }
+
+  .section-title {
+    width: calc(100% - 30px);
+  }
+
+  /* Hero */
+
+  .hero {
+    padding: 70px 15px 50px;
+  }
+
+  .hero-badge {
+    font-size: 12px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  .hero-content > p {
+    font-size: 1rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .hero-social-proof {
+    margin-top: 50px;
+  }
+
+  .trust-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 25px 15px;
+  }
+
+  .trusted-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+  }
+
+  /* Sections */
+
+  .about-section,
+  .founder-section,
+  .services-section,
+  .blog-section,
+  .portfolio-section,
+  .pricing-section,
+  .contact-section,
+  .faq-section {
+    padding: 70px 0;
+  }
+
+  /* About */
+
+  .about-text h2 {
+    font-size: 2rem;
+  }
+
+  .about-cta {
+    flex-direction: column;
+  }
+
+  .about-cta a {
+    width: 100%;
+  }
+
+  /* Founder */
+
+  .founder-credentials {
+    grid-template-columns: 1fr;
+  }
+
+  /* Services */
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 25px;
+  }
+
+  /* Blog */
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Portfolio */
+
+  .portfolio-filters {
+    width: calc(100% - 30px);
+
+    justify-content: flex-start;
+
+    overflow-x: auto;
+    flex-wrap: nowrap;
+
+    padding-bottom: 8px;
+
+    scrollbar-width: none;
+  }
+
+  .portfolio-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-filters button {
+    flex-shrink: 0;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .portfolio-overlay {
+    padding: 12px;
+  }
+
+  .portfolio-overlay h3 {
+    font-size: 14px;
+  }
+
+  .portfolio-overlay p,
+  .portfolio-overlay span {
+    font-size: 11px;
+  }
+
+  /* Pricing */
+
+  .pricing-table {
+    width: calc(100% - 30px);
+  }
+
+  .pricing-card {
+    padding: 30px 22px;
+  }
+
+  /* Contact */
+
+  .map {
+    width: calc(100% - 30px);
+  }
+
+  .map iframe {
+    min-height: 250px;
+  }
+
+  /* Footer */
+
+  .footer {
+    grid-template-columns: 1fr;
+
+    padding: 60px 15px 25px;
+
+    gap: 40px;
+  }
+
+  .footer-contact {
+    grid-column: auto;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-bottom {
+    grid-column: auto;
+  }
+
+  .legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Modal */
+
+  .cart-modal,
+  .account-modal,
+  .learn-modal,
+  .case-modal,
+  .modal,
+  .custom-modal,
+  .privacy-modal,
+  .blog-modal {
+    padding: 12px;
+  }
+
+  .cart-content,
+  .account-content,
+  .learn-content,
+  .case-content,
+  .modal-content,
+  .privacy-content,
+  .blog-modal-content {
+    padding: 22px;
+    max-height: calc(100vh - 24px);
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* AI */
+
+  .ai-system {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .ai-orb {
+    width: 58px;
+    height: 58px;
+  }
+
+  .ai-chat {
+    right: -5px;
+    bottom: 80px;
+
+    width: calc(100vw - 30px);
+    height: min(550px, calc(100vh - 110px));
+  }
+}
+
+
+/* =========================================================
+   20. SMALL PHONES
+   480px
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  /* Header */
+
+  .brand span {
+    display: none;
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav-actions {
+    gap: 4px;
+  }
+
+  .cta-btn {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  header nav ul {
+    gap: 15px;
+  }
+
+  header nav a {
+    font-size: 12px;
+  }
+
+  /* Hero */
+
+  .hero {
+    padding: 55px 12px 45px;
+  }
+
+  .hero-badge {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .trust-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metric h3 {
+    font-size: 1.5rem;
+  }
+
+  .metric p {
+    font-size: 12px;
+  }
+
+  .trusted-logos {
+    gap: 15px;
+  }
+
+  .trusted-logos img {
+    max-width: 95px;
+  }
+
+  /* General */
+
+  .section-header h2,
+  .section-title {
+    font-size: 2rem;
+  }
+
+  /* Portfolio */
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-card > img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .portfolio-overlay {
+    opacity: 1;
+
+    padding: 15px;
+  }
+
+  /* Footer */
+
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter form {
+    flex-direction: column;
+  }
+
+  .newsletter button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* AI */
+
+  .ai-orb-label {
+    display: none;
+  }
+
+  .ai-chat {
+    right: -5px;
+    width: calc(100vw - 20px);
+  }
+}
+
+
+/* =========================================================
+   21. VERY SMALL PHONES
+   360px
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .cta-btn {
+    display: none;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .trusted-logos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .service-card,
+  .pricing-card {
+    padding: 20px 16px;
+  }
+
+  .ai-system {
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+
+/* =========================================================
+   22. ACCESSIBILITY / TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+  .portfolio-overlay {
+    opacity: 1;
+  }
+
+  .portfolio-card:hover > img {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   23. PREVENT LONG WORDS FROM BREAKING MOBILE LAYOUT
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+span {
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   24. LANDSCAPE MOBILE
+   ========================================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+  .hero {
+    min-height: auto;
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .hero-social-proof {
+    margin-top: 40px;
+  }
+
+  .ai-chat {
+    height: calc(100vh - 100px);
+  }
+}
+
+
+/* =========================================================
+   END
+   ========================================================= */
