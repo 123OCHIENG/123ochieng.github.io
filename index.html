@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VANTYX STUDIOS KENYA</title>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  lucide.createIcons();
+</script>
+  <link rel="stylesheet" href="style.css"/>
+<!-- ================= NAVIGATION ================= -->
+<header>
+
+  <!-- LEFT: BRAND -->
+  <div class="brand">
+    <img src="image/logo.png"  />
+    <span>VANTYX STUDIOS KENYA</span>
+  </div>
+
+  <!-- CENTER: NAV LINKS -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#blog">Blog / Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+      
+    </ul>
+  </nav>
+
+  <!-- RIGHT: ACTION TOOLS -->
+  <div class="nav-actions">
+
+    <!-- SEARCH -->
+   <!-- ================= SEARCH BAR ================= -->
+
+<div class="search-wrapper">
+
+  <div class="search-box">
+
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Search services, portfolio, blog..."
+      autocomplete="off"
+    />
+
+    <div id="suggestions" class="suggestions-box"></div>
+
+  </div>
+
+</div>
+
+   <!-- ================= CART ICON ================= -->
+<div class="cart-icon" onclick="openCart()">
+
+  <span class="cart-emoji">🛒</span>
+
+  <!-- CART BADGE (item count) -->
+  <span id="cartCount" class="cart-count">0</span>
+
+</div>
+<div id="cartModal" class="cart-modal">
+  <div class="cart-content">
+
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button onclick="closeCart()">✖</button>
+    </div>
+
+    <div id="cartItems">
+      <p>Your cart is empty</p>
+    </div>
+
+  </div>
+</div>
+
+   <!-- USER ICON -->
+<div class="account-icon" onclick="openAccount()">
+ <i data-lucide="user"></i>
+</div>
+
+<!-- MODAL -->
+<div id="accountModal" class="account-modal">
+
+  <div class="account-content">
+
+    <!-- HEADER -->
+    <div class="account-header">
+      <h2 id="formTitle">Create Account</h2>
+      <button onclick="closeAccount()">✖</button>
+    </div>
+
+    <!-- BODY -->
+    <div class="account-body">
+
+      <!-- SIGN UP FORM -->
+      <div id="signupForm">
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Create Password">
+
+        <button>Create Account</button>
+        <button onclick="switchToLogin()">Already have an account? Login</button>
+
+        <!-- SOCIAL LOGIN -->
+        <div class="social-login">
+          <p class="divider">or continue with</p>
+
+          <button class="google-btn" onclick="loginWithGoogle()">
+            <i data-lucide="google"></i> Continue with Google
+          </button>
+
+          <button class="github-btn" onclick="loginWithGithub()">
+            <i data-lucide="github"></i> Continue with GitHub
+          </button>
+        </div>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="loginForm" style="display:none;">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+
+        <button>Login</button>
+        <button onclick="switchToSignup()">New user? Sign Up</button>
+
+        <!-- SOCIAL LOGIN -->
+        <div class="social-login">
+          <p class="divider">or continue with</p>
+
+          <button class="google-btn" onclick="loginWithGoogle()">
+            <i data-lucide="google"></i> Continue with Google
+          </button>
+
+          <button class="github-btn" onclick="loginWithGithub()">
+            🐙 Continue with GitHub
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+   <!-- LANGUAGE SWITCHER -->
+<div class="dropdown">
+
+  <button id="langBtn">🌐 Language: English</button>
+
+  <div class="dropdown-content">
+
+    <a href="#English" onclick="setLanguage('en', 'English')">English</a>
+    <a href="#Swahili" onclick="setLanguage('sw', 'Swahili')">Swahili</a>
+    <a href="#French" onclick="setLanguage('fr', 'French')">French</a>
+    <a href="#Spanish" onclick="setLanguage('es', 'Spanish')">Spanish</a>
+    <a href="#Arabic" onclick="setLanguage('ar', 'Arabic')">Arabic</a>
+    <a href="#Chinese" onclick="setLanguage('zh', 'Chinese (Mandarin)')">Chinese (Mandarin)</a>
+    <a href="#Hindi" onclick="setLanguage('hi', 'Hindi')">Hindi</a>
+    <a href="#Portuguese" onclick="setLanguage('pt', 'Portuguese')">Portuguese</a>
+    <a href="#Russian" onclick="setLanguage('ru', 'Russian')">Russian</a>
+    <a href="#German" onclick="setLanguage('de', 'German')">German</a>
+    <a href="#Japanese" onclick="setLanguage('ja', 'Japanese')">Japanese</a>
+    <a href="#Korean" onclick="setLanguage('ko', 'Korean')">Korean</a>
+
+  </div>
+
+</div>
+
+    <!-- CTA BUTTON -->
+    <a href="#contact" class="cta-btn">
+      Start a Project
+    </a>
+
+  </div>
+
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+
+    <!-- BADGE -->
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <p>Digital Intelligence & Premium Design</p>
+    </div>
+
+    <h1>Creative Design & Visual Branding Studio</h1>
+
+    <p>
+      We build powerful visual identities that make brands instantly recognizable.
+    </p>
+
+    <div class="buttons">
+      <a href="#portfolio" class="btn primary">View Portfolio</a>
+      <a href="#pricing" class="btn secondary">Start a Project</a>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="hero-social-proof">
+
+    <div class="trust-text">
+      Trusted by creators, startups & businesses across Kenya
+    </div>
+
+    <div class="trust-metrics">
+
+      <div class="metric">
+        <h3>500+</h3>
+        <p>Projects Completed</p>
+      </div>
+
+      <div class="metric">
+        <h3>100+</h3>
+        <p>Happy Clients</p>
+      </div>
+
+      <div class="metric">
+        <h3>★★★★★</h3>
+        <p>Client Rating</p>
+      </div>
+
+      <div class="metric">
+        <h3>3+</h3>
+        <p>Years Experience</p>
+      </div>
+
+    </div>
+
+    <div class="trusted-logos">
+  <img src="image/logo1.png" alt="Client 1">
+  <img src="image/logo2.png" alt="Client 2">
+  <img src="image/logo3.png" alt="Client 3">
+  <img src="image/logo4.png" alt="Client 4">
+</div>
+
+  </div>
+
+</section>
+<div class="section-divider"></div>
+</section>
+<!-- ================= ABOUT US ================= -->
+<section id="about" class="about-section">
+  <h1 class="section-title">ABOUT VANTYX STUDIOS KENYA</h1>
+
+  <div class="about-container">
+
+    <!-- LEFT: TEXT -->
+    <div class="about-text">
+      <h2>Crafting Visual Excellence Through Design</h2>
+
+      <p>
+        VANTYX STUDIOS KENYA is a creative design studio based in Kenya,
+        focused on building powerful visual identities for brands, businesses,
+        and individuals. We combine creativity, strategy, and modern design thinking
+        to deliver visuals that communicate clearly and leave lasting impressions.
+      </p>
+
+      <div class="about-cta">
+        <a href="#" onclick="openModal('teamModal')">View Our Full Team</a>
+        <a href="#" onclick="openModal('processModal')">Read Our Process</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: IMAGE -->
+    <div class="about-media">
+      <img src="image/about-visual.jpg" alt="VANTYX STUDIOS KENYA">
+    </div>
+
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+<!-- ================= FOUNDER SECTION ================= -->
+<section id="founder" class="founder-section">
+
+  <div class="founder-container">
+
+    <div class="founder-image">
+      <img src="image/founder.jpg" alt="FOUNDER PORTRAIT">
+    </div>
+
+    <div class="founder-content">
+
+      <h2>OCHIENG NICHOLAS</h2>
+      <h3>FOUNDER & CREATIVE DIRECTOR</h3>
+
+      <p class="founder-statement">
+        My goal is to bridge the gap between creative design and functional brand systems,
+        helping businesses communicate visually with clarity, precision, and impact.
+      </p>
+
+      <div class="founder-credentials">
+
+  <div class="credential">
+    <i data-lucide="palette"></i>
+    <span>UI/UX Design</span>
+  </div>
+
+  <div class="credential">
+    <i data-lucide="code-2"></i>
+    <span>Web Development</span>
+  </div>
+
+  <div class="credential">
+    <i data-lucide="bar-chart-3"></i>
+    <span>Brand Strategy</span>
+  </div>
+
+  <div class="credential">
+    <i data-lucide="lightbulb"></i>
+    <span>Creative Direction</span>
+  </div>
+
+</div>
+
+      <ul class="founder-roles">
+        <li>FOUNDER – VANTYX STUDIOS KENYA</li>
+        <li>CREATIVE LEAD – VISUAL BRANDING SYSTEMS</li>
+        <li>DESIGN CONSULTANT – DIGITAL PROJECTS</li>
+      </ul>
+
+      <div class="founder-signature">
+        <img src="image/signature.png" alt="SIGNATURE">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<div class="section-divider"></div>
+<section id="services" class="services-section">
+
+  <div class="section-header">
+    <h2>OUR SERVICES</h2>
+    <p>
+      We deliver high-quality creative design and branding solutions that help businesses,
+      individuals, and startups build strong visual identities and grow their presence.
+    </p>
+  </div>
+
+  <!-- GRID START -->
+  <div class="services-grid">
+
+    <!-- SERVICE 1 -->
+    <div class="service-card">
+      <div class="service-icon"><i data-lucide="palette"></i></div>
+      <h3>Logo & Brand Identity</h3>
+      <p>Crafting unique brand identities that communicate trust, professionalism, and creativity.</p>
+      <a href="#" class="learn-link" onclick="openServiceModal('branding')">
+        Learn More <span>→</span>
+      </a>
+    </div>
+
+    <!-- SERVICE 2 -->
+    <div class="service-card">
+      <div class="service-icon"><i data-lucide="smartphone"></i></div>
+      <h3>Social Media Design</h3>
+      <p>High-impact social media visuals designed to boost engagement and brand visibility.</p>
+      <a href="#" class="learn-link" onclick="openServiceModal('social')">
+        Learn More <span>→</span>
+      </a>
+    </div>
+
+    <!-- SERVICE 3 -->
+    <div class="service-card">
+      <div class="service-icon"><i data-lucide="printer"></i></div>
+      <h3>Print Design</h3>
+      <p>Posters, flyers, brochures, and marketing materials that communicate your message clearly.</p>
+      <a href="#" class="learn-link" onclick="openServiceModal('print')">
+        Learn More <span>→</span>
+      </a>
+    </div>
+
+    <!-- SERVICE 4 -->
+    <div class="service-card">
+      <div class="service-icon"><i data-lucide="building-2"></i></div>
+      <h3>Business Branding</h3>
+      <p>Complete branding systems tailored for startups and growing businesses.</p>
+      <a href="#" class="learn-link" onclick="openServiceModal('branding')">
+        Learn More <span>→</span>
+      </a>
+    </div>
+
+    <!-- ACADEMIC 1 -->
+    <div class="service-card">
+      <div class="service-icon"><i data-lucide="book-open"></i></div>
+      <h3>Thesis & Dissertation</h3>
+      <p>Full support for Masters & PhD research from proposal to final submission.</p>
+      <a href="#" class="learn-link" onclick="openServiceModal('thesis')">
+        Learn More <span>→</span>
+      </a>
+    </div>
+
+    <!-- ACADEMIC 2 -->
+    <div class="service-card">
+      <div class="service-icon"><i data-lucide="file-text"></i></div>
+      <h3>Research Proposal</h3>
+      <p>Professional proposals with clear objectives, structure, and methodology.</p>
+      <a href="#" class="learn-link" onclick="openServiceModal('proposal')">
+        Learn More <span>→</span>
+      </a>
+    </div>
+
+    <!-- ACADEMIC 3 -->
+    <div class="service-card">
+      <div class="service-icon"><i data-lucide="bar-chart-3"></i></div>
+      <h3>Data Analysis & SPSS</h3>
+      <p>Accurate statistical analysis with clear interpretation and reporting.</p>
+      <a href="#" class="learn-link" onclick="openServiceModal('analysis')">
+        Learn More <span>→</span>
+      </a>
+    </div>
+
+  </div>
+  <!-- GRID END -->
+
+</section>
+  <!-- SERVICE MODAL -->
+<div id="serviceModal" class="learn-modal">
+
+  <div class="learn-content">
+
+    <button class="learn-close" onclick="closeServiceModal()">✖</button>
+
+    <h2 id="modalTitle"></h2>
+
+    <p id="modalText"></p>
+
+  </div>
+
+</div>
+
+  <!-- 3. FEATURE HIGHLIGHTS (WHY US) -->
+  <div class="features">
+
+    <div class="feature">
+      <h4>24/7 Support</h4>
+      <p>Always available for client communication and project updates.</p>
+    </div>
+
+    <div class="feature">
+      <h4>Expert Creative Team</h4>
+      <p>Professional design thinking backed by experience and strategy.</p>
+    </div>
+
+    <div class="feature">
+      <h4>Custom Solutions</h4>
+      <p>Every project is tailored — no templates, no shortcuts.</p>
+    </div>
+
+  </div>
+
+  <!-- 4. PROCESS TIMELINE -->
+  <div class="process">
+
+    <h3>How We Work</h3>
+
+    <div class="process-steps">
+
+      <div class="step">
+        <span>01</span>
+        <h4>Discovery</h4>
+        <p>We understand your goals and project needs.</p>
+      </div>
+
+      <div class="step">
+        <span>02</span>
+        <h4>Strategy & Design</h4>
+        <p>We develop creative direction and visual concepts.</p>
+      </div>
+
+      <div class="step">
+        <span>03</span>
+        <h4>Execution & Delivery</h4>
+        <p>We finalize and deliver high-quality design assets.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 5. FINAL CTA -->
+  <div class="services-cta">
+
+    <h3>Ready to build your brand?</h3>
+
+    <button>Request a Quote</button>
+    <button>View Full Portfolio</button>
+
+  </div>
+
+</section>
+<div class="section-divider"></div>
+<!-- ================= BLOG / RESOURCES ================= -->
+<section id="blog" class="blog-section">
+
+  <div class="section-header">
+    <h2>Insights & Resources</h2>
+    <p>
+      Explore design insights, branding strategies, and creative tips from VANTYX STUDIOS KENYA.
+    </p>
+  </div>
+
+  <div class="blog-grid">
+
+    <!-- POST 1 -->
+    <div class="blog-card">
+      <img src="blog1.jpg" alt="Blog Image">
+      <h3>How to Build a Strong Brand Identity</h3>
+      <p>
+        Learn the fundamentals of creating a visual identity that stands out and connects with your audience.
+      </p>
+      <a href="#" onclick="openBlog(1)">Read More →</a>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="blog-card">
+      <img src="image/blog2.jpg" alt="Blog Image">
+      <h3>Top Graphic Design Trends in 2026</h3>
+      <p>
+        Stay ahead with modern design trends shaping digital and brand experiences.
+      </p>
+      <a href="#" onclick="openBlog(2)">Read More →</a>
+    </div>
+
+    <!-- POST 3 -->
+    <div class="blog-card">
+      <img src="image/blog3.jpg" alt="Blog Image">
+      <h3>Why Branding Matters for Startups</h3>
+      <p>
+        Discover how branding influences growth, trust, and customer perception.
+      </p>
+      <a href="#" onclick="openBlog(3)">Read More →</a>
+    </div>
+
+  </div>
+
+</section>
+<div class="section-divider"></div>
+<!-- ================= PORTFOLIO SECTION ================= -->
+<section id="portfolio" class="portfolio-section">
+
+  <div class="section-header">
+    <h2>Our Creative Work</h2>
+    <p>
+      A collection of branding, design, and digital experiences crafted for clients across different industries.
+    </p>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="portfolio-filters">
+
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="branding">Branding</button>
+  <button data-filter="web">Web Design</button>
+  <button data-filter="uiux">UI/UX</button>
+  <button data-filter="print">Print Design</button>
+
+</div>
+
+  <div class="portfolio-grid">
+
+  <!-- ================= BRANDING (4) ================= -->
+
+  <div class="portfolio-card" data-category="branding" onclick="openCase(1)">
+    <img src="image/branding1.jpg">
+    <div class="portfolio-overlay">
+      <h3>Luxury Hotel Branding</h3>
+      <p>Brand Identity</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="branding" onclick="openCase(2)">
+    <img src="image/branding2.jpg">
+    <div class="portfolio-overlay">
+      <h3>Corporate Identity System</h3>
+      <p>Branding</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="branding" onclick="openCase(3)">
+    <img src="image/branding3.jpg">
+    <div class="portfolio-overlay">
+      <h3>Restaurant Brand Kit</h3>
+      <p>Brand Identity</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="branding" onclick="openCase(4)">
+    <img src="image/branding4.jpg">
+    <div class="portfolio-overlay">
+      <h3>Startup Brand Identity</h3>
+      <p>Branding</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <!-- ================= UI/UX (4) ================= -->
+
+  <div class="portfolio-card" data-category="uiux" onclick="openCase(5)">
+    <img src="image/uiux1.jpg">
+    <div class="portfolio-overlay">
+      <h3>E-Commerce Dashboard</h3>
+      <p>UI/UX Design</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="uiux" onclick="openCase(6)">
+    <img src="image/uiux2.jpg">
+    <div class="portfolio-overlay">
+      <h3>Mobile Banking App</h3>
+      <p>UI/UX</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="uiux" onclick="openCase(7)">
+    <img src="image/uiux3.jpg">
+    <div class="portfolio-overlay">
+      <h3>Travel Booking Interface</h3>
+      <p>UI/UX</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="uiux" onclick="openCase(8)">
+    <img src="image/uiux4.jpg">
+    <div class="portfolio-overlay">
+      <h3>Food Delivery App</h3>
+      <p>UI/UX Design</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <!-- ================= PRINT (4) ================= -->
+
+  <div class="portfolio-card" data-category="print" onclick="openCase(9)">
+    <img src="image/print1.jpg">
+    <div class="portfolio-overlay">
+      <h3>Event Poster Design</h3>
+      <p>Print Design</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="print" onclick="openCase(10)">
+    <img src="image/print2.jpg">
+    <div class="portfolio-overlay">
+      <h3>Business Flyer Set</h3>
+      <p>Print Design</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="print" onclick="openCase(11)">
+    <img src="image/print3.jpg">
+    <div class="portfolio-overlay">
+      <h3>Corporate Brochure</h3>
+      <p>Print Design</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+  <div class="portfolio-card" data-category="print" onclick="openCase(12)">
+    <img src="image/print4.jpg">
+    <div class="portfolio-overlay">
+      <h3>Product Packaging</h3>
+      <p>Print Design</p>
+      <span>View Case Study →</span>
+    </div>
+  </div>
+
+<!-- ================= WEB DESIGN (4) ================= -->
+
+<div class="portfolio-card" data-category="web" onclick="openCase(13)">
+  <img src="image/web1.jpg">
+  <div class="portfolio-overlay">
+    <h3>Corporate Website Design</h3>
+    <p>Web Design</p>
+    <span>View Case Study →</span>
+  </div>
+</div>
+
+<div class="portfolio-card" data-category="web" onclick="openCase(14)">
+  <img src="image/web2.jpg">
+  <div class="portfolio-overlay">
+    <h3>Creative Agency Website</h3>
+    <p>Web Design</p>
+    <span>View Case Study →</span>
+  </div>
+</div>
+
+<div class="portfolio-card" data-category="web" onclick="openCase(15)">
+  <img src="image/web3.jpg">
+  <div class="portfolio-overlay">
+    <h3>Restaurant Website UI</h3>
+    <p>Web Design</p>
+    <span>View Case Study →</span>
+  </div>
+</div>
+
+<div class="portfolio-card" data-category="web" onclick="openCase(16)">
+  <img src="image/web4.jpg">
+  <div class="portfolio-overlay">
+    <h3>Startup Landing Page</h3>
+    <p>Web Design</p>
+    <span>View Case Study →</span>
+  </div>
+</div>
+</div>
+  <!-- ================= CASE STUDY MODAL ================= -->
+<div id="caseModal" class="case-modal">
+
+  <div class="case-content">
+
+    <!-- CLOSE BUTTON -->
+    <span class="case-close" onclick="closeCase()">×</span>
+
+    <!-- DYNAMIC CONTENT -->
+    <h3 id="caseTitle">Project Title</h3>
+
+    <ul id="caseDetails">
+      <li><strong>The Challenge:</strong> ...</li>
+      <li><strong>The Solution:</strong> ...</li>
+      <li><strong>Tools Used:</strong> ...</li>
+      <li><strong>The Result:</strong> ...</li>
+    </ul>
+
+  </div>
+
+</div>
+
+ <!-- 5. FINAL CTA -->
+<div class="portfolio-cta">
+
+  <h3>Inspired by our work?</h3>
+
+  <p>Let’s build something powerful for your brand.</p>
+
+  <!-- ACTION BUTTONS -->
+  <button onclick="goToContact()" class="cta-primary">
+    Start Your Project
+  </button>
+
+  <button onclick="showAllProjects()" class="cta-secondary">
+    View Full Archive
+  </button>
+
+</div>
+<div class="section-divider"></div>
+<!-- ================= PRICING SECTION ================= -->
+<section id="pricing" class="pricing-section">
+
+  <!-- 1. HEADER -->
+  <div class="section-header">
+
+    <h2>Transparent Plans for Every Stage</h2>
+
+    <p>
+      Choose a plan that fits your needs. Whether you're starting a brand or scaling a business,
+      we offer flexible design solutions built for impact.
+    </p>
+
+    <!-- TOGGLE (Monthly / Annual) -->
+    <div class="pricing-toggle">
+
+      <span>Monthly</span>
+
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+
+      <span>
+        Annual <b>(2 Months Free)</b>
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- 2. PRICING CARDS -->
+  <div class="pricing-grid">
+
+    <!-- STARTER -->
+    <div class="pricing-card">
+
+      <h3>Starter</h3>
+      <h1>$49</h1>
+      <p>For individuals & small projects</p>
+
+      <ul>
+        <li>Logo Design</li>
+        <li>Basic Brand Identity</li>
+        <li>1 Revision Round</li>
+        <li>Social Media Kit</li>
+      </ul>
+
+      <button onclick="startProject('Starter')">Start Your Project</button>
+
+    </div>
+
+    <!-- PROFESSIONAL (HIGHLIGHTED) -->
+    <div class="pricing-card featured">
+
+      <div class="badge">Most Popular</div>
+
+      <h3>Professional</h3>
+      <h1>$99</h1>
+      <p>For growing brands & businesses</p>
+
+      <ul>
+        <li>Full Brand Identity</li>
+        <li>Logo + Guidelines</li>
+        <li>Social Media Design Pack</li>
+        <li>Print Materials</li>
+        <li>3 Revisions</li>
+      </ul>
+
+      <button onclick="startProject('Professional')">Choose Plan</button>
+
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="pricing-card">
+
+      <h3>Enterprise</h3>
+      <h1>Custom</h1>
+      <p>For large organizations</p>
+
+      <ul>
+        <li>Full Creative Strategy</li>
+        <li>Advanced Branding System</li>
+        <li>UI/UX Design</li>
+        <li>Priority Support</li>
+        <li>Unlimited Revisions</li>
+      </ul>
+
+      <button onclick="startProject('Enterprise')">Get a Quote</button>
+
+    </div>
+
+  </div>
+
+  <!-- 3. COMPARISON TABLE -->
+  <div class="pricing-table">
+
+    <a href="#">See Full Feature Comparison <span class="arrow">↓</span></a>
+
+    <table>
+
+      <tr>
+        <th>Features</th>
+        <th>Starter</th>
+        <th>Professional</th>
+        <th>Enterprise</th>
+      </tr>
+
+      <tr>
+        <td>Logo Design</td>
+        <td>✔</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+
+      <tr>
+        <td>Brand Strategy</td>
+        <td>—</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+
+      <tr>
+        <td>UI/UX Design</td>
+        <td>—</td>
+        <td>—</td>
+        <td>✔</td>
+      </tr>
+
+      <tr>
+        <td>Priority Support</td>
+        <td>—</td>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+
+    </table>
+
+  </div>
+
+  <!-- 4. TRUST + OBJECTION HANDLING -->
+  <div class="pricing-trust">
+
+    <h3>Why Clients Choose VANTYX STUDIOS KENYA</h3>
+
+    <div class="trust-grid">
+
+      <div>
+        <h4>✔ No Hidden Fees</h4>
+        <p>Transparent pricing with no surprises.</p>
+      </div>
+
+      <div>
+        <h4>✔ Flexible Revisions</h4>
+        <p>We refine until you are satisfied.</p>
+      </div>
+
+      <div>
+        <h4>✔ Quality Guarantee</h4>
+        <p>High-standard design delivery every time.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 5. FINAL CTA -->
+<div class="pricing-cta">
+
+  <h3>Ready to elevate your brand?</h3>
+
+  <button onclick="goToContact()" class="cta-primary">
+    Start Your Project
+  </button>
+
+  <button onclick="scrollToContact()" class="cta-secondary">
+    Talk to Us
+  </button>
+
+</div>
+<div class="section-divider"></div>
+<!-- ================= CONTACT SECTION ================= -->
+<section id="contact" class="contact-section">
+
+  <!-- 1. SECTION HEADER -->
+  <div class="section-header">
+
+    <h2>Let’s Work Together</h2>
+
+    <p>
+      Have a project in mind? Send us a message and we’ll respond as soon as possible.
+    </p>
+
+  </div>
+
+  <!-- MAIN CONTACT LAYOUT -->
+  <div class="contact-container">
+
+    <!-- 2. CONTACT FORM -->
+    <div class="contact-form">
+
+      <h3>Send a Message</h3>
+
+      <form>
+
+        <input type="text" placeholder="Full Name" required>
+
+        <input type="email" placeholder="Email Address" required>
+
+        <!-- SERVICE DROPDOWN -->
+        <select>
+          <option>Select Service Interest</option>
+          <option>Logo & Branding</option>
+          <option>Social Media Design</option>
+          <option>Web Design</option>
+          <option>Print Design</option>
+          <option>Academic Support</option>
+        </select>
+
+        <textarea placeholder="Your Message" rows="5"></textarea>
+
+        <button type="submit">Send Message</button>
+
+        <!-- SUCCESS STATE (placeholder) -->
+        <p class="success-message" style="display:none;">
+          Message Sent Successfully ✔
+        </p>
+
+      </form>
+
+    </div>
+
+    <!-- 3. DIRECT CONTACT DETAILS -->
+    <div class="contact-info">
+
+      <h3>Direct Contact</h3>
+
+      <p>
+        📧 Email:
+        <a href="mailto:info@vantyxstudioskenya.com">
+          info@vantyxstudioskenya.com
+        </a>
+      </p>
+
+      <p>
+        📞 Phone:
+        <a href="tel:+254759015631">
+          +254 759 015 631
+        </a>
+      </p>
+
+      <p>
+        📍 Location:
+        Kisii, Kenya
+      </p>
+
+      <a href="https://wa.me/254759015631" class="whatsapp-btn">
+        Chat on WhatsApp
+      </a>
+
+      <!-- 4. SOCIAL LINKS -->
+      <div class="social-links">
+
+        <a href="https://instagram.com/vantyxstudios" target="_blank"><i data-lucide="instagram"></i>Instagram</a>
+        <a href="https://linkedin.com/company/vantyxstudios" target="_blank"><i data-lucide="linkedin"></i>LinkedIn</a>
+        <a href="https://twitter.com/vantyxstudios" target="_blank"><i data-lucide="twitter"></i>X (Twitter)</a>
+        <a href="https://facebook.com/vantyxstudios" target="_blank"><i data-lucide="facebook"></i>Facebook</a>
+
+      </div>
+
+      <!-- 5. OPERATING HOURS -->
+      <div class="hours">
+
+        <h4>Operating Hours</h4>
+
+        <p>Monday – Friday: 8:00 AM – 6:00 PM</p>
+        <p>Saturday: 9:00 AM – 2:00 PM</p>
+        <p>Sunday: Closed</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="map">
+  <iframe
+    src="https://www.google.com/maps?q=Kisii%20Town%20Kenya&output=embed"
+    width="100%"
+    height="300"
+    style="border:0;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+</section>
+<div class="section-divider"></div>
+<!-- ================= FAQS & HELP CENTER ================= -->
+<section id="faq" class="faq-section">
+
+  <!-- HEADER -->
+  <div class="section-header">
+
+    <h2>FAQs & Help Center</h2>
+
+    <p>
+      Find answers to common questions about our services, process, and support.
+      If you need more help, contact us anytime.
+    </p>
+
+  </div>
+
+  <!-- FAQ CONTAINER -->
+  <div class="faq-container">
+
+    <!-- FAQ ITEM 1 -->
+    <div class="faq-item">
+      <button class="faq-question">How long does a project take?</button>
+      <div class="faq-answer">
+        Most branding projects take 3–7 days depending on complexity and revisions.
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 2 -->
+    <div class="faq-item">
+      <button class="faq-question">Do you require full payment upfront?</button>
+      <div class="faq-answer">
+        We usually require a 50% deposit to begin, with the balance paid upon completion.
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 3 -->
+    <div class="faq-item">
+      <button class="faq-question">Can I request revisions?</button>
+      <div class="faq-answer">
+        Yes. Each package includes revision rounds to ensure final satisfaction.
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 4 -->
+    <div class="faq-item">
+      <button class="faq-question">Do you offer academic writing services?</button>
+      <div class="faq-answer">
+        Yes, but it is a secondary service. Our main focus is creative design and branding.
+      </div>
+    </div>
+
+    <!-- FAQ ITEM 5 -->
+    <div class="faq-item">
+      <button class="faq-question">How can I contact you quickly?</button>
+      <div class="faq-answer">
+        You can use the contact form, WhatsApp button, or click "Start Your Project" anywhere on the site.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HELP CENTER CTA -->
+  <div class="faq-help">
+
+    <h3>Still need help?</h3>
+
+    <p>Our support team is ready to assist you.</p>
+
+    <button onclick="goToContact()">Contact Support</button>
+    <button onclick="openAI()">Ask AI Assistant</button>
+
+  </div>
+
+</section>
+<div class="section-divider"></div>
+<footer class="footer">
+
+  <!-- BRAND -->
+  <div class="footer-brand">
+    <img src="image/logo-white.png" alt="VANTYX STUDIOS KENYA">
+    <p>
+      We design powerful visual identities that help brands stand out and communicate with clarity.
+    </p>
+
+    <div class="footer-socials">
+      <i data-lucide="linkedin"></i><a href="https://linkedin.com/company/vantyxstudios" target="_blank">LinkedIn</a>
+      <i data-lucide="instagram"></i><a href="https://instagram.com/vantyxstudios" target="_blank">Instagram</a>
+      <i data-lucide="twitter"></i><a href="https://twitter.com/vantyxstudios" target="_blank">X (Twitter)</a>
+      <i data-lucide="github"></i><a href="https://github.com/vantyxstudios" target="_blank">GitHub</a>
+      <i data-lucide="facebook"></i><a href="https://facebook.com/vantyxstudios" target="_blank">Facebook</a>
+      <i data-lucide="tiktok"></i><a href="https://tiktok.com/@vantyxstudios" target="_blank">TikTok</a>
+      <i data-lucide="youtube"></i><a href="https://youtube.com/@vantyxstudios" target="_blank">YouTube</a>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="footer-links">
+
+    <div>
+      <h4>Company</h4>
+      <a href="#about">About Us</a>
+      <a href="#" onclick="openTeam()">Our Team</a>
+      <a href="#" onclick="openCareers()">Careers</a>
+      <a href="#" onclick="openPress()">Press</a>
+    </div>
+
+    <div>
+      <h4>Services</h4>
+      <a href="#services">Branding</a>
+      <a href="#services">Graphic Design</a>
+      <a href="#services">UI/UX Design</a>
+      <a href="#services">Print Design</a>
+    </div>
+
+    <div>
+      <h4>Resources</h4>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">FAQs</a>
+      <a href="#faq">Help Center</a>
+    </div>
+
+  </div>
+
+  <!-- CONTACT -->
+  <div class="footer-contact">
+    <h4>Contact</h4>
+
+    <p><i data-lucide="mail"></i> <a href="mailto:info@vantyxstudioskenya.com">info@vantyxstudioskenya.com</a></p>
+    <p><i data-lucide="phone"></i> <a href="tel:+254759015631">+254 759 015 631</a></p>
+    <p><i data-lucide="map-pin"></i> Kisii, Kenya</p>
+
+    <div class="newsletter">
+  <p>JOIN THE VANTYX STUDIOS KENYA LIST</p>
+
+  <form id="newsletterForm">
+    <input 
+      type="email" 
+      id="newsletterEmail" 
+      name="email"
+      placeholder="Enter your email"
+      required
+    >
+
+    <button type="submit">Get Updates</button>
+  </form>
+
+  <span id="subscribeMsg"></span>
+</div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <hr>
+    <div class="legal">
+      <p>© 2026 VANTYX STUDIOS KENYA. All rights reserved.</p>
+
+      <div class="legal-links">
+        <a href="#" onclick="openPolicy()">Privacy Policy</a>
+        <a href="#" onclick="openTerms()">Terms of Service</a>
+      </div>
+
+      <a href="#home" class="back-to-top"> Back to Top</a>
+    </div>
+  </div>
+
+</footer>
+
+<script src="index.js"></script>
+<!-- ================= TEAM MODAL ================= -->
+<div id="teamModal" class="modal">
+  <div class="modal-content large">
+    <span class="close" onclick="closeModal('teamModal')">x</span>
+
+    <h2>Our Creative Team</h2>
+
+    <div class="card-grid">
+      <div class="person-card">
+        <img src="image/team1.jpg">
+        <h3>Creative Director</h3>
+        <p>Brand Strategy</p>
+      </div>
+      <div class="person-card">
+        <img src="image/team2.jpg">
+        <h3>UI/UX Designer</h3>
+        <p>Experience Design</p>
+      </div>
+      <div class="person-card">
+        <img src="image/team3.jpg">
+        <h3>Graphic Designer</h3>
+        <p>Brand Design</p>
+      </div>
+      <div class="person-card">
+        <img src="image/team4.jpg">
+        <h3>Developer</h3>
+        <p>Web Systems</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================= PROCESS MODAL ================= -->
+<div id="processModal" class="custom-modal">
+  <div class="modal-content">
+
+    <button class="modal-close" onclick="closeModal('processModal')">✖</button>
+
+    <h2>Our Process</h2>
+
+    <div class="process-steps">
+
+      <div class="step">
+        <span>01</span>
+        <h4>Discovery</h4>
+        <p>We understand your goals, vision, and requirements.</p>
+      </div>
+
+      <div class="step">
+        <span>02</span>
+        <h4>Strategy & Design</h4>
+        <p>We craft creative direction and visual concepts.</p>
+      </div>
+
+      <div class="step">
+        <span>03</span>
+        <h4>Execution</h4>
+        <p>We build, refine, and finalize your project.</p>
+      </div>
+
+      <div class="step">
+        <span>04</span>
+        <h4>Delivery</h4>
+        <p>We deliver high-quality results ready for launch.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- ================= CAREERS MODAL ================= -->
+<div id="careersModal" class="modal">
+  <div class="modal-content large">
+    <span class="close" onclick="closeModal('careersModal')">x</span>
+
+    <h2>Join Our Team</h2>
+
+    <div class="card-grid">
+      <div class="job-card">
+        <img src="image/career1.jpg">
+        <h3>Graphic Designer</h3>
+        <button>Apply Now</button>
+      </div>
+      <div class="job-card">
+        <img src="image/career2.jpg">
+        <h3>Frontend Developer</h3>
+        <button>Apply Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PRESS MODAL ================= -->
+<div id="pressModal" class="modal">
+  <div class="modal-content large">
+    <span class="close" onclick="closeModal('pressModal')">x</span>
+
+    <h2>Press & Media</h2>
+
+    <div class="card-grid">
+      <div class="press-card">
+        <img src="image/press1.jpg">
+        <h3>Tech Kenya Feature</h3>
+      </div>
+      <div class="press-card">
+        <img src="image/press2.jpg">
+        <h3>Studio Spotlight</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================= PRIVACY POLICY MODAL ================= -->
+<div id="privacy-modal" class="privacy-modal">
+
+  <div class="privacy-content">
+
+    <button class="close-btn" onclick="closePolicy()">✖</button>
+
+    <h2>Privacy Policy</h2>
+
+    <p>
+      At VANTYX STUDIOS KENYA, we value your privacy. Any information you provide
+      through our website, including your name, email, and project details,
+      is used strictly for communication and service delivery.
+    </p>
+
+    <p>
+      We do not sell, trade, or share your personal information with third parties.
+      All data is handled securely and only used to improve our services.
+    </p>
+
+    <p>
+      By using our website, you agree to our privacy practices.
+    </p>
+
+  </div>
+
+</div>
+<!-- ================= TERMS OF SERVICE MODAL ================= -->
+<div id="terms-modal" class="privacy-modal">
+
+  <div class="privacy-content">
+
+    <button class="close-btn" onclick="closeTerms()">✖</button>
+
+    <h2>Terms of Service</h2>
+
+    <p>
+      By using VANTYX STUDIOS KENYA services, you agree to the following terms and conditions.
+      These terms govern your use of our website and services.
+    </p>
+
+    <p>
+      All design work provided by VANTYX STUDIOS KENYA remains the intellectual property of the client
+      upon full payment. We reserve the right to showcase completed work in our portfolio.
+    </p>
+
+    <p>
+      Payments must be completed as agreed before final delivery of project files.
+      Delays in communication may affect project timelines.
+    </p>
+
+    <p>
+      VANTYX STUDIOS KENYA is not liable for any indirect or consequential damages arising from the use
+      of our services.
+    </p>
+
+    <p>
+      By continuing to use our services, you acknowledge and accept these terms.
+    </p>
+
+  </div>
+
+</div>
+<!-- ================= BLOG MODAL ================= -->
+<div id="blogModal" class="blog-modal">
+
+  <div class="blog-modal-content">
+
+    <!-- CLOSE -->
+    <span class="blog-close" onclick="closeBlog()">✖</span>
+
+    <!-- CONTENT -->
+    <div id="blogContent"></div>
+
+  </div>
+
+</div>
+</body>
+<!-- ================= AI ASSISTANT ================= -->
+<div class="ai-system">
+
+  <!-- ORB -->
+  <div class="ai-orb-container">
+    <div class="ai-orb-ring"></div>
+
+    <button class="ai-orb" id="ai-orb-btn">
+      <div class="ai-orb-core"></div>
+    </button>
+
+    <span class="ai-orb-label">AI Assistant</span>
+  </div>
+
+  <!-- CHAT -->
+  <div id="ai-chat" class="ai-chat">
+
+    <!-- HEADER -->
+    <div class="ai-header">
+      <h3>VANTYX STUDIOS KENYA AI Assistant</h3>
+      <button id="ai-close-btn">✖</button>
+    </div>
+
+    <!-- BODY -->
+    <div class="ai-body" id="ai-body">
+      <div class="ai-message bot">
+        Hello 👋 I’m your VANTYX STUDIOS KENYA AI Assistant.
+      </div>
+    </div>
+
+    <!-- INPUT -->
+    <div class="ai-input">
+      <input type="text" class="ai-user-input" placeholder="Ask something..." />
+      <button class="ai-send-btn">Send</button>
+    </div>
+
+  </div>
+
+</div>
+<link rel="stylesheet" href="style.css">
+<script src="index.js"></script>
