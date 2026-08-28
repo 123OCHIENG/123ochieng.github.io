@@ -1456,3 +1456,224 @@
   </div>
 
 </div>
+  <script>
+/* =========================================================
+   VANTYX STUDIOS KENYA AI ASSISTANT
+   FRONT-END CHAT SYSTEM
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const orbButton = document.getElementById("ai-orb-btn");
+    const chatWindow = document.getElementById("ai-chat");
+    const closeButton = document.getElementById("ai-close-btn");
+    const chatBody = document.getElementById("ai-body");
+    const input = document.querySelector(".ai-user-input");
+    const sendButton = document.querySelector(".ai-send-btn");
+
+
+    /* =====================================================
+       OPEN AI CHAT
+       ===================================================== */
+
+    if (orbButton && chatWindow) {
+
+        orbButton.addEventListener("click", function () {
+
+            chatWindow.classList.add("show");
+
+            setTimeout(function () {
+                if (input) {
+                    input.focus();
+                }
+            }, 200);
+
+        });
+
+    }
+
+
+    /* =====================================================
+       CLOSE AI CHAT
+       ===================================================== */
+
+    if (closeButton && chatWindow) {
+
+        closeButton.addEventListener("click", function () {
+
+            chatWindow.classList.remove("show");
+
+        });
+
+    }
+
+
+    /* =====================================================
+       ADD MESSAGE TO CHAT
+       ===================================================== */
+
+    function addMessage(message, type) {
+
+        const messageElement = document.createElement("div");
+
+        messageElement.classList.add(
+            "ai-message",
+            type
+        );
+
+        messageElement.textContent = message;
+
+        chatBody.appendChild(messageElement);
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+
+    /* =====================================================
+       AI RESPONSE
+       ===================================================== */
+
+    function generateResponse(message) {
+
+        const text = message.toLowerCase().trim();
+
+
+        if (
+            text.includes("hello") ||
+            text.includes("hi") ||
+            text.includes("hey")
+        ) {
+
+            return "Hello. I'm the VANTYX STUDIOS KENYA AI Assistant. How can I help you?";
+
+        }
+
+
+        if (
+            text.includes("vantyx") ||
+            text.includes("studio") ||
+            text.includes("website")
+        ) {
+
+            return "VANTYX STUDIOS KENYA is a creative digital studio focused on branding, web design, visual identity and digital experiences.";
+
+        }
+
+
+        if (
+            text.includes("service") ||
+            text.includes("services")
+        ) {
+
+            return "We provide services including web design, branding, graphic design, visual identity and other digital creative solutions.";
+
+        }
+
+
+        if (
+            text.includes("portfolio") ||
+            text.includes("projects")
+        ) {
+
+            return "You can explore the VANTYX STUDIOS KENYA portfolio to see our selected creative and digital projects.";
+
+        }
+
+
+        if (
+            text.includes("contact") ||
+            text.includes("hire") ||
+            text.includes("project")
+        ) {
+
+            return "If you'd like to work with VANTYX STUDIOS KENYA, use the Start a Project option on the website to begin.";
+
+        }
+
+
+        return "I understand your question. I'm currently running in demo mode. Once the AI backend is connected, I'll be able to provide intelligent responses to your questions.";
+    }
+
+
+    /* =====================================================
+       SEND MESSAGE
+       ===================================================== */
+
+    function sendMessage() {
+
+        if (!input || !chatBody) {
+            return;
+        }
+
+        const message = input.value.trim();
+
+
+        /* Don't send empty messages */
+
+        if (message === "") {
+            return;
+        }
+
+
+        /* Show user message */
+
+        addMessage(message, "user");
+
+
+        /* Clear input */
+
+        input.value = "";
+
+
+        /* Generate response */
+
+        setTimeout(function () {
+
+            const response = generateResponse(message);
+
+            addMessage(response, "bot");
+
+        }, 500);
+
+    }
+
+
+    /* =====================================================
+       SEND BUTTON
+       ===================================================== */
+
+    if (sendButton) {
+
+        sendButton.addEventListener(
+            "click",
+            sendMessage
+        );
+
+    }
+
+
+    /* =====================================================
+       ENTER KEY
+       ===================================================== */
+
+    if (input) {
+
+        input.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    sendMessage();
+
+                }
+
+            }
+        );
+
+    }
+
+});
+</script>
