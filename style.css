@@ -7070,42 +7070,4 @@ span {
   }
 
 }
-/* =========================================================
-   AI ASSISTANT - FINAL OVERRIDE
-   ========================================================= */
 
-.ai-system {
-    position: fixed !important;
-    right: 25px !important;
-    bottom: 25px !important;
-    z-index: 999999 !important;
-}
-
-.ai-orb-container {
-    position: relative !important;
-    z-index: 999999 !important;
-}
-
-.ai-orb {
-    position: relative !important;
-    z-index: 1000000 !important;
-    cursor: pointer !important;
-}
-
-.ai-chat {
-    display: none !important;
-    position: absolute !important;
-
-    right: 0 !important;
-    bottom: 95px !important;
-
-    width: 340px !important;
-    height: 450px !important;
-
-    z-index: 1000001 !important;
-}
-
-/* JavaScript opens this */
-.ai-chat.show {
-    display: flex !important;
-}
