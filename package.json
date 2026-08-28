@@ -18,3 +18,8 @@
     "mysql2": "^3.22.3"
   }
 }
+{
+  "dependencies": {
+    "@google/genai": "^1.0.0"
+  }
+}
