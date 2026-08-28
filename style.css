@@ -5034,137 +5034,1133 @@ header nav a {
 
 
 /* =========================================================
-   16. AI ASSISTANT
+   VANTYX AI ASSISTANT
    ========================================================= */
 
 .ai-system {
   position: fixed;
-  right: 25px;
-  bottom: 25px;
+  right: 28px;
+  bottom: 28px;
 
   z-index: 9998;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
 }
+
+
+/* =========================================================
+   ORB CONTAINER
+   ========================================================= */
 
 .ai-orb-container {
   position: relative;
 
+  width: 100px;
+  height: 125px;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  transition:
+    opacity .35s ease,
+    transform .35s ease;
 }
+
+
+/* =========================================================
+   ORB
+   ========================================================= */
 
 .ai-orb {
-  width: 65px;
-  height: 65px;
+  position: relative;
 
+  width: 68px;
+  height: 68px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255,255,255,.25);
   border-radius: 50%;
-  border: 0;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #ffffff 0%,
+      #b8c7ff 8%,
+      #596bff 28%,
+      #171d55 55%,
+      #050713 100%
+    );
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(100,120,255,.45),
+    0 0 40px rgba(70,90,255,.2),
+    inset 0 0 20px rgba(255,255,255,.18);
+
+  animation:
+    ai-breathe 4s ease-in-out infinite;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
 }
 
+
+/* HOVER */
+
+.ai-orb:hover {
+
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 20px rgba(120,140,255,.65),
+    0 0 55px rgba(80,100,255,.35),
+    0 0 90px rgba(70,80,255,.15),
+    inset 0 0 25px rgba(255,255,255,.25);
+}
+
+
+/* =========================================================
+   CORE
+   ========================================================= */
+
+.ai-orb-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.ai-orb-core {
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #ffffff 0%,
+      #dce5ff 25%,
+      #8498ff 60%,
+      transparent 75%
+    );
+
+  box-shadow:
+    0 0 12px #ffffff,
+    0 0 25px rgba(130,150,255,.9),
+    0 0 45px rgba(80,100,255,.6);
+
+  animation:
+    core-pulse 2.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   OUTER RINGS
+   ========================================================= */
+
 .ai-orb-ring {
+
   position: absolute;
-  inset: -5px;
 
   border-radius: 50%;
 
   pointer-events: none;
+
+  border: 1px solid rgba(120,140,255,.25);
 }
 
-.ai-orb-core {
+
+.ring-one {
+
+  inset: 7px;
+
+  animation:
+    ring-spin 7s linear infinite;
+}
+
+
+.ring-two {
+
+  inset: 1px;
+
+  border-color:
+    rgba(255,255,255,.15)
+    transparent
+    rgba(120,140,255,.3)
+    transparent;
+
+  animation:
+    ring-spin-reverse 10s linear infinite;
+}
+
+
+.ring-three {
+
+  inset: -7px;
+
+  border:
+    1px dashed rgba(120,140,255,.22);
+
+  animation:
+    ring-spin 15s linear infinite;
+}
+
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+.ai-orb-glow {
+
+  position: absolute;
+
+  width: 110px;
+  height: 110px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(90,110,255,.25),
+      transparent 70%
+    );
+
+  filter: blur(8px);
+
+  animation:
+    glow-breathe 4s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PULSE WAVES
+   ========================================================= */
+
+.ai-orb-pulse {
+
+  position: absolute;
+
   width: 20px;
   height: 20px;
 
-  margin: auto;
-
   border-radius: 50%;
+
+  border: 1px solid rgba(150,170,255,.4);
+
+  opacity: 0;
+
+  animation:
+    ai-wave 3s ease-out infinite;
 }
 
-.ai-orb-label {
-  margin-top: 8px;
 
-  font-size: 12px;
+.pulse-two {
+  animation-delay: 1.5s;
+}
+
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+.ai-orb-particles span {
+
+  position: absolute;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 6px rgba(160,180,255,.9);
+}
+
+
+.ai-orb-particles span:nth-child(1) {
+  top: 10px;
+  left: 45px;
+  animation: particle-one 4s linear infinite;
+}
+
+
+.ai-orb-particles span:nth-child(2) {
+  right: 7px;
+  top: 35px;
+  animation: particle-two 5s linear infinite;
+}
+
+
+.ai-orb-particles span:nth-child(3) {
+  bottom: 10px;
+  left: 30px;
+  animation: particle-three 4.5s linear infinite;
+}
+
+
+.ai-orb-particles span:nth-child(4) {
+  left: 5px;
+  top: 30px;
+  animation: particle-four 6s linear infinite;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.ai-orb-info {
+
+  position: absolute;
+
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: rgba(255,255,255,.75);
+
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
 
   white-space: nowrap;
 }
 
+
+.ai-status-dot {
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #8ea2ff;
+
+  box-shadow:
+    0 0 7px rgba(120,140,255,.9);
+
+  animation:
+    status-blink 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
 .ai-chat {
+
   position: absolute;
 
   right: 0;
-  bottom: 95px;
+  bottom: 0;
 
-  width: min(380px, calc(100vw - 30px));
-  height: min(550px, calc(100vh - 130px));
+  width: min(390px, calc(100vw - 30px));
+  height: min(560px, calc(100vh - 50px));
 
-  display: none;
-
+  display: flex;
   flex-direction: column;
 
   overflow: hidden;
 
-  border-radius: 15px;
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20,23,40,.98),
+      rgba(7,9,18,.98)
+    );
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.65),
+    0 0 45px rgba(70,90,255,.12);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform:
+    translateY(25px)
+    scale(.85);
+
+  transform-origin: bottom right;
+
+  transition:
+    opacity .35s ease,
+    transform .45s cubic-bezier(.16,1,.3,1),
+    visibility .35s;
 }
+
+
+/* OPEN */
+
+.ai-system.chat-open .ai-chat {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+.ai-system.chat-open .ai-orb-container {
+
+  opacity: 0;
+
+  transform:
+    scale(.65)
+    translateY(20px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .ai-header {
+
+  min-height: 70px;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
 
-  padding: 15px;
+  padding:
+    0 17px;
 
-  gap: 10px;
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.025);
 }
+
+
+.ai-header-brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.ai-mini-orb {
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #ffffff,
+      #8195ff 35%,
+      #151b4e 70%,
+      #050713
+    );
+
+  box-shadow:
+    0 0 18px rgba(100,120,255,.45);
+}
+
+
+.ai-mini-orb span {
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    0 0 12px white;
+}
+
 
 .ai-header h3 {
+
   margin: 0;
 
-  font-size: 15px;
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: .3px;
 }
 
-.ai-header button {
-  border: 0;
-  background: transparent;
+
+.ai-header p {
+
+  margin:
+    3px 0 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: rgba(255,255,255,.5);
+
+  font-size: 10px;
 }
+
+
+.ai-online-dot {
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #7f95ff;
+
+  box-shadow:
+    0 0 7px #7f95ff;
+}
+
+
+.ai-close-btn {
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.06);
+
+  color:
+    rgba(255,255,255,.7);
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+
+.ai-close-btn:hover {
+
+  background:
+    rgba(255,255,255,.12);
+
+  transform:
+    rotate(90deg);
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
 
 .ai-body {
+
   flex: 1;
 
   overflow-y: auto;
 
-  padding: 15px;
+  padding: 20px;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    rgba(255,255,255,.15)
+    transparent;
 }
 
-.ai-message {
-  max-width: 85%;
 
-  margin-bottom: 12px;
+.ai-body::-webkit-scrollbar {
+  width: 4px;
+}
 
-  padding: 10px 13px;
+
+.ai-body::-webkit-scrollbar-thumb {
+
+  background:
+    rgba(255,255,255,.15);
 
   border-radius: 10px;
 }
 
-.ai-input {
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.ai-welcome {
+
+  padding:
+    15px 5px 22px;
+
+  text-align: center;
+}
+
+
+.ai-welcome-orb {
+
+  width: 48px;
+  height: 48px;
+
+  margin:
+    0 auto 12px;
+
   display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #ffffff,
+      #8498ff 35%,
+      #151b4c 70%
+    );
+
+  box-shadow:
+    0 0 25px rgba(100,120,255,.3);
+
+  animation:
+    ai-breathe 4s ease-in-out infinite;
+}
+
+
+.ai-welcome-orb span {
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    0 0 15px white;
+}
+
+
+.ai-welcome h4 {
+
+  margin:
+    0 0 6px;
+
+  color: white;
+
+  font-size: 17px;
+}
+
+
+.ai-welcome p {
+
+  max-width: 290px;
+
+  margin: auto;
+
+  color:
+    rgba(255,255,255,.5);
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+.ai-message {
+
+  max-width: 82%;
+
+  margin-bottom: 12px;
+
+  padding:
+    11px 14px;
+
+  border-radius: 15px;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+
+  animation:
+    message-in .35s ease forwards;
+}
+
+
+.ai-message.bot {
+
+  align-self: flex-start;
+
+  color:
+    rgba(255,255,255,.85);
+
+  background:
+    rgba(255,255,255,.065);
+
+  border:
+    1px solid rgba(255,255,255,.06);
+
+  border-bottom-left-radius: 4px;
+}
+
+
+.ai-message.user {
+
+  margin-left: auto;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(91,109,255,.85),
+      rgba(64,78,190,.85)
+    );
+
+  border-bottom-right-radius: 4px;
+}
+
+
+/* =========================================================
+   THINKING
+   ========================================================= */
+
+.ai-thinking {
+
+  display: none;
+
+  gap: 4px;
+
+  padding:
+    0 20px 10px;
+}
+
+
+.ai-thinking.active {
+
+  display: flex;
+}
+
+
+.ai-thinking span {
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(160,175,255,.8);
+
+  animation:
+    thinking 1.2s ease-in-out infinite;
+}
+
+
+.ai-thinking span:nth-child(2) {
+  animation-delay: .15s;
+}
+
+
+.ai-thinking span:nth-child(3) {
+  animation-delay: .3s;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.ai-input {
+
+  display: flex;
+
+  align-items: center;
 
   gap: 8px;
 
-  padding: 10px;
+  margin: 0 12px 12px;
+
+  padding: 5px;
+
+  border:
+    1px solid rgba(255,255,255,.1);
+
+  border-radius: 30px;
+
+  background:
+    rgba(255,255,255,.045);
+
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease;
 }
 
-.ai-input input {
-  min-width: 0;
+
+.ai-input:focus-within {
+
+  border-color:
+    rgba(130,150,255,.5);
+
+  box-shadow:
+    0 0 20px rgba(90,110,255,.08);
+}
+
+
+.ai-user-input {
+
   flex: 1;
 
-  padding: 11px;
+  min-width: 0;
+
+  padding:
+    10px 13px;
+
+  border: 0;
+
+  outline: 0;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 13px;
 }
 
-.ai-input button {
+
+.ai-user-input::placeholder {
+
+  color:
+    rgba(255,255,255,.35);
+}
+
+
+.ai-send-btn {
+
+  width: 36px;
+  height: 36px;
+
   flex-shrink: 0;
 
-  padding: 10px 15px;
+  border: 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #9eafff
+    );
+
+  color:
+    #11162f;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
+
+.ai-send-btn:hover {
+
+  transform:
+    scale(1.08);
+
+  box-shadow:
+    0 0 18px rgba(130,150,255,.5);
+}
+
+
+.ai-send-btn:active {
+
+  transform:
+    scale(.92);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes ai-breathe {
+
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.055);
+  }
+}
+
+
+@keyframes core-pulse {
+
+  0%, 100% {
+    transform: scale(.8);
+    opacity: .8;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+
+@keyframes glow-breathe {
+
+  0%, 100% {
+    transform: scale(.85);
+    opacity: .5;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: .9;
+  }
+}
+
+
+@keyframes ring-spin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes ring-spin-reverse {
+
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+
+@keyframes ai-wave {
+
+  0% {
+    transform: scale(.8);
+    opacity: .6;
+  }
+
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+
+@keyframes status-blink {
+
+  0%, 100% {
+    opacity: .4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes thinking {
+
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: .4;
+  }
+
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+
+@keyframes message-in {
+
+  from {
+    opacity: 0;
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes particle-one {
+
+  0% {
+    transform: rotate(0deg) translateX(28px);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(28px);
+  }
+}
+
+
+@keyframes particle-two {
+
+  0% {
+    transform: rotate(0deg) translateX(30px);
+  }
+
+  100% {
+    transform: rotate(-360deg) translateX(30px);
+  }
+}
+
+
+@keyframes particle-three {
+
+  0% {
+    transform: rotate(0deg) translateX(26px);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(26px);
+  }
+}
+
+
+@keyframes particle-four {
+
+  0% {
+    transform: rotate(0deg) translateX(29px);
+  }
+
+  100% {
+    transform: rotate(-360deg) translateX(29px);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .ai-system {
+
+    right: 16px;
+    bottom: 16px;
+  }
+
+
+  .ai-orb {
+
+    width: 60px;
+    height: 60px;
+  }
+
+
+  .ai-chat {
+
+    width:
+      calc(100vw - 24px);
+
+    height:
+      min(560px, calc(100vh - 30px));
+
+    right:
+      -4px;
+
+    bottom:
+      -4px;
+
+    border-radius: 20px;
+  }
+}
 
 /* =========================================================
    17. LARGE TABLETS / SMALL LAPTOPS
