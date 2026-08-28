@@ -49,60 +49,60 @@ const projects = {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =======================================================
+  /* -------------------------------------------------------
      LUCIDE ICONS
-     ======================================================= */
+     ------------------------------------------------------- */
 
   if (typeof lucide !== "undefined") {
     lucide.createIcons();
   }
 
 
-  /* =======================================================
-     VANTYX AI ASSISTANT
-     ======================================================= */
+  /* -------------------------------------------------------
+     AI ASSISTANT
+     ------------------------------------------------------- */
 
   initVantyxAI();
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      PORTFOLIO FILTER
-     ======================================================= */
+     ------------------------------------------------------- */
 
   initPortfolioFilter();
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      SEARCH
-     ======================================================= */
+     ------------------------------------------------------- */
 
   initSearch();
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      FAQ
-     ======================================================= */
+     ------------------------------------------------------- */
 
   initFAQ();
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      PRICING TOGGLE
-     ======================================================= */
+     ------------------------------------------------------- */
 
   initPricingToggle();
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      NEWSLETTER
-     ======================================================= */
+     ------------------------------------------------------- */
 
   initNewsletter();
 
 
-  /* =======================================================
-     SAVED LANGUAGE
-     ======================================================= */
+  /* -------------------------------------------------------
+     LANGUAGE
+     ------------------------------------------------------- */
 
   initLanguage();
 
@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 });
-
 
 
 /* =========================================================
@@ -130,10 +129,6 @@ function initVantyxAI() {
   const sendButton = document.getElementById("ai-send-btn");
   const thinking = document.getElementById("ai-thinking");
 
-  /* -------------------------------------------------------
-     SAFETY CHECK
-     ------------------------------------------------------- */
-
   if (
     !aiSystem ||
     !orbButton ||
@@ -144,7 +139,6 @@ function initVantyxAI() {
     !sendButton ||
     !thinking
   ) {
-
     console.error(
       "VANTYX AI: Required AI HTML element is missing."
     );
@@ -153,9 +147,9 @@ function initVantyxAI() {
   }
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      STATE
-     ------------------------------------------------------- */
+     ======================================================= */
 
   let isThinking = false;
 
@@ -178,8 +172,7 @@ function initVantyxAI() {
 
     setTimeout(function () {
       aiInput.focus();
-    }, 350);
-
+    }, 300);
   }
 
 
@@ -192,13 +185,12 @@ function initVantyxAI() {
     aiSystem.classList.remove("chat-open");
 
     aiInput.blur();
-
   }
 
 
-  /* -------------------------------------------------------
-     MAKE FUNCTIONS AVAILABLE GLOBALLY
-     ------------------------------------------------------- */
+  /* =======================================================
+     GLOBAL AI FUNCTIONS
+     ======================================================= */
 
   window.openAI = openChat;
   window.closeAI = closeChat;
@@ -214,7 +206,6 @@ function initVantyxAI() {
     event.stopPropagation();
 
     openChat();
-
   });
 
 
@@ -228,18 +219,16 @@ function initVantyxAI() {
     event.stopPropagation();
 
     closeChat();
-
   });
 
 
   /* =======================================================
-     DO NOT ALLOW CHAT CLICKS TO PROPAGATE
+     PREVENT CHAT CLICK PROPAGATION
      ======================================================= */
 
   chatWindow.addEventListener("click", function (event) {
 
     event.stopPropagation();
-
   });
 
 
@@ -250,11 +239,8 @@ function initVantyxAI() {
   document.addEventListener("keydown", function (event) {
 
     if (event.key === "Escape") {
-
       closeChat();
-
     }
-
   });
 
 
@@ -269,7 +255,6 @@ function initVantyxAI() {
       aiBody.scrollTop = aiBody.scrollHeight;
 
     });
-
   }
 
 
@@ -285,24 +270,19 @@ function initVantyxAI() {
     messageElement.className =
       "ai-message " + type;
 
-    /*
-      textContent is deliberately used here.
-      It prevents user input from injecting HTML.
-    */
-
-    messageElement.textContent = message;
+    messageElement.textContent =
+      String(message);
 
     aiBody.appendChild(messageElement);
 
     scrollToBottom();
 
     return messageElement;
-
   }
 
 
   /* =======================================================
-     THINKING
+     THINKING INDICATOR
      ======================================================= */
 
   function showThinking() {
@@ -312,7 +292,6 @@ function initVantyxAI() {
     isThinking = true;
 
     scrollToBottom();
-
   }
 
 
@@ -321,7 +300,6 @@ function initVantyxAI() {
     thinking.classList.remove("active");
 
     isThinking = false;
-
   }
 
 
@@ -331,11 +309,10 @@ function initVantyxAI() {
 
   function normalize(text) {
 
-    return text
+    return String(text || "")
       .toLowerCase()
       .trim()
       .replace(/\s+/g, " ");
-
   }
 
 
@@ -346,7 +323,6 @@ function initVantyxAI() {
   function validEmail(email) {
 
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
   }
 
 
@@ -360,9 +336,7 @@ function initVantyxAI() {
       document.getElementById(id);
 
     if (!section) {
-
       return false;
-
     }
 
     section.scrollIntoView({
@@ -371,7 +345,6 @@ function initVantyxAI() {
     });
 
     return true;
-
   }
 
 
@@ -399,7 +372,6 @@ function initVantyxAI() {
       );
 
     });
-
   }
 
 
@@ -423,7 +395,6 @@ function initVantyxAI() {
 • Data Analysis & SPSS
 
 Tell me which service you are interested in.`;
-
   }
 
 
@@ -446,7 +417,6 @@ This can include:
 • Brand strategy
 
 Tell me what your business does and I can help you determine the right branding approach.`;
-
   }
 
 
@@ -471,7 +441,6 @@ Our websites can include:
 • Search functionality
 
 Tell me what type of website you want to build.`;
-
   }
 
 
@@ -494,7 +463,6 @@ We can help with:
 • UX improvements
 
 Tell me what type of interface you want to design.`;
-
   }
 
 
@@ -516,7 +484,6 @@ Tell me what type of interface you want to design.`;
 • Promotional designs
 
 Tell me what design you need.`;
-
   }
 
 
@@ -538,7 +505,6 @@ This can include:
 • Campaign visuals
 
 Tell me which platform you are designing for.`;
-
   }
 
 
@@ -562,7 +528,6 @@ Services include:
 • Research Reports
 
 Tell me what academic project you are working on.`;
-
   }
 
 
@@ -581,13 +546,11 @@ Tell me what academic project you are working on.`;
 I've taken you to the Pricing section so you can review the available plans.
 
 If you need something different from the listed plans, you can request a custom project.`;
-
     }
 
     return `Our pricing depends on the type, complexity and scope of your project.
 
 Tell me what you would like us to design or build and I can help you determine the appropriate service.`;
-
   }
 
 
@@ -606,11 +569,9 @@ Tell me what you would like us to design or build and I can help you determine t
 I've taken you to the Portfolio section.
 
 You can also ask me about branding, websites, graphic design or UI/UX projects.`;
-
     }
 
     return `Our portfolio contains examples of branding, graphic design, UI/UX and web projects.`;
-
   }
 
 
@@ -629,11 +590,9 @@ You can also ask me about branding, websites, graphic design or UI/UX projects.`
 I've taken you there now.
 
 If you would like to start a project, I can also collect your project details here.`;
-
     }
 
     return `You can contact VANTYX STUDIOS KENYA through the contact information provided on the website.`;
-
   }
 
 
@@ -648,7 +607,6 @@ If you would like to start a project, I can also collect your project details he
     return `Excellent. Let's get your project started.
 
 First, what is your name?`;
-
   }
 
 
@@ -658,14 +616,14 @@ First, what is your name?`;
 
   function handleName(input) {
 
-    userData.name = input.trim();
+    userData.name =
+      String(input).trim();
 
     conversationStage = "email";
 
     return `Nice to meet you, ${userData.name}.
 
 What is your email address so our team can follow up with you?`;
-
   }
 
 
@@ -675,7 +633,8 @@ What is your email address so our team can follow up with you?`;
 
   function handleEmail(input) {
 
-    const email = input.trim();
+    const email =
+      String(input).trim();
 
     if (!validEmail(email)) {
 
@@ -684,7 +643,6 @@ What is your email address so our team can follow up with you?`;
 Please enter an email such as:
 
 example@gmail.com`;
-
     }
 
     userData.email = email;
@@ -696,7 +654,6 @@ example@gmail.com`;
 Now tell me about your project.
 
 What would you like VANTYX STUDIOS KENYA to design, build or help you with?`;
-
   }
 
 
@@ -706,7 +663,8 @@ What would you like VANTYX STUDIOS KENYA to design, build or help you with?`;
 
   function handleProject(input) {
 
-    userData.project = input.trim();
+    userData.project =
+      String(input).trim();
 
     conversationStage = "complete";
 
@@ -722,47 +680,35 @@ I've recorded your basic project details.
 Our team can review your requirements and discuss the best way to proceed.
 
 You can also use the Contact section to send the project directly.`;
-
   }
 
 
   /* =======================================================
-     MAIN AI ENGINE
+     LOCAL FALLBACK AI
      ======================================================= */
 
-  function getAIResponse(input) {
+  function getLocalAIResponse(input) {
 
-    const text = normalize(input);
+    const text =
+      normalize(input);
 
 
-    /* -------------------------------------------------------
-       PROJECT CONVERSATION
-       ------------------------------------------------------- */
+    /* PROJECT CONVERSATION */
 
     if (conversationStage === "name") {
-
       return handleName(input);
-
     }
-
 
     if (conversationStage === "email") {
-
       return handleEmail(input);
-
     }
-
 
     if (conversationStage === "project") {
-
       return handleProject(input);
-
     }
 
 
-    /* -------------------------------------------------------
-       GREETINGS
-       ------------------------------------------------------- */
+    /* GREETING */
 
     if (isGreeting(text)) {
 
@@ -784,13 +730,10 @@ I can help you with:
 • Starting a project
 
 What would you like to know?`;
-
     }
 
 
-    /* -------------------------------------------------------
-       THANK YOU
-       ------------------------------------------------------- */
+    /* THANK YOU */
 
     if (
       text.includes("thank you") ||
@@ -800,13 +743,10 @@ What would you like to know?`;
       return `You're welcome.
 
 If you need anything else, ask me about our services, pricing, portfolio or starting a project.`;
-
     }
 
 
-    /* -------------------------------------------------------
-       SERVICES
-       ------------------------------------------------------- */
+    /* SERVICES */
 
     if (
       text.includes("services") ||
@@ -815,15 +755,11 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("what do you do") ||
       text.includes("what can you do")
     ) {
-
       return serviceResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       BRANDING
-       ------------------------------------------------------- */
+    /* BRANDING */
 
     if (
       text.includes("branding") ||
@@ -831,15 +767,11 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("brand design") ||
       text.includes("logo")
     ) {
-
       return brandingResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       WEBSITE
-       ------------------------------------------------------- */
+    /* WEBSITE */
 
     if (
       text.includes("website") ||
@@ -847,31 +779,24 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("web development") ||
       text.includes("web site")
     ) {
-
       return websiteResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       UI / UX
-       ------------------------------------------------------- */
+    /* UI / UX */
 
     if (
-      text.includes("ui") ||
-      text.includes("ux") ||
+      text === "ui" ||
+      text === "ux" ||
+      text.includes("ui ux") ||
       text.includes("user interface") ||
       text.includes("user experience")
     ) {
-
       return uiuxResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       GRAPHIC DESIGN
-       ------------------------------------------------------- */
+    /* GRAPHIC DESIGN */
 
     if (
       text.includes("graphic design") ||
@@ -879,15 +804,11 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("poster") ||
       text.includes("flyer")
     ) {
-
       return graphicResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       SOCIAL MEDIA
-       ------------------------------------------------------- */
+    /* SOCIAL MEDIA */
 
     if (
       text.includes("social media") ||
@@ -895,15 +816,11 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("facebook post") ||
       text.includes("social post")
     ) {
-
       return socialResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       ACADEMIC
-       ------------------------------------------------------- */
+    /* ACADEMIC */
 
     if (
       text.includes("thesis") ||
@@ -913,15 +830,11 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("spss") ||
       text.includes("academic")
     ) {
-
       return academicResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       PRICING
-       ------------------------------------------------------- */
+    /* PRICING */
 
     if (
       text.includes("pricing") ||
@@ -932,15 +845,11 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("charges") ||
       text.includes("rate")
     ) {
-
       return pricingResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       PORTFOLIO
-       ------------------------------------------------------- */
+    /* PORTFOLIO */
 
     if (
       text.includes("portfolio") ||
@@ -949,15 +858,11 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("your work") ||
       text.includes("show me your work")
     ) {
-
       return portfolioResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       CONTACT
-       ------------------------------------------------------- */
+    /* CONTACT */
 
     if (
       text.includes("contact") ||
@@ -965,35 +870,27 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       text.includes("reach you") ||
       text.includes("location")
     ) {
-
       return contactResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       START PROJECT
-       ------------------------------------------------------- */
+    /* START PROJECT */
 
     if (
       text.includes("start project") ||
       text.includes("start a project") ||
       text.includes("hire you") ||
-      text.includes("hire") ||
+      text === "hire" ||
       text.includes("work with you") ||
       text.includes("get started") ||
       text.includes("request a project") ||
       text.includes("i need a project")
     ) {
-
       return startProjectResponse();
-
     }
 
 
-    /* -------------------------------------------------------
-       ABOUT
-       ------------------------------------------------------- */
+    /* ABOUT */
 
     if (
       text.includes("who are you") ||
@@ -1005,13 +902,10 @@ If you need anything else, ask me about our services, pricing, portfolio or star
       return `VANTYX STUDIOS KENYA is a creative digital studio focused on professional design, branding, web development and academic research support.
 
 Our goal is to help businesses, organizations and individuals present their ideas professionally and build stronger digital experiences.`;
-
     }
 
 
-    /* -------------------------------------------------------
-       HELP
-       ------------------------------------------------------- */
+    /* HELP */
 
     if (
       text === "help" ||
@@ -1042,13 +936,10 @@ Try asking:
 "Show me your portfolio."
 
 "I want to start a project."`;
-
     }
 
 
-    /* -------------------------------------------------------
-       DEFAULT
-       ------------------------------------------------------- */
+    /* DEFAULT */
 
     return `I'm here to help with VANTYX STUDIOS KENYA.
 
@@ -1066,7 +957,79 @@ You can ask me about:
 • Academic services
 • Contact
 • Starting a project`;
+  }
 
+
+  /* =======================================================
+     GEMINI API
+     ======================================================= */
+
+  async function askGemini(message) {
+
+    /*
+      IMPORTANT:
+
+      The Gemini API key MUST NOT be placed in this file.
+
+      This browser code calls your Vercel backend:
+
+          /api/chat
+
+      Your Vercel backend will securely communicate
+      with Gemini.
+    */
+
+    const response =
+      await fetch("/api/chat", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          message: message
+        })
+
+      });
+
+
+    let data;
+
+    try {
+
+      data = await response.json();
+
+    } catch (error) {
+
+      throw new Error(
+        "The AI server returned an invalid response."
+      );
+    }
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error ||
+        "Unable to connect to Gemini."
+      );
+    }
+
+
+    if (
+      !data.reply ||
+      typeof data.reply !== "string"
+    ) {
+
+      throw new Error(
+        "Gemini returned an empty response."
+      );
+    }
+
+
+    return data.reply;
   }
 
 
@@ -1074,12 +1037,10 @@ You can ask me about:
      SEND MESSAGE
      ======================================================= */
 
-  function sendMessage() {
+  async function sendMessage() {
 
     if (isThinking) {
-
       return;
-
     }
 
 
@@ -1088,9 +1049,7 @@ You can ask me about:
 
 
     if (!text) {
-
       return;
-
     }
 
 
@@ -1109,21 +1068,53 @@ You can ask me about:
     showThinking();
 
 
-    /* GENERATE RESPONSE */
+    try {
 
-    setTimeout(function () {
+      /*
+        Send the user's message to Gemini
+        through the secure Vercel API.
+      */
+
+      const response =
+        await askGemini(text);
 
       hideThinking();
 
-      const response =
-        getAIResponse(text);
+      addMessage(
+        response,
+        "bot"
+      );
 
-      addMessage(response, "bot");
+    } catch (error) {
 
-      aiInput.focus();
+      console.error(
+        "VANTYX AI ERROR:",
+        error
+      );
 
-    }, 650);
+      hideThinking();
 
+
+      /*
+        If Gemini is unavailable,
+        use the existing local assistant
+        instead of leaving the user without
+        a response.
+      */
+
+      const fallback =
+        getLocalAIResponse(text);
+
+
+      addMessage(
+        fallback,
+        "bot"
+      );
+
+    }
+
+
+    aiInput.focus();
   }
 
 
@@ -1131,39 +1122,51 @@ You can ask me about:
      SEND BUTTON
      ======================================================= */
 
-  sendButton.addEventListener("click", function (event) {
+  sendButton.addEventListener(
+    "click",
+    function (event) {
 
-    event.preventDefault();
-    event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
 
-    sendMessage();
+      sendMessage();
 
-  });
+    }
+  );
 
 
   /* =======================================================
      ENTER TO SEND
      ======================================================= */
 
-  aiInput.addEventListener("keydown", function (event) {
+  aiInput.addEventListener(
+    "keydown",
+    function (event) {
 
-    if (event.key === "Enter") {
+      if (event.key === "Enter") {
 
-      event.preventDefault();
+        /*
+          Shift + Enter can still be used
+          for multiline input if needed.
+        */
 
-      sendMessage();
+        if (event.shiftKey) {
+          return;
+        }
+
+        event.preventDefault();
+
+        sendMessage();
+      }
 
     }
-
-  });
+  );
 
 
   console.log(
-    "VANTYX AI initialized."
+    "VANTYX AI initialized successfully."
   );
-
 }
-
 
 
 /* =========================================================
@@ -1184,11 +1187,17 @@ function openCase(id) {
   const data =
     projects[id];
 
-  if (!modal || !title || !details || !data) {
+  if (
+    !modal ||
+    !title ||
+    !details ||
+    !data
+  ) {
     return;
   }
 
-  title.innerText = data.title;
+  title.innerText =
+    data.title;
 
   details.innerHTML = `
     <li><strong>The Challenge:</strong> ${data.challenge}</li>
@@ -1197,8 +1206,8 @@ function openCase(id) {
     <li><strong>The Result:</strong> ${data.result}</li>
   `;
 
-  modal.style.display = "flex";
-
+  modal.style.display =
+    "flex";
 }
 
 
@@ -1208,13 +1217,10 @@ function closeCase() {
     document.getElementById("caseModal");
 
   if (modal) {
-
-    modal.style.display = "none";
-
+    modal.style.display =
+      "none";
   }
-
 }
-
 
 
 /* =========================================================
@@ -1235,46 +1241,51 @@ function initPortfolioFilter() {
 
   buttons.forEach(function (button) {
 
-    button.addEventListener("click", function () {
+    button.addEventListener(
+      "click",
+      function () {
 
-      buttons.forEach(function (btn) {
-        btn.classList.remove("active");
-      });
+        buttons.forEach(function (btn) {
+          btn.classList.remove("active");
+        });
 
-      button.classList.add("active");
+        button.classList.add("active");
 
-      const filter =
-        button.getAttribute("data-filter");
+        const filter =
+          button.getAttribute(
+            "data-filter"
+          );
 
-      cards.forEach(function (card) {
+        cards.forEach(function (card) {
 
-        const category =
-          card.getAttribute("data-category");
+          const category =
+            card.getAttribute(
+              "data-category"
+            );
 
-        if (
-          filter === "all" ||
-          filter === category
-        ) {
+          if (
+            filter === "all" ||
+            filter === category
+          ) {
 
-          card.classList.remove("hide");
-          card.classList.remove("hidden");
+            card.classList.remove("hide");
+            card.classList.remove("hidden");
 
-          card.style.display = "";
+            card.style.display = "";
 
-        } else {
+          } else {
 
-          card.classList.add("hide");
+            card.classList.add("hide");
 
-        }
+          }
 
-      });
+        });
 
-    });
+      }
+    );
 
   });
-
 }
-
 
 
 /* =========================================================
@@ -1294,16 +1305,12 @@ function goToContact() {
     });
 
   }
-
 }
 
 
 function scrollToContact() {
-
   goToContact();
-
 }
-
 
 
 /* =========================================================
@@ -1319,7 +1326,9 @@ function showAllProjects() {
 
   buttons.forEach(function (button) {
 
-    button.classList.remove("active");
+    button.classList.remove(
+      "active"
+    );
 
   });
 
@@ -1331,7 +1340,9 @@ function showAllProjects() {
 
   if (allButton) {
 
-    allButton.classList.add("active");
+    allButton.classList.add(
+      "active"
+    );
 
   }
 
@@ -1349,7 +1360,9 @@ function showAllProjects() {
 
 
   const portfolio =
-    document.getElementById("portfolio");
+    document.getElementById(
+      "portfolio"
+    );
 
   if (portfolio) {
 
@@ -1358,9 +1371,7 @@ function showAllProjects() {
     });
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -1370,67 +1381,77 @@ function showAllProjects() {
 function initPricingToggle() {
 
   const toggle =
-    document.querySelector(".switch input");
+    document.querySelector(
+      ".switch input"
+    );
 
   if (!toggle) {
     return;
   }
 
-  /*
-     Store original prices so repeated toggling
-     never compounds the calculation.
-  */
 
   const prices =
     document.querySelectorAll(
       ".pricing-card h1"
     );
 
+
   const originalPrices = [];
+
 
   prices.forEach(function (price) {
 
     const match =
-      price.innerText.match(/[\d,.]+/);
+      price.innerText.match(
+        /[\d,.]+/
+      );
 
     originalPrices.push(
       match
-        ? parseFloat(match[0].replace(/,/g, ""))
+        ? parseFloat(
+            match[0].replace(/,/g, "")
+          )
         : null
     );
 
   });
 
 
-  toggle.addEventListener("change", function () {
+  toggle.addEventListener(
+    "change",
+    function () {
 
-    prices.forEach(function (price, index) {
+      prices.forEach(
+        function (price, index) {
 
-      const original =
-        originalPrices[index];
+          const original =
+            originalPrices[index];
 
-      if (original === null) {
-        return;
-      }
+          if (original === null) {
+            return;
+          }
 
-      if (toggle.checked) {
 
-        price.innerText =
-          "$" + (original * 10).toFixed(0);
+          if (toggle.checked) {
 
-      } else {
+            price.innerText =
+              "$" +
+              (original * 10).toFixed(0);
 
-        price.innerText =
-          "$" + original.toFixed(0);
+          } else {
 
-      }
+            price.innerText =
+              "$" +
+              original.toFixed(0);
 
-    });
+          }
 
-  });
+        }
+      );
 
+    }
+  );
 }
-
 
 
 /* =========================================================
@@ -1440,7 +1461,9 @@ function initPricingToggle() {
 function startProject(plan) {
 
   const contact =
-    document.getElementById("contact");
+    document.getElementById(
+      "contact"
+    );
 
   if (contact) {
 
@@ -1465,9 +1488,7 @@ function startProject(plan) {
       " plan.";
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -1477,7 +1498,9 @@ function startProject(plan) {
 function getQuote() {
 
   const contact =
-    document.getElementById("contact");
+    document.getElementById(
+      "contact"
+    );
 
   if (contact) {
 
@@ -1500,9 +1523,7 @@ function getQuote() {
       "I would like a custom enterprise quotation for my project.";
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -1515,23 +1536,24 @@ function initFAQ() {
     .querySelectorAll(".faq-question")
     .forEach(function (button) {
 
-      button.addEventListener("click", function () {
+      button.addEventListener(
+        "click",
+        function () {
 
-        const item =
-          button.parentElement;
+          const item =
+            button.parentElement;
 
-        if (item) {
-
-          item.classList.toggle("active");
+          if (item) {
+            item.classList.toggle(
+              "active"
+            );
+          }
 
         }
-
-      });
+      );
 
     });
-
 }
-
 
 
 /* =========================================================
@@ -1541,42 +1563,39 @@ function initFAQ() {
 function openTeam() {
 
   const modal =
-    document.getElementById("teamModal");
+    document.getElementById(
+      "teamModal"
+    );
 
   if (modal) {
-
     modal.classList.add("show");
-
   }
-
 }
 
 
 function openCareers() {
 
   const modal =
-    document.getElementById("careersModal");
+    document.getElementById(
+      "careersModal"
+    );
 
   if (modal) {
-
     modal.classList.add("show");
-
   }
-
 }
 
 
 function openPress() {
 
   const modal =
-    document.getElementById("pressModal");
+    document.getElementById(
+      "pressModal"
+    );
 
   if (modal) {
-
     modal.classList.add("show");
-
   }
-
 }
 
 
@@ -1586,13 +1605,9 @@ function closeModal(id) {
     document.getElementById(id);
 
   if (modal) {
-
     modal.classList.remove("show");
-
   }
-
 }
-
 
 
 /* =========================================================
@@ -1602,10 +1617,14 @@ function closeModal(id) {
 function initSearch() {
 
   const input =
-    document.getElementById("searchInput");
+    document.getElementById(
+      "searchInput"
+    );
 
   const suggestionsBox =
-    document.getElementById("suggestions");
+    document.getElementById(
+      "suggestions"
+    );
 
   if (!input) {
     return;
@@ -1629,70 +1648,78 @@ function initSearch() {
   ];
 
 
-  /* -------------------------------------------------------
-     LIVE SUGGESTIONS
-     ------------------------------------------------------- */
+  /* LIVE SUGGESTIONS */
 
   if (suggestionsBox) {
 
-    input.addEventListener("input", function () {
+    input.addEventListener(
+      "input",
+      function () {
 
-      const value =
-        input.value
-          .toLowerCase()
-          .trim();
-
-      suggestionsBox.innerHTML = "";
-
-      if (!value) {
-        return;
-      }
-
-
-      const filtered =
-        data.filter(function (item) {
-
-          return item
+        const value =
+          input.value
             .toLowerCase()
-            .includes(value);
+            .trim();
 
-        });
+        suggestionsBox.innerHTML =
+          "";
+
+        if (!value) {
+          return;
+        }
 
 
-      filtered
-        .slice(0, 6)
-        .forEach(function (item) {
+        const filtered =
+          data.filter(function (item) {
 
-          const div =
-            document.createElement("div");
+            return item
+              .toLowerCase()
+              .includes(value);
 
-          div.textContent = item;
+          });
 
-          div.addEventListener(
-            "click",
-            function () {
 
-              input.value = item;
+        filtered
+          .slice(0, 6)
+          .forEach(function (item) {
 
-              suggestionsBox.innerHTML = "";
+            const div =
+              document.createElement(
+                "div"
+              );
 
-              runFullSearch(item);
+            div.textContent =
+              item;
 
-            }
-          );
 
-          suggestionsBox.appendChild(div);
+            div.addEventListener(
+              "click",
+              function () {
 
-        });
+                input.value =
+                  item;
 
-    });
+                suggestionsBox.innerHTML =
+                  "";
 
+                runFullSearch(item);
+
+              }
+            );
+
+
+            suggestionsBox.appendChild(
+              div
+            );
+
+          });
+
+      }
+    );
   }
 
 
-  /* -------------------------------------------------------
-     ENTER
-     ------------------------------------------------------- */
+  /* ENTER */
 
   input.addEventListener(
     "keydown",
@@ -1702,21 +1729,20 @@ function initSearch() {
 
         event.preventDefault();
 
-        runFullSearch(input.value);
+        runFullSearch(
+          input.value
+        );
 
         if (suggestionsBox) {
-
-          suggestionsBox.innerHTML = "";
-
+          suggestionsBox.innerHTML =
+            "";
         }
 
       }
 
     }
   );
-
 }
-
 
 
 /* =========================================================
@@ -1739,77 +1765,93 @@ function runFullSearch(query) {
   let found = false;
 
 
-  /* -------------------------------------------------------
-     PORTFOLIO
-     ------------------------------------------------------- */
+  /* PORTFOLIO */
 
   document
-    .querySelectorAll(".portfolio-card")
+    .querySelectorAll(
+      ".portfolio-card"
+    )
     .forEach(function (card) {
 
       const title =
         (
-          card.dataset.title || ""
+          card.dataset.title ||
+          ""
         ).toLowerCase();
 
       const category =
         (
-          card.dataset.category || ""
+          card.dataset.category ||
+          ""
         ).toLowerCase();
+
 
       const matches =
         title.includes(query) ||
         category.includes(query);
 
+
       if (matches) {
 
-        card.classList.remove("hidden");
-        card.classList.remove("hide");
+        card.classList.remove(
+          "hidden"
+        );
 
-        card.style.display = "";
+        card.classList.remove(
+          "hide"
+        );
+
+        card.style.display =
+          "";
 
         found = true;
 
       } else {
 
-        card.classList.add("hidden");
+        card.classList.add(
+          "hidden"
+        );
 
       }
 
     });
 
 
-  /* -------------------------------------------------------
-     BLOG
-     ------------------------------------------------------- */
+  /* BLOG */
 
   document
-    .querySelectorAll(".blog-card")
+    .querySelectorAll(
+      ".blog-card"
+    )
     .forEach(function (card) {
 
       const title =
         (
-          card.dataset.title || ""
+          card.dataset.title ||
+          ""
         ).toLowerCase();
+
 
       if (title.includes(query)) {
 
-        card.classList.remove("hidden");
+        card.classList.remove(
+          "hidden"
+        );
 
         found = true;
 
       } else {
 
-        card.classList.add("hidden");
+        card.classList.add(
+          "hidden"
+        );
 
       }
 
     });
 
 
-  /* -------------------------------------------------------
-     SECTIONS
-     ------------------------------------------------------- */
+  /* SECTIONS */
 
   document
     .querySelectorAll("section")
@@ -1817,8 +1859,12 @@ function runFullSearch(query) {
 
       const keywords =
         (
-          section.getAttribute("data-search") || ""
+          section.getAttribute(
+            "data-search"
+          ) ||
+          ""
         ).toLowerCase();
+
 
       if (
         keywords &&
@@ -1830,14 +1876,18 @@ function runFullSearch(query) {
           block: "start"
         });
 
+
         section.style.boxShadow =
           "0 0 0 3px #1ABC9C";
 
+
         setTimeout(function () {
 
-          section.style.boxShadow = "none";
+          section.style.boxShadow =
+            "none";
 
         }, 2000);
+
 
         found = true;
 
@@ -1846,9 +1896,7 @@ function runFullSearch(query) {
     });
 
 
-  /* -------------------------------------------------------
-     AI SEARCH FEEDBACK
-     ------------------------------------------------------- */
+  /* AI SEARCH FEEDBACK */
 
   triggerAI(query);
 
@@ -1860,9 +1908,7 @@ function runFullSearch(query) {
     );
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -1872,47 +1918,53 @@ function runFullSearch(query) {
 function triggerAI(query) {
 
   const aiBody =
-    document.getElementById("ai-body");
+    document.getElementById(
+      "ai-body"
+    );
 
   if (!aiBody) {
     return;
   }
 
 
-  /*
-     Do NOT automatically open the AI.
-     Just add a message if the AI chat is already open.
-  */
-
   const aiSystem =
-    document.getElementById("ai-system");
+    document.getElementById(
+      "ai-system"
+    );
+
 
   if (
     !aiSystem ||
-    !aiSystem.classList.contains("chat-open")
+    !aiSystem.classList.contains(
+      "chat-open"
+    )
   ) {
-
     return;
-
   }
 
 
   const msg =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   msg.className =
     "ai-message bot";
 
+
   msg.textContent =
     `Searching for "${query}"... I found relevant sections and content for you.`;
 
-  aiBody.appendChild(msg);
+
+  aiBody.appendChild(
+    msg
+  );
+
 
   aiBody.scrollTop =
     aiBody.scrollHeight;
-
 }
-
 
 
 /* =========================================================
@@ -1925,28 +1977,26 @@ let cart = [];
 function openCart() {
 
   const modal =
-    document.getElementById("cartModal");
+    document.getElementById(
+      "cartModal"
+    );
 
   if (modal) {
-
     modal.classList.add("show");
-
   }
-
 }
 
 
 function closeCart() {
 
   const modal =
-    document.getElementById("cartModal");
+    document.getElementById(
+      "cartModal"
+    );
 
   if (modal) {
-
     modal.classList.remove("show");
-
   }
-
 }
 
 
@@ -1955,24 +2005,25 @@ function addToCart(item) {
   cart.push(item);
 
   updateCart();
-
 }
 
 
 function updateCart() {
 
   const count =
-    document.getElementById("cartCount");
+    document.getElementById(
+      "cartCount"
+    );
 
   const container =
-    document.getElementById("cartItems");
+    document.getElementById(
+      "cartItems"
+    );
 
 
   if (count) {
-
     count.innerText =
       cart.length;
-
   }
 
 
@@ -1987,33 +2038,35 @@ function updateCart() {
       "<p>Your cart is empty</p>";
 
     return;
-
   }
 
 
   container.innerHTML =
-    cart.map(function (item, index) {
+    cart.map(
+      function (item, index) {
 
-      return `
-        <div>
-          ${item}
-          <button onclick="removeItem(${index})">
-            Remove
-          </button>
-        </div>
-      `;
+        return `
+          <div>
+            ${item}
+            <button onclick="removeItem(${index})">
+              Remove
+            </button>
+          </div>
+        `;
 
-    }).join("");
-
+      }
+    ).join("");
 }
 
 
 function removeItem(index) {
 
-  cart.splice(index, 1);
+  cart.splice(
+    index,
+    1
+  );
 
   updateCart();
-
 }
 
 
@@ -2022,9 +2075,7 @@ function checkout() {
   alert(
     "Checkout coming soon."
   );
-
 }
-
 
 
 /* =========================================================
@@ -2034,82 +2085,100 @@ function checkout() {
 function openAccount() {
 
   const modal =
-    document.getElementById("accountModal");
+    document.getElementById(
+      "accountModal"
+    );
 
   if (modal) {
-
     modal.classList.add("show");
-
   }
-
 }
 
 
 function closeAccount() {
 
   const modal =
-    document.getElementById("accountModal");
+    document.getElementById(
+      "accountModal"
+    );
 
   if (modal) {
-
     modal.classList.remove("show");
-
   }
-
 }
 
 
 function switchToLogin() {
 
   const signup =
-    document.getElementById("signupForm");
+    document.getElementById(
+      "signupForm"
+    );
 
   const login =
-    document.getElementById("loginForm");
+    document.getElementById(
+      "loginForm"
+    );
 
   const title =
-    document.getElementById("formTitle");
+    document.getElementById(
+      "formTitle"
+    );
 
 
   if (signup) {
-    signup.style.display = "none";
+    signup.style.display =
+      "none";
   }
+
 
   if (login) {
-    login.style.display = "block";
+    login.style.display =
+      "block";
   }
+
 
   if (title) {
-    title.innerText = "Welcome Back";
+    title.innerText =
+      "Welcome Back";
   }
-
 }
 
 
 function switchToSignup() {
 
   const signup =
-    document.getElementById("signupForm");
+    document.getElementById(
+      "signupForm"
+    );
 
   const login =
-    document.getElementById("loginForm");
+    document.getElementById(
+      "loginForm"
+    );
 
   const title =
-    document.getElementById("formTitle");
+    document.getElementById(
+      "formTitle"
+    );
 
 
   if (signup) {
-    signup.style.display = "block";
+    signup.style.display =
+      "block";
   }
+
 
   if (login) {
-    login.style.display = "none";
+    login.style.display =
+      "none";
   }
+
 
   if (title) {
-    title.innerText = "Create Account";
+    title.innerText =
+      "Create Account";
   }
-
 }
 
 
@@ -2118,7 +2187,6 @@ function loginWithGoogle() {
   alert(
     "Google login will be connected via Firebase or Google Auth API."
   );
-
 }
 
 
@@ -2127,9 +2195,7 @@ function loginWithGithub() {
   alert(
     "GitHub login will be connected later."
   );
-
 }
-
 
 
 /* =========================================================
@@ -2139,12 +2205,16 @@ function loginWithGithub() {
 function setLanguage(code, name) {
 
   const button =
-    document.getElementById("langBtn");
+    document.getElementById(
+      "langBtn"
+    );
+
 
   if (button) {
 
     button.innerText =
-      "🌐 Language: " + name;
+      "🌐 Language: " +
+      name;
 
   }
 
@@ -2153,6 +2223,7 @@ function setLanguage(code, name) {
     "siteLanguage",
     code
   );
+
 
   localStorage.setItem(
     "siteLanguageName",
@@ -2164,19 +2235,22 @@ function setLanguage(code, name) {
     "Language selected:",
     code
   );
-
 }
 
 
 function initLanguage() {
 
   const button =
-    document.getElementById("langBtn");
+    document.getElementById(
+      "langBtn"
+    );
+
 
   const savedName =
     localStorage.getItem(
       "siteLanguageName"
     );
+
 
   if (
     button &&
@@ -2184,12 +2258,11 @@ function initLanguage() {
   ) {
 
     button.innerText =
-      "🌐 Language: " + savedName;
+      "🌐 Language: " +
+      savedName;
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -2199,16 +2272,26 @@ function initLanguage() {
 function openServiceModal(service) {
 
   const modal =
-    document.getElementById("serviceModal");
+    document.getElementById(
+      "serviceModal"
+    );
 
   const title =
-    document.getElementById("modalTitle");
+    document.getElementById(
+      "modalTitle"
+    );
 
   const text =
-    document.getElementById("modalText");
+    document.getElementById(
+      "modalText"
+    );
 
 
-  if (!modal || !title || !text) {
+  if (
+    !modal ||
+    !title ||
+    !text
+  ) {
     return;
   }
 
@@ -2261,27 +2344,32 @@ function openServiceModal(service) {
   title.innerText =
     content[service].title;
 
+
   text.innerText =
     content[service].text;
 
-  modal.classList.add("show");
 
+  modal.classList.add(
+    "show"
+  );
 }
 
 
 function closeServiceModal() {
 
   const modal =
-    document.getElementById("serviceModal");
+    document.getElementById(
+      "serviceModal"
+    );
 
   if (modal) {
 
-    modal.classList.remove("show");
+    modal.classList.remove(
+      "show"
+    );
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -2291,7 +2379,10 @@ function closeServiceModal() {
 function initNewsletter() {
 
   const form =
-    document.getElementById("newsletterForm");
+    document.getElementById(
+      "newsletterForm"
+    );
+
 
   if (!form) {
     return;
@@ -2310,13 +2401,17 @@ function initNewsletter() {
           "newsletterEmail"
         );
 
+
       const message =
         document.getElementById(
           "subscribeMsg"
         );
 
 
-      if (!emailInput || !message) {
+      if (
+        !emailInput ||
+        !message
+      ) {
         return;
       }
 
@@ -2334,22 +2429,28 @@ function initNewsletter() {
           "Enter a valid email.";
 
         return;
-
       }
 
 
       /*
-         IMPORTANT:
-         Replace YOUR_FORM_ID with your real Formspree ID.
+        Replace YOUR_FORM_ID with your
+        actual Formspree form ID.
       */
 
+      const formspreeURL =
+        "https://formspree.io/f/YOUR_FORM_ID";
+
+
       fetch(
-        "https://formspree.io/f/YOUR_FORM_ID",
+        formspreeURL,
         {
           method: "POST",
 
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type":
+              "application/json",
+            "Accept":
+              "application/json"
           },
 
           body: JSON.stringify({
@@ -2357,6 +2458,15 @@ function initNewsletter() {
           })
         }
       )
+      .then(function (response) {
+
+        if (!response.ok) {
+          throw new Error(
+            "Newsletter submission failed."
+          );
+        }
+
+      })
       .catch(function (error) {
 
         console.error(
@@ -2375,8 +2485,14 @@ function initNewsletter() {
         `Hello VANTYX STUDIOS KENYA, I just subscribed with this email: ${email}`;
 
 
+      const whatsappURL =
+        `https://wa.me/${phone}?text=${encodeURIComponent(
+          whatsappText
+        )}`;
+
+
       window.open(
-        `https://wa.me/${phone}?text=${encodeURIComponent(whatsappText)}`,
+        whatsappURL,
         "_blank"
       );
 
@@ -2385,13 +2501,12 @@ function initNewsletter() {
         "You're in! Redirecting...";
 
 
-      emailInput.value = "";
+      emailInput.value =
+        "";
 
     }
   );
-
 }
-
 
 
 /* =========================================================
@@ -2401,13 +2516,20 @@ function initNewsletter() {
 function openBlog(id) {
 
   const modal =
-    document.getElementById("blogModal");
+    document.getElementById(
+      "blogModal"
+    );
 
   const content =
-    document.getElementById("blogContent");
+    document.getElementById(
+      "blogContent"
+    );
 
 
-  if (!modal || !content) {
+  if (
+    !modal ||
+    !content
+  ) {
     return;
   }
 
@@ -2416,33 +2538,46 @@ function openBlog(id) {
 
     1: `
       <h2>How to Build a Strong Brand Identity</h2>
+
       <p>
-        A strong brand identity is more than just a logo. It includes your color system,
-        typography, messaging, and how your audience perceives your business.
+        A strong brand identity is more than just a logo.
+        It includes your color system, typography,
+        messaging, and how your audience perceives
+        your business.
       </p>
+
       <p>
-        At VANTYX Studios, we focus on building cohesive visual systems that create
-        trust and recognition across all platforms.
+        At VANTYX Studios, we focus on building cohesive
+        visual systems that create trust and recognition
+        across all platforms.
       </p>
     `,
 
     2: `
       <h2>Top Graphic Design Trends in 2026</h2>
+
       <p>
-        Modern design is shifting towards minimalism, bold typography, and AI-assisted visuals.
+        Modern design is shifting towards minimalism,
+        bold typography, and AI-assisted visuals.
       </p>
+
       <p>
-        Brands are focusing more on clarity, motion, and immersive experiences.
+        Brands are focusing more on clarity, motion,
+        and immersive experiences.
       </p>
     `,
 
     3: `
       <h2>Why Branding Matters for Startups</h2>
+
       <p>
-        Startups that invest in branding early gain faster recognition and customer trust.
+        Startups that invest in branding early gain
+        faster recognition and customer trust.
       </p>
+
       <p>
-        A strong identity makes your business look established even in early stages.
+        A strong identity makes your business look
+        established even in early stages.
       </p>
     `
 
@@ -2456,14 +2591,15 @@ function openBlog(id) {
 
   modal.style.display =
     "flex";
-
 }
 
 
 function closeBlog() {
 
   const modal =
-    document.getElementById("blogModal");
+    document.getElementById(
+      "blogModal"
+    );
 
   if (modal) {
 
@@ -2471,9 +2607,7 @@ function closeBlog() {
       "none";
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -2483,30 +2617,35 @@ function closeBlog() {
 function openPolicy() {
 
   const modal =
-    document.getElementById("privacy-modal");
+    document.getElementById(
+      "privacy-modal"
+    );
 
   if (modal) {
 
-    modal.classList.add("active");
+    modal.classList.add(
+      "active"
+    );
 
   }
-
 }
 
 
 function closePolicy() {
 
   const modal =
-    document.getElementById("privacy-modal");
+    document.getElementById(
+      "privacy-modal"
+    );
 
   if (modal) {
 
-    modal.classList.remove("active");
+    modal.classList.remove(
+      "active"
+    );
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -2516,38 +2655,44 @@ function closePolicy() {
 function openTerms() {
 
   const modal =
-    document.getElementById("terms-modal");
+    document.getElementById(
+      "terms-modal"
+    );
 
   if (modal) {
 
-    modal.classList.add("active");
+    modal.classList.add(
+      "active"
+    );
 
     document.body.classList.add(
       "modal-open"
     );
 
   }
-
 }
 
 
 function closeTerms() {
 
   const modal =
-    document.getElementById("terms-modal");
+    document.getElementById(
+      "terms-modal"
+    );
 
   if (modal) {
 
-    modal.classList.remove("active");
+    modal.classList.remove(
+      "active"
+    );
 
   }
+
 
   document.body.classList.remove(
     "modal-open"
   );
-
 }
-
 
 
 /* =========================================================
@@ -2561,10 +2706,11 @@ function openModal(id) {
 
   if (modal) {
 
-    modal.classList.add("show");
+    modal.classList.add(
+      "show"
+    );
 
   }
-
 }
 
 
@@ -2575,12 +2721,12 @@ function closeGenericModal(id) {
 
   if (modal) {
 
-    modal.classList.remove("show");
+    modal.classList.remove(
+      "show"
+    );
 
   }
-
 }
-
 
 
 /* =========================================================
@@ -2590,43 +2736,49 @@ function closeGenericModal(id) {
 function openProcessModal(event) {
 
   if (event) {
-
     event.preventDefault();
-
   }
 
 
   const modal =
-    document.getElementById("processModal");
+    document.getElementById(
+      "processModal"
+    );
+
 
   if (modal) {
 
-    modal.classList.add("show");
+    modal.classList.add(
+      "show"
+    );
 
     document.body.style.overflow =
       "hidden";
 
   }
-
 }
 
 
 function closeProcessModal() {
 
   const modal =
-    document.getElementById("processModal");
+    document.getElementById(
+      "processModal"
+    );
+
 
   if (modal) {
 
-    modal.classList.remove("show");
+    modal.classList.remove(
+      "show"
+    );
 
   }
 
+
   document.body.style.overflow =
     "auto";
-
 }
-
 
 
 /* =========================================================
@@ -2637,10 +2789,13 @@ window.addEventListener(
   "click",
   function (event) {
 
-    /* Case modal */
+    /* CASE MODAL */
 
     const caseModal =
-      document.getElementById("caseModal");
+      document.getElementById(
+        "caseModal"
+      );
+
 
     if (
       caseModal &&
@@ -2652,10 +2807,13 @@ window.addEventListener(
     }
 
 
-    /* Blog modal */
+    /* BLOG MODAL */
 
     const blogModal =
-      document.getElementById("blogModal");
+      document.getElementById(
+        "blogModal"
+      );
+
 
     if (
       blogModal &&
@@ -2667,10 +2825,13 @@ window.addEventListener(
     }
 
 
-    /* Terms */
+    /* TERMS */
 
     const termsModal =
-      document.getElementById("terms-modal");
+      document.getElementById(
+        "terms-modal"
+      );
+
 
     if (
       termsModal &&
@@ -2682,10 +2843,13 @@ window.addEventListener(
     }
 
 
-    /* Service */
+    /* SERVICE */
 
     const serviceModal =
-      document.getElementById("serviceModal");
+      document.getElementById(
+        "serviceModal"
+      );
+
 
     if (
       serviceModal &&
@@ -2697,10 +2861,13 @@ window.addEventListener(
     }
 
 
-    /* Process */
+    /* PROCESS */
 
     const processModal =
-      document.getElementById("processModal");
+      document.getElementById(
+        "processModal"
+      );
+
 
     if (
       processModal &&
@@ -2712,10 +2879,13 @@ window.addEventListener(
     }
 
 
-    /* Account */
+    /* ACCOUNT */
 
     const accountModal =
-      document.getElementById("accountModal");
+      document.getElementById(
+        "accountModal"
+      );
+
 
     if (
       accountModal &&
@@ -2727,10 +2897,13 @@ window.addEventListener(
     }
 
 
-    /* Cart */
+    /* CART */
 
     const cartModal =
-      document.getElementById("cartModal");
+      document.getElementById(
+        "cartModal"
+      );
+
 
     if (
       cartModal &&
@@ -2742,7 +2915,7 @@ window.addEventListener(
     }
 
 
-    /* Team / Careers / Press */
+    /* TEAM / CAREERS / PRESS */
 
     [
       "teamModal",
@@ -2753,27 +2926,36 @@ window.addEventListener(
       const modal =
         document.getElementById(id);
 
+
       if (
         modal &&
         event.target === modal
       ) {
 
-        modal.classList.remove("show");
+        modal.classList.remove(
+          "show"
+        );
 
       }
 
     });
 
 
-    /* Generic custom modals */
+    /* GENERIC CUSTOM MODALS */
 
     document
-      .querySelectorAll(".custom-modal")
+      .querySelectorAll(
+        ".custom-modal"
+      )
       .forEach(function (modal) {
 
-        if (event.target === modal) {
+        if (
+          event.target === modal
+        ) {
 
-          modal.classList.remove("show");
+          modal.classList.remove(
+            "show"
+          );
 
         }
 
