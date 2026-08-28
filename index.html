@@ -1457,204 +1457,114 @@
 
 </div>
   <script>
-/* =========================================================
-   VANTYX STUDIOS KENYA AI ASSISTANT
-   FRONT-END CHAT SYSTEM
-   ========================================================= */
-
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const orbButton = document.getElementById("ai-orb-btn");
-    const chatWindow = document.getElementById("ai-chat");
-    const closeButton = document.getElementById("ai-close-btn");
-    const chatBody = document.getElementById("ai-body");
+    console.log("VANTYX AI: JavaScript loaded");
+
+    const orb = document.getElementById("ai-orb-btn");
+    const chat = document.getElementById("ai-chat");
+    const close = document.getElementById("ai-close-btn");
+    const body = document.getElementById("ai-body");
     const input = document.querySelector(".ai-user-input");
-    const sendButton = document.querySelector(".ai-send-btn");
+    const send = document.querySelector(".ai-send-btn");
+
+    console.log("ORB:", orb);
+    console.log("CHAT:", chat);
+    console.log("CLOSE:", close);
+    console.log("BODY:", body);
+    console.log("INPUT:", input);
+    console.log("SEND:", send);
 
 
-    /* =====================================================
-       OPEN AI CHAT
-       ===================================================== */
+    /* OPEN CHAT */
 
-    if (orbButton && chatWindow) {
+    if (orb) {
 
-        orbButton.addEventListener("click", function () {
+        orb.addEventListener("click", function () {
 
-            chatWindow.classList.add("show");
+            console.log("VANTYX AI: ORB CLICKED");
 
-            setTimeout(function () {
-                if (input) {
-                    input.focus();
-                }
-            }, 200);
-
-        });
-
-    }
-
-
-    /* =====================================================
-       CLOSE AI CHAT
-       ===================================================== */
-
-    if (closeButton && chatWindow) {
-
-        closeButton.addEventListener("click", function () {
-
-            chatWindow.classList.remove("show");
+            chat.style.display = "flex";
+            chat.style.opacity = "1";
+            chat.style.pointerEvents = "auto";
+            chat.style.transform = "translateY(0) scale(1)";
 
         });
 
     }
 
 
-    /* =====================================================
-       ADD MESSAGE TO CHAT
-       ===================================================== */
+    /* CLOSE CHAT */
 
-    function addMessage(message, type) {
+    if (close) {
 
-        const messageElement = document.createElement("div");
+        close.addEventListener("click", function () {
 
-        messageElement.classList.add(
-            "ai-message",
-            type
-        );
+            console.log("VANTYX AI: CLOSE CLICKED");
 
-        messageElement.textContent = message;
+            chat.style.display = "none";
 
-        chatBody.appendChild(messageElement);
+        });
 
-        chatBody.scrollTop = chatBody.scrollHeight;
     }
 
 
-    /* =====================================================
-       AI RESPONSE
-       ===================================================== */
-
-    function generateResponse(message) {
-
-        const text = message.toLowerCase().trim();
-
-
-        if (
-            text.includes("hello") ||
-            text.includes("hi") ||
-            text.includes("hey")
-        ) {
-
-            return "Hello. I'm the VANTYX STUDIOS KENYA AI Assistant. How can I help you?";
-
-        }
-
-
-        if (
-            text.includes("vantyx") ||
-            text.includes("studio") ||
-            text.includes("website")
-        ) {
-
-            return "VANTYX STUDIOS KENYA is a creative digital studio focused on branding, web design, visual identity and digital experiences.";
-
-        }
-
-
-        if (
-            text.includes("service") ||
-            text.includes("services")
-        ) {
-
-            return "We provide services including web design, branding, graphic design, visual identity and other digital creative solutions.";
-
-        }
-
-
-        if (
-            text.includes("portfolio") ||
-            text.includes("projects")
-        ) {
-
-            return "You can explore the VANTYX STUDIOS KENYA portfolio to see our selected creative and digital projects.";
-
-        }
-
-
-        if (
-            text.includes("contact") ||
-            text.includes("hire") ||
-            text.includes("project")
-        ) {
-
-            return "If you'd like to work with VANTYX STUDIOS KENYA, use the Start a Project option on the website to begin.";
-
-        }
-
-
-        return "I understand your question. I'm currently running in demo mode. Once the AI backend is connected, I'll be able to provide intelligent responses to your questions.";
-    }
-
-
-    /* =====================================================
-       SEND MESSAGE
-       ===================================================== */
+    /* SEND MESSAGE */
 
     function sendMessage() {
 
-        if (!input || !chatBody) {
-            return;
-        }
-
         const message = input.value.trim();
 
+        if (!message) return;
 
-        /* Don't send empty messages */
+        console.log("VANTYX AI MESSAGE:", message);
 
-        if (message === "") {
-            return;
-        }
+        /* USER MESSAGE */
+
+        const userMessage = document.createElement("div");
+
+        userMessage.className = "ai-message user";
+
+        userMessage.textContent = message;
+
+        body.appendChild(userMessage);
 
 
-        /* Show user message */
-
-        addMessage(message, "user");
-
-
-        /* Clear input */
+        /* CLEAR INPUT */
 
         input.value = "";
 
 
-        /* Generate response */
+        /* TEST BOT RESPONSE */
 
         setTimeout(function () {
 
-            const response = generateResponse(message);
+            const botMessage = document.createElement("div");
 
-            addMessage(response, "bot");
+            botMessage.className = "ai-message bot";
+
+            botMessage.textContent =
+                "Your message was received. The VANTYX AI system is working.";
+
+            body.appendChild(botMessage);
+
+            body.scrollTop = body.scrollHeight;
 
         }, 500);
 
     }
 
 
-    /* =====================================================
-       SEND BUTTON
-       ===================================================== */
+    if (send) {
 
-    if (sendButton) {
-
-        sendButton.addEventListener(
+        send.addEventListener(
             "click",
             sendMessage
         );
 
     }
 
-
-    /* =====================================================
-       ENTER KEY
-       ===================================================== */
 
     if (input) {
 
@@ -1672,6 +1582,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
         );
+
+    }
+
+});
+</script>
 
     }
 
