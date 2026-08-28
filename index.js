@@ -1,5 +1,13 @@
+/* =========================================================
+   VANTYX STUDIOS KENYA
+   COMPLETE CLEAN WEBSITE JAVASCRIPT
+   ========================================================= */
 
-// PROJECT DATA
+
+/* =========================================================
+   PROJECT / CASE STUDY DATA
+   ========================================================= */
+
 const projects = {
   1: {
     title: "Luxury Hotel Branding",
@@ -8,69 +16,1515 @@ const projects = {
     tools: "Figma, Photoshop",
     result: "Increased brand recognition by 40%"
   },
+
   2: {
     title: "E-Commerce UI Design",
-    challenge: "Low user engagement on platform.",
-    solution: "Redesigned UI with better UX flow.",
+    challenge: "Low user engagement on the platform.",
+    solution: "Redesigned the UI with a better UX flow.",
     tools: "Figma, React",
     result: "Boosted conversions by 25%"
+  },
+
+  3: {
+    title: "Corporate Brand Identity",
+    challenge: "The company had an outdated visual identity.",
+    solution: "Created a modern corporate identity system.",
+    tools: "Illustrator, Photoshop",
+    result: "Improved overall brand perception"
+  },
+
+  4: {
+    title: "Restaurant Visual Identity",
+    challenge: "The restaurant lacked a consistent visual identity.",
+    solution: "Created a complete restaurant branding system.",
+    tools: "Photoshop, Illustrator",
+    result: "Improved customer engagement"
   }
 };
 
-// OPEN MODAL
+
+/* =========================================================
+   BLOG DATA
+   ========================================================= */
+
+const blogData = {
+  1: `
+    <h2>How to Build a Strong Brand Identity</h2>
+
+    <p>
+      A strong brand identity is more than just a logo.
+      It includes your color system, typography, messaging,
+      and how your audience perceives your business.
+    </p>
+
+    <p>
+      At VANTYX Studios, we focus on building cohesive
+      visual systems that create trust and recognition
+      across all platforms.
+    </p>
+  `,
+
+  2: `
+    <h2>Top Graphic Design Trends in 2026</h2>
+
+    <p>
+      Modern design is shifting towards minimalism,
+      bold typography, and AI-assisted visuals.
+    </p>
+
+    <p>
+      Brands are focusing more on clarity, motion,
+      and immersive experiences.
+    </p>
+  `,
+
+  3: `
+    <h2>Why Branding Matters for Startups</h2>
+
+    <p>
+      Startups that invest in branding early gain
+      faster recognition and customer trust.
+    </p>
+
+    <p>
+      A strong identity makes your business look
+      established even in its early stages.
+    </p>
+  `
+};
+
+
+/* =========================================================
+   SERVICE DATA
+   ========================================================= */
+
+const serviceData = {
+
+  branding: {
+    title: "Logo & Brand Identity",
+
+    text:
+      "We create powerful brand identities including logos, " +
+      "color systems, typography, and brand guidelines that " +
+      "make your business unforgettable."
+  },
+
+  social: {
+    title: "Social Media Design",
+
+    text:
+      "We design high-converting social media posts, ads, " +
+      "and campaigns that attract attention and increase engagement."
+  },
+
+  print: {
+    title: "Print Design",
+
+    text:
+      "From posters to brochures, we design professional " +
+      "print materials that clearly communicate your message and brand."
+  },
+
+  business: {
+    title: "Business Branding",
+
+    text:
+      "We build complete branding systems including logos, " +
+      "stationery, and brand strategy tailored for growth."
+  },
+
+  thesis: {
+    title: "Thesis & Dissertation Writing",
+
+    text:
+      "We provide academic support including topic selection, " +
+      "proposal development, literature review, methodology, " +
+      "data analysis, and final thesis writing for Masters and PhD students."
+  },
+
+  proposal: {
+    title: "Research Proposal Development",
+
+    text:
+      "Get a professionally structured proposal with a clear " +
+      "research problem, objectives, justification, and methodology " +
+      "aligned to academic standards."
+  },
+
+  analysis: {
+    title: "Data Analysis & SPSS",
+
+    text:
+      "We handle quantitative and qualitative data analysis using " +
+      "SPSS, Excel, and other tools, including interpretation, " +
+      "tables, and reports."
+  }
+};
+
+
+/* =========================================================
+   SAFE DOM HELPER
+   ========================================================= */
+
+function getElement(id) {
+  return document.getElementById(id);
+}
+
+
+/* =========================================================
+   SCROLL TO SECTION
+   ========================================================= */
+
+function scrollToSection(id) {
+
+  const section = getElement(id);
+
+  if (!section) {
+    console.warn("Section not found:", id);
+    return false;
+  }
+
+  section.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  return true;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+function goToContact() {
+  scrollToSection("contact");
+}
+
+
+function scrollToContact() {
+  scrollToSection("contact");
+}
+
+
+/* =========================================================
+   PROJECT / CASE STUDY MODAL
+   ========================================================= */
+
 function openCase(id) {
-  const modal = document.getElementById("caseModal");
+
+  const modal = getElement("caseModal");
+  const title = getElement("caseTitle");
+  const details = getElement("caseDetails");
+
   const data = projects[id];
 
-  document.getElementById("caseTitle").innerText = data.title;
+  if (!modal || !title || !details || !data) {
+    console.error("Case study data or modal not found.");
+    return;
+  }
 
-  document.getElementById("caseDetails").innerHTML = `
-    <li><strong>The Challenge:</strong> ${data.challenge}</li>
-    <li><strong>The Solution:</strong> ${data.solution}</li>
-    <li><strong>Tools Used:</strong> ${data.tools}</li>
-    <li><strong>The Result:</strong> ${data.result}</li>
+  title.textContent = data.title;
+
+  details.innerHTML = `
+    <li>
+      <strong>The Challenge:</strong>
+      ${data.challenge}
+    </li>
+
+    <li>
+      <strong>The Solution:</strong>
+      ${data.solution}
+    </li>
+
+    <li>
+      <strong>Tools Used:</strong>
+      ${data.tools}
+    </li>
+
+    <li>
+      <strong>The Result:</strong>
+      ${data.result}
+    </li>
   `;
 
   modal.style.display = "flex";
+  modal.classList.add("show");
 }
 
-// CLOSE MODAL
-document.querySelector(".case-close").onclick = function () {
-  document.getElementById("caseModal").style.display = "none";
-};
 
-// CLOSE ON OUTSIDE CLICK
-window.onclick = function (e) {
-  const modal = document.getElementById("caseModal");
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
-};
-<script>
+function closeCase() {
+
+  const modal = getElement("caseModal");
+
+  if (!modal) return;
+
+  modal.style.display = "none";
+  modal.classList.remove("show");
+}
+
+
 /* =========================================================
-   VANTYX STUDIOS KENYA
-   AI ASSISTANT — COMPLETE DROP-IN JAVASCRIPT
+   BLOG MODAL
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+function openBlog(id) {
 
-  /* =======================================================
-     ELEMENTS
-     ======================================================= */
+  const modal = getElement("blogModal");
+  const content = getElement("blogContent");
 
-  const aiSystem = document.getElementById("ai-system");
-  const orbButton = document.getElementById("ai-orb-btn");
-  const closeButton = document.getElementById("ai-close-btn");
-  const chatWindow = document.getElementById("ai-chat");
-  const aiBody = document.getElementById("ai-body");
-  const aiInput = document.getElementById("ai-user-input");
-  const sendButton = document.getElementById("ai-send-btn");
-  const thinkingIndicator = document.getElementById("ai-thinking");
+  if (!modal || !content) {
+    console.error("Blog modal not found.");
+    return;
+  }
+
+  if (!blogData[id]) {
+    console.error("Blog article not found:", id);
+    return;
+  }
+
+  content.innerHTML = blogData[id];
+
+  modal.style.display = "flex";
+  modal.classList.add("show");
+}
 
 
-  /* =======================================================
-     SAFETY CHECK
-     ======================================================= */
+function closeBlog() {
+
+  const modal = getElement("blogModal");
+
+  if (!modal) return;
+
+  modal.style.display = "none";
+  modal.classList.remove("show");
+}
+
+
+/* =========================================================
+   PRIVACY POLICY
+   ========================================================= */
+
+function openPolicy() {
+
+  const modal = getElement("privacy-modal");
+
+  if (!modal) return;
+
+  modal.classList.add("active");
+  document.body.classList.add("modal-open");
+}
+
+
+function closePolicy() {
+
+  const modal = getElement("privacy-modal");
+
+  if (!modal) return;
+
+  modal.classList.remove("active");
+  document.body.classList.remove("modal-open");
+}
+
+
+/* =========================================================
+   TERMS
+   ========================================================= */
+
+function openTerms() {
+
+  const modal = getElement("terms-modal");
+
+  if (!modal) return;
+
+  modal.classList.add("active");
+  document.body.classList.add("modal-open");
+}
+
+
+function closeTerms() {
+
+  const modal = getElement("terms-modal");
+
+  if (!modal) return;
+
+  modal.classList.remove("active");
+  document.body.classList.remove("modal-open");
+}
+
+
+/* =========================================================
+   GENERIC MODAL
+   ========================================================= */
+
+function openModal(id) {
+
+  const modal = getElement(id);
+
+  if (!modal) return;
+
+  modal.classList.add("show");
+  modal.style.display = "flex";
+}
+
+
+function closeModal(id) {
+
+  const modal = getElement(id);
+
+  if (!modal) return;
+
+  modal.classList.remove("show");
+  modal.style.display = "none";
+}
+
+
+/* =========================================================
+   TEAM / CAREERS / PRESS
+   ========================================================= */
+
+function openTeam() {
+  openModal("teamModal");
+}
+
+
+function openCareers() {
+  openModal("careersModal");
+}
+
+
+function openPress() {
+  openModal("pressModal");
+}
+
+
+/* =========================================================
+   PROCESS MODAL
+   ========================================================= */
+
+function openProcessModal(event) {
+
+  if (event) {
+    event.preventDefault();
+  }
+
+  const modal = getElement("processModal");
+
+  if (!modal) return;
+
+  modal.classList.add("show");
+  modal.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+}
+
+
+function closeProcessModal() {
+
+  const modal = getElement("processModal");
+
+  if (!modal) return;
+
+  modal.classList.remove("show");
+  modal.style.display = "none";
+
+  document.body.style.overflow = "";
+}
+
+
+/* =========================================================
+   SERVICE MODAL
+   ========================================================= */
+
+function openServiceModal(service) {
+
+  const modal = getElement("serviceModal");
+  const title = getElement("modalTitle");
+  const text = getElement("modalText");
+
+  if (!modal || !title || !text) {
+    console.error("Service modal elements not found.");
+    return;
+  }
+
+  const content = serviceData[service];
+
+  if (!content) {
+    console.error("Service not found:", service);
+    return;
+  }
+
+  title.textContent = content.title;
+  text.textContent = content.text;
+
+  modal.classList.add("show");
+  modal.style.display = "flex";
+}
+
+
+function closeServiceModal() {
+
+  const modal = getElement("serviceModal");
+
+  if (!modal) return;
+
+  modal.classList.remove("show");
+  modal.style.display = "none";
+}
+
+
+/* =========================================================
+   PORTFOLIO FILTER
+   ========================================================= */
+
+function initializePortfolioFilters() {
+
+  const filterButtons =
+    document.querySelectorAll(".portfolio-filters button");
+
+  const cards =
+    document.querySelectorAll(".portfolio-card");
+
+  if (!filterButtons.length || !cards.length) {
+    return;
+  }
+
+  filterButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      filterButtons.forEach(function (btn) {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      const filter =
+        button.getAttribute("data-filter");
+
+      cards.forEach(function (card) {
+
+        const category =
+          (card.getAttribute("data-category") || "").toLowerCase();
+
+        if (
+          filter === "all" ||
+          category === filter.toLowerCase()
+        ) {
+
+          card.classList.remove("hide");
+          card.classList.remove("hidden");
+
+          card.style.display = "";
+
+        } else {
+
+          card.classList.add("hide");
+          card.classList.remove("hidden");
+
+        }
+
+      });
+
+    });
+
+  });
+
+}
+
+
+/* =========================================================
+   SHOW ALL PROJECTS
+   ========================================================= */
+
+function showAllProjects() {
+
+  const buttons =
+    document.querySelectorAll(".portfolio-filters button");
+
+  buttons.forEach(function (button) {
+    button.classList.remove("active");
+  });
+
+  const allButton =
+    document.querySelector('[data-filter="all"]');
+
+  if (allButton) {
+    allButton.classList.add("active");
+  }
+
+  document
+    .querySelectorAll(".portfolio-card")
+    .forEach(function (card) {
+
+      card.classList.remove("hide");
+      card.classList.remove("hidden");
+
+      card.style.display = "";
+
+    });
+
+  scrollToSection("portfolio");
+}
+
+
+/* =========================================================
+   PRICING TOGGLE
+   ========================================================= */
+
+function initializePricingToggle() {
+
+  const toggle =
+    document.querySelector(".switch input");
+
+  const prices =
+    document.querySelectorAll(".pricing-card h1");
+
+  if (!toggle || !prices.length) {
+    return;
+  }
+
+  prices.forEach(function (price) {
+
+    const raw =
+      price.textContent.trim();
+
+    const numeric =
+      parseFloat(raw.replace(/[^0-9.]/g, ""));
+
+    if (!isNaN(numeric)) {
+
+      price.dataset.monthlyPrice = numeric;
+
+    }
+
+  });
+
+
+  toggle.addEventListener("change", function () {
+
+    const annual =
+      toggle.checked;
+
+    prices.forEach(function (price) {
+
+      const monthly =
+        parseFloat(price.dataset.monthlyPrice);
+
+      if (isNaN(monthly)) {
+        return;
+      }
+
+      const value =
+        annual
+          ? monthly * 10
+          : monthly;
+
+      price.textContent =
+        "$" + Math.round(value);
+
+    });
+
+  });
+
+}
+
+
+/* =========================================================
+   START PROJECT
+   ========================================================= */
+
+function startProject(plan) {
+
+  scrollToSection("contact");
+
+  const messageBox =
+    document.querySelector("#contact textarea");
+
+  if (!messageBox) {
+    return;
+  }
+
+  if (plan) {
+
+    messageBox.value =
+      "I am interested in the " +
+      plan +
+      " plan.";
+
+  }
+
+}
+
+
+/* =========================================================
+   ENTERPRISE QUOTE
+   ========================================================= */
+
+function getQuote() {
+
+  scrollToSection("contact");
+
+  const messageBox =
+    document.querySelector("#contact textarea");
+
+  if (messageBox) {
+
+    messageBox.value =
+      "I would like a custom enterprise quotation for my project.";
+
+  }
+
+}
+
+
+/* =========================================================
+   FAQ ACCORDION
+   ========================================================= */
+
+function initializeFAQ() {
+
+  const questions =
+    document.querySelectorAll(".faq-question");
+
+  if (!questions.length) {
+    return;
+  }
+
+  questions.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const item =
+        button.parentElement;
+
+      if (!item) {
+        return;
+      }
+
+      item.classList.toggle("active");
+
+    });
+
+  });
+
+}
+
+
+/* =========================================================
+   WEBSITE SEARCH
+   ========================================================= */
+
+const searchData = [
+  "branding",
+  "portfolio",
+  "pricing",
+  "blog",
+  "faq",
+  "ui ux",
+  "design",
+  "logo",
+  "identity",
+  "luxury hotel branding",
+  "e-commerce ui design",
+  "design trends 2026",
+  "how to build a brand",
+  "website",
+  "web development",
+  "graphic design",
+  "social media",
+  "thesis",
+  "research",
+  "spss"
+];
+
+
+/* =========================================================
+   HIGHLIGHT SEARCH RESULT
+   ========================================================= */
+
+function highlightSection(section) {
+
+  if (!section) return;
+
+  const previousShadow =
+    section.style.boxShadow;
+
+  section.style.boxShadow =
+    "0 0 0 3px #1ABC9C";
+
+  setTimeout(function () {
+
+    section.style.boxShadow =
+      previousShadow || "";
+
+  }, 2000);
+}
+
+
+/* =========================================================
+   FULL SEARCH
+   ========================================================= */
+
+function runFullSearch(query) {
+
+  query =
+    String(query || "")
+      .toLowerCase()
+      .trim();
+
+  if (!query) {
+    return;
+  }
+
+
+  let found = false;
+
+
+  /* -------------------------------------------------------
+     PORTFOLIO
+     ------------------------------------------------------- */
+
+  document
+    .querySelectorAll(".portfolio-card")
+    .forEach(function (card) {
+
+      const title =
+        (
+          card.dataset.title ||
+          card.textContent ||
+          ""
+        ).toLowerCase();
+
+      const category =
+        (
+          card.dataset.category ||
+          ""
+        ).toLowerCase();
+
+      const matches =
+        title.includes(query) ||
+        category.includes(query);
+
+      if (matches) {
+
+        card.classList.remove("hidden");
+        card.classList.remove("hide");
+
+        card.style.display = "";
+
+        found = true;
+
+      } else {
+
+        card.classList.add("hidden");
+
+      }
+
+    });
+
+
+  /* -------------------------------------------------------
+     BLOG
+     ------------------------------------------------------- */
+
+  document
+    .querySelectorAll(".blog-card")
+    .forEach(function (card) {
+
+      const title =
+        (
+          card.dataset.title ||
+          card.textContent ||
+          ""
+        ).toLowerCase();
+
+      const matches =
+        title.includes(query);
+
+      if (matches) {
+
+        card.classList.remove("hidden");
+
+        card.style.display = "";
+
+        found = true;
+
+      } else {
+
+        card.classList.add("hidden");
+
+      }
+
+    });
+
+
+  /* -------------------------------------------------------
+     SECTIONS
+     ------------------------------------------------------- */
+
+  document
+    .querySelectorAll("section")
+    .forEach(function (section) {
+
+      const keywords =
+        (
+          section.getAttribute("data-search") ||
+          ""
+        ).toLowerCase();
+
+      if (keywords.includes(query)) {
+
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+        highlightSection(section);
+
+        found = true;
+
+      }
+
+    });
+
+
+  /* -------------------------------------------------------
+     AI NOTIFICATION
+     ------------------------------------------------------- */
+
+  triggerAI(query);
+
+
+  /* -------------------------------------------------------
+     NO RESULT
+     ------------------------------------------------------- */
+
+  if (!found) {
+
+    alert(
+      "No results found. Try something like " +
+      "'branding', 'portfolio', or 'pricing'."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SIMPLE SEARCH
+   ========================================================= */
+
+function performSearch() {
+
+  const input =
+    getElement("searchInput");
+
+  if (!input) {
+    return;
+  }
+
+  const query =
+    input.value.trim();
+
+  if (!query) {
+    return;
+  }
+
+  runFullSearch(query);
+}
+
+
+/* =========================================================
+   LIVE SEARCH SUGGESTIONS
+   ========================================================= */
+
+function initializeSearch() {
+
+  const input =
+    getElement("searchInput");
+
+  const suggestionsBox =
+    getElement("suggestions");
+
+  if (!input) {
+    return;
+  }
+
+
+  input.addEventListener("input", function () {
+
+    if (!suggestionsBox) {
+      return;
+    }
+
+    const value =
+      input.value
+        .toLowerCase()
+        .trim();
+
+    suggestionsBox.innerHTML = "";
+
+    if (!value) {
+      return;
+    }
+
+
+    const filtered =
+      searchData.filter(function (item) {
+
+        return item
+          .toLowerCase()
+          .includes(value);
+
+      });
+
+
+    filtered
+      .slice(0, 6)
+      .forEach(function (item) {
+
+        const div =
+          document.createElement("div");
+
+        div.textContent = item;
+
+        div.addEventListener("click", function () {
+
+          input.value = item;
+
+          suggestionsBox.innerHTML = "";
+
+          runFullSearch(item);
+
+        });
+
+        suggestionsBox.appendChild(div);
+
+      });
+
+  });
+
+
+  input.addEventListener("keydown", function (event) {
+
+    if (event.key === "Enter") {
+
+      event.preventDefault();
+
+      runFullSearch(input.value);
+
+      if (suggestionsBox) {
+        suggestionsBox.innerHTML = "";
+      }
+
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   AI SEARCH HOOK
+   ========================================================= */
+
+function triggerAI(query) {
+
+  const aiBody =
+    getElement("ai-body");
+
+  if (!aiBody) {
+    return;
+  }
+
+  const message =
+    document.createElement("div");
+
+  message.className =
+    "ai-message bot";
+
+  message.textContent =
+    `Searching for "${query}"... I found relevant sections and content for you.`;
+
+  aiBody.appendChild(message);
+
+  aiBody.scrollTop =
+    aiBody.scrollHeight;
+
+}
+
+
+/* =========================================================
+   CART
+   ========================================================= */
+
+let cart = [];
+
+
+function openCart() {
+
+  const modal =
+    getElement("cartModal");
+
+  if (!modal) return;
+
+  modal.classList.add("show");
+  modal.style.display = "flex";
+
+}
+
+
+function closeCart() {
+
+  const modal =
+    getElement("cartModal");
+
+  if (!modal) return;
+
+  modal.classList.remove("show");
+  modal.style.display = "none";
+
+}
+
+
+function addToCart(item) {
+
+  if (!item) {
+    return;
+  }
+
+  cart.push(item);
+
+  updateCart();
+
+}
+
+
+function updateCart() {
+
+  const count =
+    getElement("cartCount");
+
+  const container =
+    getElement("cartItems");
+
+
+  if (count) {
+
+    count.textContent =
+      cart.length;
+
+  }
+
+
+  if (!container) {
+    return;
+  }
+
+
+  if (cart.length === 0) {
+
+    container.innerHTML =
+      "<p>Your cart is empty</p>";
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    cart
+      .map(function (item, index) {
+
+        return `
+          <div class="cart-item">
+            <span>${item}</span>
+
+            <button
+              type="button"
+              onclick="removeItem(${index})"
+            >
+              Remove
+            </button>
+          </div>
+        `;
+
+      })
+      .join("");
+
+}
+
+
+function removeItem(index) {
+
+  if (
+    index < 0 ||
+    index >= cart.length
+  ) {
+    return;
+  }
+
+  cart.splice(index, 1);
+
+  updateCart();
+
+}
+
+
+function checkout() {
+
+  alert(
+    "Checkout coming soon."
+  );
+
+}
+
+
+/* =========================================================
+   ACCOUNT
+   ========================================================= */
+
+function openAccount() {
+
+  const modal =
+    getElement("accountModal");
+
+  if (!modal) return;
+
+  modal.classList.add("show");
+  modal.style.display = "flex";
+
+}
+
+
+function closeAccount() {
+
+  const modal =
+    getElement("accountModal");
+
+  if (!modal) return;
+
+  modal.classList.remove("show");
+  modal.style.display = "none";
+
+}
+
+
+/* =========================================================
+   SWITCH TO LOGIN
+   ========================================================= */
+
+function switchToLogin() {
+
+  const signup =
+    getElement("signupForm");
+
+  const login =
+    getElement("loginForm");
+
+  const title =
+    getElement("formTitle");
+
+
+  if (signup) {
+    signup.style.display = "none";
+  }
+
+  if (login) {
+    login.style.display = "block";
+  }
+
+  if (title) {
+    title.textContent = "Welcome Back";
+  }
+
+}
+
+
+/* =========================================================
+   SWITCH TO SIGNUP
+   ========================================================= */
+
+function switchToSignup() {
+
+  const signup =
+    getElement("signupForm");
+
+  const login =
+    getElement("loginForm");
+
+  const title =
+    getElement("formTitle");
+
+
+  if (signup) {
+    signup.style.display = "block";
+  }
+
+  if (login) {
+    login.style.display = "none";
+  }
+
+  if (title) {
+    title.textContent = "Create Account";
+  }
+
+}
+
+
+/* =========================================================
+   SOCIAL LOGIN PLACEHOLDERS
+   ========================================================= */
+
+function loginWithGoogle() {
+
+  alert(
+    "Google login will be connected via Firebase or Google Auth."
+  );
+
+}
+
+
+function loginWithGithub() {
+
+  alert(
+    "GitHub login will be connected later."
+  );
+
+}
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
+
+function setLanguage(code, name) {
+
+  const button =
+    getElement("langBtn");
+
+  if (button) {
+
+    button.textContent =
+      "🌐 Language: " + name;
+
+  }
+
+
+  localStorage.setItem(
+    "siteLanguage",
+    code
+  );
+
+  localStorage.setItem(
+    "siteLanguageName",
+    name
+  );
+
+
+  console.log(
+    "Language selected:",
+    code
+  );
+
+}
+
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
+
+function initializeNewsletter() {
+
+  const form =
+    getElement("newsletterForm");
+
+  if (!form) {
+    return;
+  }
+
+
+  form.addEventListener(
+    "submit",
+    async function (event) {
+
+      event.preventDefault();
+
+
+      const emailInput =
+        getElement("newsletterEmail");
+
+      const message =
+        getElement("subscribeMsg");
+
+
+      if (!emailInput) {
+        return;
+      }
+
+
+      const email =
+        emailInput.value.trim();
+
+
+      /* VALIDATION */
+
+      if (
+        !email ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+      ) {
+
+        if (message) {
+
+          message.textContent =
+            "Enter a valid email address.";
+
+          message.style.color =
+            "#ff4d4d";
+
+        }
+
+        return;
+
+      }
+
+
+      /* ---------------------------------------------------
+         FORMSPREE
+         --------------------------------------------------- */
+
+      try {
+
+        const response =
+          await fetch(
+            "https://formspree.io/f/YOUR_FORM_ID",
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json",
+
+                Accept:
+                  "application/json"
+              },
+
+              body:
+                JSON.stringify({
+                  email: email
+                })
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Newsletter submission failed."
+          );
+
+        }
+
+
+        /* SUCCESS */
+
+        if (message) {
+
+          message.textContent =
+            "You're subscribed successfully.";
+
+          message.style.color =
+            "#1ABC9C";
+
+        }
+
+
+        emailInput.value = "";
+
+
+        /* -------------------------------------------------
+           WHATSAPP LEAD
+           ------------------------------------------------- */
+
+        const phone =
+          "254759015631";
+
+        const whatsappText =
+          `Hello VANTYX STUDIOS KENYA, I just subscribed with this email: ${email}`;
+
+
+        window.open(
+          `https://wa.me/${phone}?text=${encodeURIComponent(whatsappText)}`,
+          "_blank"
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          "Newsletter error:",
+          error
+        );
+
+
+        if (message) {
+
+          message.textContent =
+            "Something went wrong. Please try again.";
+
+          message.style.color =
+            "#ff4d4d";
+
+        }
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   AI ASSISTANT
+   =========================================================
+   
+   IMPORTANT:
+   This is the ONLY AI implementation in the entire file.
+   ========================================================= */
+
+function initializeAI() {
+
+  const aiSystem =
+    getElement("ai-system");
+
+  const orbButton =
+    getElement("ai-orb-btn");
+
+  const closeButton =
+    getElement("ai-close-btn");
+
+  const chatWindow =
+    getElement("ai-chat");
+
+  const aiBody =
+    getElement("ai-body");
+
+  const aiInput =
+    getElement("ai-user-input");
+
+  const sendButton =
+    getElement("ai-send-btn");
+
+  const thinking =
+    getElement("ai-thinking");
+
+
+  /* -------------------------------------------------------
+     CHECK
+     ------------------------------------------------------- */
 
   if (
     !aiSystem ||
@@ -80,177 +1534,152 @@ document.addEventListener("DOMContentLoaded", function () {
     !aiBody ||
     !aiInput ||
     !sendButton ||
-    !thinkingIndicator
+    !thinking
   ) {
+
     console.error(
-      "VANTYX AI: One or more required HTML elements are missing."
+      "VANTYX AI: Required AI HTML elements are missing."
     );
+
     return;
+
   }
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      AI STATE
-     ======================================================= */
+     ------------------------------------------------------- */
 
-  let conversationStage = "normal";
+  let isThinking =
+    false;
 
-  let userData = {
+  let conversationStage =
+    "normal";
+
+
+  const userData = {
     name: "",
     email: "",
     project: ""
   };
 
-  let isThinking = false;
 
+  /* -------------------------------------------------------
+     OPEN
+     ------------------------------------------------------- */
 
-  /* =======================================================
-     OPEN AI
-     ======================================================= */
+  function openChat() {
 
-  function openAI() {
-
-    aiSystem.classList.add("chat-open");
+    aiSystem.classList.add(
+      "chat-open"
+    );
 
     setTimeout(function () {
+
       aiInput.focus();
+
     }, 350);
 
   }
 
 
-  /* =======================================================
-     CLOSE AI
-     ======================================================= */
+  /* -------------------------------------------------------
+     CLOSE
+     ------------------------------------------------------- */
 
-  function closeAI() {
+  function closeChat() {
 
-    aiSystem.classList.remove("chat-open");
+    aiSystem.classList.remove(
+      "chat-open"
+    );
 
     aiInput.blur();
 
   }
 
 
-  /* =======================================================
-     ORB CLICK
-     ======================================================= */
+  /* -------------------------------------------------------
+     SCROLL
+     ------------------------------------------------------- */
 
-  orbButton.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    openAI();
-
-  });
-
-
-  /* =======================================================
-     CLOSE BUTTON
-     ======================================================= */
-
-  closeButton.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-    closeAI();
-
-  });
-
-
-  /* =======================================================
-     PREVENT CHAT FROM CLOSING
-     WHEN CLICKING INSIDE IT
-     ======================================================= */
-
-  chatWindow.addEventListener("click", function (event) {
-
-    event.stopPropagation();
-
-  });
-
-
-  /* =======================================================
-     ESCAPE KEY
-     ======================================================= */
-
-  document.addEventListener("keydown", function (event) {
-
-    if (event.key === "Escape") {
-      closeAI();
-    }
-
-  });
-
-
-  /* =======================================================
-     SCROLL TO BOTTOM
-     ======================================================= */
-
-  function scrollToBottom() {
+  function scrollBottom() {
 
     requestAnimationFrame(function () {
 
-      aiBody.scrollTop = aiBody.scrollHeight;
+      aiBody.scrollTop =
+        aiBody.scrollHeight;
 
     });
 
   }
 
 
-  /* =======================================================
-     ADD MESSAGE
-     ======================================================= */
+  /* -------------------------------------------------------
+     MESSAGE
+     ------------------------------------------------------- */
 
-  function addMessage(message, type = "bot") {
+  function addAIMessage(
+    text,
+    type = "bot"
+  ) {
 
-    const messageElement = document.createElement("div");
+    const message =
+      document.createElement("div");
 
-    messageElement.className =
+    message.className =
       "ai-message " + type;
 
-    messageElement.innerText = message;
+    message.textContent =
+      text;
 
-    aiBody.appendChild(messageElement);
+    aiBody.appendChild(
+      message
+    );
 
-    scrollToBottom();
+    scrollBottom();
 
-    return messageElement;
+    return message;
 
   }
 
 
-  /* =======================================================
-     THINKING INDICATOR
-     ======================================================= */
+  /* -------------------------------------------------------
+     THINKING
+     ------------------------------------------------------- */
 
   function showThinking() {
 
-    thinkingIndicator.classList.add("active");
+    thinking.classList.add(
+      "active"
+    );
 
-    isThinking = true;
+    isThinking =
+      true;
 
-    scrollToBottom();
+    scrollBottom();
 
   }
 
 
   function hideThinking() {
 
-    thinkingIndicator.classList.remove("active");
+    thinking.classList.remove(
+      "active"
+    );
 
-    isThinking = false;
+    isThinking =
+      false;
 
   }
 
 
-  /* =======================================================
-     NORMALIZE USER INPUT
-     ======================================================= */
+  /* -------------------------------------------------------
+     NORMALIZE
+     ------------------------------------------------------- */
 
   function normalize(text) {
 
-    return text
+    return String(text)
       .toLowerCase()
       .trim()
       .replace(/\s+/g, " ");
@@ -258,44 +1687,56 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =======================================================
-     EMAIL VALIDATION
-     ======================================================= */
+  /* -------------------------------------------------------
+     EMAIL
+     ------------------------------------------------------- */
 
-  function isValidEmail(email) {
+  function validEmail(email) {
 
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  }
-
-
-  /* =======================================================
-     FIND PAGE SECTION
-     ======================================================= */
-
-  function scrollToSection(id) {
-
-    const section = document.getElementById(id);
-
-    if (!section) {
-      return false;
-    }
-
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-    return true;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      .test(email);
 
   }
 
 
-  /* =======================================================
-     SERVICE RESPONSE
-     ======================================================= */
+  /* -------------------------------------------------------
+     GREETING
+     ------------------------------------------------------- */
 
-  function serviceResponse() {
+  function isGreeting(text) {
+
+    const greetings = [
+      "hi",
+      "hello",
+      "hey",
+      "hiya",
+      "good morning",
+      "good afternoon",
+      "good evening"
+    ];
+
+
+    return greetings.some(
+      function (greeting) {
+
+        return (
+          text === greeting ||
+          text.startsWith(
+            greeting + " "
+          )
+        );
+
+      }
+    );
+
+  }
+
+
+  /* -------------------------------------------------------
+     SERVICES
+     ------------------------------------------------------- */
+
+  function servicesResponse() {
 
     return `VANTYX STUDIOS KENYA provides:
 
@@ -315,9 +1756,9 @@ Tell me which service you are interested in and I can explain it.`;
   }
 
 
-  /* =======================================================
-     BRANDING RESPONSE
-     ======================================================= */
+  /* -------------------------------------------------------
+     BRANDING
+     ------------------------------------------------------- */
 
   function brandingResponse() {
 
@@ -325,22 +1766,22 @@ Tell me which service you are interested in and I can explain it.`;
 
 This can include:
 
-• Logo design
-• Brand colors
+• Logo Design
+• Brand Colors
 • Typography
-• Visual identity
-• Business stationery
-• Brand guidelines
-• Brand strategy
+• Visual Identity
+• Business Stationery
+• Brand Guidelines
+• Brand Strategy
 
 If you are starting a new business or redesigning an existing brand, tell me what your business does.`;
 
   }
 
 
-  /* =======================================================
-     WEBSITE RESPONSE
-     ======================================================= */
+  /* -------------------------------------------------------
+     WEBSITE
+     ------------------------------------------------------- */
 
   function websiteResponse() {
 
@@ -363,9 +1804,76 @@ Tell me what type of website you want to build.`;
   }
 
 
-  /* =======================================================
-     ACADEMIC RESPONSE
-     ======================================================= */
+  /* -------------------------------------------------------
+     UI / UX
+     ------------------------------------------------------- */
+
+  function uiuxResponse() {
+
+    return `Our UI/UX service focuses on creating interfaces that are visually strong, intuitive and easy to use.
+
+We can help with:
+
+• Website UI
+• Mobile App UI
+• User Flows
+• Wireframes
+• Prototypes
+• Design Systems
+• UX Improvements
+
+Tell me what type of interface you want to design.`;
+
+  }
+
+
+  /* -------------------------------------------------------
+     GRAPHIC DESIGN
+     ------------------------------------------------------- */
+
+  function graphicResponse() {
+
+    return `Our graphic design services can include:
+
+• Posters
+• Flyers
+• Social Media Graphics
+• Advertisements
+• Business Cards
+• Brochures
+• Marketing Materials
+• Promotional Designs
+
+Tell me what design you need.`;
+
+  }
+
+
+  /* -------------------------------------------------------
+     SOCIAL MEDIA
+     ------------------------------------------------------- */
+
+  function socialResponse() {
+
+    return `We create professional social media designs for businesses and brands.
+
+This can include:
+
+• Instagram Posts
+• Facebook Graphics
+• Promotional Campaigns
+• Social Media Advertisements
+• Brand Templates
+• Campaign Visuals
+
+Tell me which platform you are designing for.`;
+
+  }
+
+
+  /* -------------------------------------------------------
+     ACADEMIC
+     ------------------------------------------------------- */
 
   function academicResponse() {
 
@@ -382,49 +1890,44 @@ Services include:
 • Excel
 • Research Reports
 
-Tell me what academic project you are working on and what stage you are currently at.`;
+Tell me what academic project you are working on.`;
 
   }
 
 
-  /* =======================================================
-     PRICING RESPONSE
-     ======================================================= */
+  /* -------------------------------------------------------
+     PRICING
+     ------------------------------------------------------- */
 
   function pricingResponse() {
 
-    const pricingExists =
-      document.getElementById("pricing");
-
-    if (pricingExists) {
+    if (getElement("pricing")) {
 
       scrollToSection("pricing");
 
       return `Our pricing depends on the type, complexity and scope of your project.
 
-I've taken you to the Pricing section so you can review the available plans.
+I've taken you to the Pricing section.
 
 If you need something different from the listed plans, you can request a custom project.`;
 
     }
 
+
     return `Our pricing depends on the type, complexity and scope of your project.
 
-Tell me what you would like us to design or build and I can help you determine the appropriate service.`;
+Tell me what you would like us to design or build.`;
 
   }
 
 
-  /* =======================================================
-     PORTFOLIO RESPONSE
-     ======================================================= */
+  /* -------------------------------------------------------
+     PORTFOLIO
+     ------------------------------------------------------- */
 
   function portfolioResponse() {
 
-    const portfolioExists =
-      document.getElementById("portfolio");
-
-    if (portfolioExists) {
+    if (getElement("portfolio")) {
 
       scrollToSection("portfolio");
 
@@ -432,25 +1935,23 @@ Tell me what you would like us to design or build and I can help you determine t
 
 I've taken you to the Portfolio section.
 
-You can also ask me about a specific type of project, such as branding, websites or UI/UX design.`;
+You can also ask me about branding, websites, UI/UX or graphic design projects.`;
 
     }
+
 
     return `Our portfolio contains examples of branding, graphic design, UI/UX and web projects.`;
 
   }
 
 
-  /* =======================================================
-     CONTACT RESPONSE
-     ======================================================= */
+  /* -------------------------------------------------------
+     CONTACT
+     ------------------------------------------------------- */
 
   function contactResponse() {
 
-    const contactExists =
-      document.getElementById("contact");
-
-    if (contactExists) {
+    if (getElement("contact")) {
 
       scrollToSection("contact");
 
@@ -462,18 +1963,20 @@ If you would like to start a project, I can also collect your details here.`;
 
     }
 
+
     return `You can contact VANTYX STUDIOS KENYA through the contact information provided on the website.`;
 
   }
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      START PROJECT
-     ======================================================= */
+     ------------------------------------------------------- */
 
   function startProjectResponse() {
 
-    conversationStage = "name";
+    conversationStage =
+      "name";
 
     return `Excellent. Let's get your project started.
 
@@ -482,15 +1985,28 @@ First, what is your name?`;
   }
 
 
-  /* =======================================================
-     NAME COLLECTION
-     ======================================================= */
+  /* -------------------------------------------------------
+     NAME
+     ------------------------------------------------------- */
 
   function handleName(input) {
 
-    userData.name = input.trim();
+    const name =
+      input.trim();
 
-    conversationStage = "email";
+    if (!name) {
+
+      return "Please enter your name.";
+
+    }
+
+
+    userData.name =
+      name;
+
+    conversationStage =
+      "email";
+
 
     return `Nice to meet you, ${userData.name}.
 
@@ -499,27 +2015,33 @@ What is your email address so our team can follow up with you?`;
   }
 
 
-  /* =======================================================
-     EMAIL COLLECTION
-     ======================================================= */
+  /* -------------------------------------------------------
+     EMAIL
+     ------------------------------------------------------- */
 
   function handleEmail(input) {
 
-    const email = input.trim();
+    const email =
+      input.trim();
 
-    if (!isValidEmail(email)) {
+
+    if (!validEmail(email)) {
 
       return `That doesn't appear to be a valid email address.
 
-Please enter your email in a format such as:
+Please enter an email such as:
 
 example@gmail.com`;
 
     }
 
-    userData.email = email;
 
-    conversationStage = "project";
+    userData.email =
+      email;
+
+    conversationStage =
+      "project";
+
 
     return `Great.
 
@@ -530,186 +2052,93 @@ What would you like VANTYX STUDIOS KENYA to design, build or help you with?`;
   }
 
 
-  /* =======================================================
-     PROJECT COLLECTION
-     ======================================================= */
+  /* -------------------------------------------------------
+     PROJECT
+     ------------------------------------------------------- */
 
   function handleProject(input) {
 
-    userData.project = input.trim();
+    const project =
+      input.trim();
 
-    conversationStage = "complete";
+
+    if (!project) {
+
+      return "Please describe the project you need help with.";
+
+    }
+
+
+    userData.project =
+      project;
+
+    conversationStage =
+      "complete";
+
 
     console.log(
       "VANTYX STUDIOS KENYA — NEW CLIENT LEAD",
       userData
     );
 
-    setTimeout(function () {
-
-      addProjectCTA();
-
-    }, 400);
 
     return `Thank you, ${userData.name}.
 
-I've recorded the basic details of your project.
+I've recorded your project details:
 
-Our team can review your requirements and discuss the best way to proceed.
-
-You can also use the Contact section to send the project directly.`;
-
-  }
-
-
-  /* =======================================================
-     PROJECT CTA
-     ======================================================= */
-
-  function addProjectCTA() {
-
-    const wrapper =
-      document.createElement("div");
-
-    wrapper.className = "ai-message bot";
-
-    wrapper.innerHTML = `
-      <strong>Ready to move forward?</strong>
-      <br><br>
-
-      <button
-        type="button"
-        id="ai-project-btn"
-        style="
-          padding:10px 16px;
-          border:none;
-          border-radius:10px;
-          background:linear-gradient(135deg,#ffffff,#9eafff);
-          color:#11162f;
-          font-weight:600;
-          cursor:pointer;
-        "
-      >
-        Start Your Project
-      </button>
-    `;
-
-    aiBody.appendChild(wrapper);
-
-    const button =
-      document.getElementById("ai-project-btn");
-
-    if (button) {
-
-      button.addEventListener("click", function () {
-
-        const contact =
-          document.getElementById("contact");
-
-        if (contact) {
-
-          contact.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-          const textarea =
-            contact.querySelector("textarea");
-
-          if (textarea) {
-
-            textarea.value =
-              `Hello VANTYX STUDIOS KENYA,
-
-My name is ${userData.name}.
-
+Name: ${userData.name}
 Email: ${userData.email}
+Project: ${userData.project}
 
-Project:
-${userData.project}`;
-
-          }
-
-        }
-
-      });
-
-    }
-
-    scrollToBottom();
+You can now use the Contact section to send the project to our team.`;
 
   }
 
 
-  /* =======================================================
-     GREETINGS
-     ======================================================= */
-
-  function isGreeting(text) {
-
-    const greetings = [
-      "hi",
-      "hello",
-      "hey",
-      "hiya",
-      "good morning",
-      "good afternoon",
-      "good evening"
-    ];
-
-    return greetings.some(function (greeting) {
-
-      return (
-        text === greeting ||
-        text.startsWith(greeting + " ")
-      );
-
-    });
-
-  }
-
-
-  /* =======================================================
-     MAIN AI RESPONSE ENGINE
-     ======================================================= */
+  /* -------------------------------------------------------
+     MAIN RESPONSE ENGINE
+     ------------------------------------------------------- */
 
   function getAIResponse(input) {
 
-    const text = normalize(input);
+    const text =
+      normalize(input);
 
 
-    /* -------------------------------------------------------
-       LEAD CAPTURE
-       ------------------------------------------------------- */
+    /* LEAD COLLECTION */
 
-    if (conversationStage === "name") {
+    if (
+      conversationStage === "name"
+    ) {
 
       return handleName(input);
 
     }
 
 
-    if (conversationStage === "email") {
+    if (
+      conversationStage === "email"
+    ) {
 
       return handleEmail(input);
 
     }
 
 
-    if (conversationStage === "project") {
+    if (
+      conversationStage === "project"
+    ) {
 
       return handleProject(input);
 
     }
 
 
-    /* -------------------------------------------------------
-       GREETINGS
-       ------------------------------------------------------- */
+    /* GREETING */
 
     if (isGreeting(text)) {
 
-      return `Hello 👋 Welcome to VANTYX STUDIOS KENYA.
+      return `Hello. Welcome to VANTYX STUDIOS KENYA.
 
 I'm your AI assistant.
 
@@ -720,6 +2149,8 @@ I can help you with:
 • Portfolio
 • Branding
 • Website development
+• UI/UX
+• Graphic design
 • Academic services
 • Contact information
 • Starting a project
@@ -729,43 +2160,36 @@ What would you like to know?`;
     }
 
 
-    /* -------------------------------------------------------
-       THANK YOU
-       ------------------------------------------------------- */
+    /* THANK YOU */
 
     if (
       text.includes("thank you") ||
-      text.includes("thanks") ||
-      text === "thank"
+      text.includes("thanks")
     ) {
 
       return `You're welcome.
 
-If you need anything else, you can ask me about our services, pricing, portfolio or starting a project.`;
+If you need anything else, ask me about our services, pricing, portfolio or starting a project.`;
 
     }
 
 
-    /* -------------------------------------------------------
-       SERVICES
-       ------------------------------------------------------- */
+    /* SERVICES */
 
     if (
       text.includes("services") ||
-      text.includes("service") ||
+      text === "service" ||
       text.includes("what do you offer") ||
       text.includes("what can you do") ||
       text.includes("what do you do")
     ) {
 
-      return serviceResponse();
+      return servicesResponse();
 
     }
 
 
-    /* -------------------------------------------------------
-       BRANDING
-       ------------------------------------------------------- */
+    /* BRANDING */
 
     if (
       text.includes("branding") ||
@@ -779,9 +2203,7 @@ If you need anything else, you can ask me about our services, pricing, portfolio
     }
 
 
-    /* -------------------------------------------------------
-       WEBSITE
-       ------------------------------------------------------- */
+    /* WEBSITE */
 
     if (
       text.includes("website") ||
@@ -796,9 +2218,7 @@ If you need anything else, you can ask me about our services, pricing, portfolio
     }
 
 
-    /* -------------------------------------------------------
-       UI / UX
-       ------------------------------------------------------- */
+    /* UI / UX */
 
     if (
       text.includes("ui") ||
@@ -807,26 +2227,12 @@ If you need anything else, you can ask me about our services, pricing, portfolio
       text.includes("user experience")
     ) {
 
-      return `Our UI/UX service focuses on creating interfaces that are visually strong, intuitive and easy to use.
-
-We can help with:
-
-• Website UI
-• Mobile app UI
-• User flows
-• Wireframes
-• Prototypes
-• Design systems
-• UX improvements
-
-Tell me what type of interface you want to design.`;
+      return uiuxResponse();
 
     }
 
 
-    /* -------------------------------------------------------
-       GRAPHIC DESIGN
-       ------------------------------------------------------- */
+    /* GRAPHIC DESIGN */
 
     if (
       text.includes("graphic design") ||
@@ -835,25 +2241,12 @@ Tell me what type of interface you want to design.`;
       text.includes("flyer")
     ) {
 
-      return `Our graphic design services can include:
-
-• Posters
-• Flyers
-• Social media graphics
-• Advertisements
-• Business cards
-• Brochures
-• Marketing materials
-• Promotional designs
-
-Tell me what design you need.`;
+      return graphicResponse();
 
     }
 
 
-    /* -------------------------------------------------------
-       SOCIAL MEDIA
-       ------------------------------------------------------- */
+    /* SOCIAL MEDIA */
 
     if (
       text.includes("social media") ||
@@ -862,25 +2255,12 @@ Tell me what design you need.`;
       text.includes("social post")
     ) {
 
-      return `We create professional social media designs for businesses and brands.
-
-This can include:
-
-• Instagram posts
-• Facebook graphics
-• Promotional campaigns
-• Social media advertisements
-• Brand templates
-• Campaign visuals
-
-Tell me which platform you are designing for.`;
+      return socialResponse();
 
     }
 
 
-    /* -------------------------------------------------------
-       ACADEMIC
-       ------------------------------------------------------- */
+    /* ACADEMIC */
 
     if (
       text.includes("thesis") ||
@@ -896,9 +2276,7 @@ Tell me which platform you are designing for.`;
     }
 
 
-    /* -------------------------------------------------------
-       PRICING
-       ------------------------------------------------------- */
+    /* PRICING */
 
     if (
       text.includes("pricing") ||
@@ -915,9 +2293,7 @@ Tell me which platform you are designing for.`;
     }
 
 
-    /* -------------------------------------------------------
-       PORTFOLIO
-       ------------------------------------------------------- */
+    /* PORTFOLIO */
 
     if (
       text.includes("portfolio") ||
@@ -932,9 +2308,7 @@ Tell me which platform you are designing for.`;
     }
 
 
-    /* -------------------------------------------------------
-       CONTACT
-       ------------------------------------------------------- */
+    /* CONTACT */
 
     if (
       text.includes("contact") ||
@@ -949,15 +2323,13 @@ Tell me which platform you are designing for.`;
     }
 
 
-    /* -------------------------------------------------------
-       START PROJECT
-       ------------------------------------------------------- */
+    /* START PROJECT */
 
     if (
       text.includes("start project") ||
       text.includes("start a project") ||
       text.includes("hire you") ||
-      text.includes("hire") ||
+      text === "hire" ||
       text.includes("work with you") ||
       text.includes("get started") ||
       text.includes("request a project") ||
@@ -971,9 +2343,7 @@ Tell me which platform you are designing for.`;
     }
 
 
-    /* -------------------------------------------------------
-       ABOUT VANTYX
-       ------------------------------------------------------- */
+    /* ABOUT */
 
     if (
       text.includes("who are you") ||
@@ -989,9 +2359,7 @@ Our goal is to help businesses, organizations and individuals present their idea
     }
 
 
-    /* -------------------------------------------------------
-       HELP
-       ------------------------------------------------------- */
+    /* HELP */
 
     if (
       text === "help" ||
@@ -1013,7 +2381,7 @@ Our goal is to help businesses, organizations and individuals present their idea
 • Contact information
 • Starting a project
 
-Try asking something like:
+Try asking:
 
 "What services do you offer?"
 
@@ -1026,9 +2394,7 @@ Try asking something like:
     }
 
 
-    /* -------------------------------------------------------
-       DEFAULT RESPONSE
-       ------------------------------------------------------- */
+    /* DEFAULT */
 
     return `I'm here to help with VANTYX STUDIOS KENYA.
 
@@ -1047,15 +2413,16 @@ You can ask me about:
 • Contact
 • Starting a project
 
-For example, try:
+For example:
+
 "What services do you offer?"`;
 
   }
 
 
-  /* =======================================================
-     SEND MESSAGE
-     ======================================================= */
+  /* -------------------------------------------------------
+     SEND
+     ------------------------------------------------------- */
 
   function sendMessage() {
 
@@ -1063,45 +2430,100 @@ For example, try:
       return;
     }
 
+
     const text =
       aiInput.value.trim();
+
 
     if (!text) {
       return;
     }
 
 
-    /* USER MESSAGE */
+    addAIMessage(
+      text,
+      "user"
+    );
 
-    addMessage(text, "user");
 
-    aiInput.value = "";
+    aiInput.value =
+      "";
 
-
-    /* THINKING */
 
     showThinking();
 
-
-    /* RESPONSE */
 
     setTimeout(function () {
 
       hideThinking();
 
+
       const response =
         getAIResponse(text);
 
-      addMessage(response, "bot");
+
+      addAIMessage(
+        response,
+        "bot"
+      );
+
 
     }, 650);
 
   }
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
+     ORB
+     ------------------------------------------------------- */
+
+  orbButton.addEventListener(
+    "click",
+    function (event) {
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      openChat();
+
+    }
+  );
+
+
+  /* -------------------------------------------------------
+     CLOSE
+     ------------------------------------------------------- */
+
+  closeButton.addEventListener(
+    "click",
+    function (event) {
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      closeChat();
+
+    }
+  );
+
+
+  /* -------------------------------------------------------
+     CHAT CLICK
+     ------------------------------------------------------- */
+
+  chatWindow.addEventListener(
+    "click",
+    function (event) {
+
+      event.stopPropagation();
+
+    }
+  );
+
+
+  /* -------------------------------------------------------
      SEND BUTTON
-     ======================================================= */
+     ------------------------------------------------------- */
 
   sendButton.addEventListener(
     "click",
@@ -1115,9 +2537,9 @@ For example, try:
   );
 
 
-  /* =======================================================
-     ENTER KEY
-     ======================================================= */
+  /* -------------------------------------------------------
+     ENTER
+     ------------------------------------------------------- */
 
   aiInput.addEventListener(
     "keydown",
@@ -1135,999 +2557,310 @@ For example, try:
   );
 
 
-  /* =======================================================
-     GLOBAL OPENAI FUNCTION
-     
-     Allows other buttons on your website to use:
-     
-     onclick="openAI()"
-     ======================================================= */
+  /* -------------------------------------------------------
+     ESC
+     ------------------------------------------------------- */
 
-  window.openAI = function () {
+  document.addEventListener(
+    "keydown",
+    function (event) {
 
-    openAI();
+      if (
+        event.key === "Escape" &&
+        aiSystem.classList.contains("chat-open")
+      ) {
 
-  };
+        closeChat();
 
+      }
 
-  /* =======================================================
-     OPTIONAL GLOBAL CLOSE FUNCTION
-     ======================================================= */
-
-  window.closeAI = function () {
-
-    closeAI();
-
-  };
-
-
-  /* =======================================================
-     INITIALIZATION
-     ======================================================= */
-
-  console.log(
-    "VANTYX STUDIOS KENYA AI Assistant initialized successfully."
+    }
   );
 
-});
-</script>
 
-    /* =====================================================
-       PORTFOLIO
-       ===================================================== */
+  /* -------------------------------------------------------
+     GLOBAL AI FUNCTIONS
+     ------------------------------------------------------- */
 
-    if (
-      text.includes("portfolio") ||
-      text.includes("projects") ||
-      text.includes("previous work") ||
-      text.includes("your work")
-    ) {
+  window.openAI =
+    openChat;
 
-      document
-        .getElementById("portfolio")
-        ?.scrollIntoView({
-          behavior: "smooth"
-        });
+  window.closeAI =
+    closeChat;
 
-      return `
-Here are some of our previous projects.
 
-I've taken you to the Portfolio section.
-      `.trim();
+  /* -------------------------------------------------------
+     READY
+     ------------------------------------------------------- */
 
-    }
+  console.log(
+    "VANTYX STUDIOS KENYA AI: READY"
+  );
 
-    /* =====================================================
-       CONTACT
-       ===================================================== */
-
-    if (
-      text.includes("contact") ||
-      text.includes("phone") ||
-      text.includes("email") ||
-      text.includes("reach you")
-    ) {
-
-      document
-        .getElementById("contact")
-        ?.scrollIntoView({
-          behavior: "smooth"
-        });
-
-      return `
-You can contact VANTYX STUDIOS KENYA through the Contact section.
-
-I've taken you there now.
-      `.trim();
-
-    }
-
-    /* =====================================================
-       BRANDING
-       ===================================================== */
-
-    if (
-      text.includes("branding") ||
-      text.includes("logo") ||
-      text.includes("brand identity")
-    ) {
-
-      return `
-Our branding service can include:
-
-• Logo Design
-• Visual Identity
-• Typography
-• Color Systems
-• Brand Guidelines
-• Stationery
-• Brand Strategy
-
-Tell me what type of brand you want to create.
-      `.trim();
-
-    }
-
-    /* =====================================================
-       WEBSITE
-       ===================================================== */
-
-    if (
-      text.includes("website") ||
-      text.includes("web development") ||
-      text.includes("web design")
-    ) {
-
-      return `
-We create modern, responsive websites focused on strong visual design, usability and performance.
-
-Tell me what kind of website you need.
-      `.trim();
-
-    }
-
-    /* =====================================================
-       ACADEMIC
-       ===================================================== */
-
-    if (
-      text.includes("thesis") ||
-      text.includes("dissertation") ||
-      text.includes("academic")
-    ) {
-
-      return `
-Our academic services include:
-
-• Thesis & Dissertation Support
-• Research Proposal Development
-• Literature Review
-• Methodology
-• Data Analysis
-• SPSS
-• Research Reports
-
-Tell me what academic project you are working on.
-      `.trim();
-
-    }
-
-    /* =====================================================
-       START PROJECT
-       ===================================================== */
-
-    if (
-      text.includes("start project") ||
-      text.includes("hire you") ||
-      text.includes("hire") ||
-      text.includes("work with you") ||
-      text.includes("get started") ||
-      text.includes("request a project")
-    ) {
-
-      userData.stage = "ask_name";
-
-      return `
-Excellent. Let's get your project started.
-
-First, what's your name?
-      `.trim();
-
-    }
-
-    /* =====================================================
-       FAQ
-       ===================================================== */
-
-    if (
-      text.includes("help") ||
-      text.includes("what can i ask")
-    ) {
-
-      return `
-I can help you with:
-
-• Services
-• Pricing
-• Portfolio
-• Branding
-• Websites
-• Academic services
-• Contact information
-• Starting a project
-
-What would you like to know?
-      `.trim();
-
-    }
-
-    /* =====================================================
-       DEFAULT
-       ===================================================== */
-
-    return `
-I'm here to help you with VANTYX STUDIOS KENYA.
-
-You can ask me about our services, pricing, portfolio, branding, websites, academic services, or starting a project.
-    `.trim();
-
-  }
-
-  /* =========================================================
-     GLOBAL OPEN AI FUNCTION
-     ========================================================= */
-
-  window.openAI = function () {
-    openChat();
-  };
-
-});
-
-    /* ================= CONTACT ================= */
-
-    if (
-      text.includes("contact") ||
-      text.includes("email") ||
-      text.includes("phone")
-    ) {
-
-      document
-        .getElementById("contact")
-        ?.scrollIntoView({
-          behavior: "smooth"
-        });
-
-
-      return `
-You can contact VANTYX STUDIOS KENYA through the Contact section.
-
-I've taken you there now.
-      `.trim();
-
-    }
-
-
-    /* ================= START PROJECT ================= */
-
-    if (
-      text.includes("start") ||
-      text.includes("project") ||
-      text.includes("hire")
-    ) {
-
-      document
-        .getElementById("pricing")
-        ?.scrollIntoView({
-          behavior: "smooth"
-        });
-
-
-      return `
-Let's get started.
-
-Choose a plan from the Pricing section or request a custom project.
-      `.trim();
-
-    }
-
-
-    /* ================= BRANDING ================= */
-
-    if (
-      text.includes("branding") ||
-      text.includes("logo")
-    ) {
-
-      return `
-Our branding services can include logo design, visual identity, typography, colors, stationery and brand guidelines.
-
-Tell me what type of brand you want to create.
-      `.trim();
-
-    }
-
-
-    /* ================= WEB DESIGN ================= */
-
-    if (
-      text.includes("website") ||
-      text.includes("web development") ||
-      text.includes("web design")
-    ) {
-
-      return `
-We provide professional web design and development focused on modern visuals, responsive layouts and strong user experience.
-
-Tell me what kind of website you need.
-      `.trim();
-
-    }
-
-
-    /* ================= DEFAULT ================= */
-
-    return `
-I'm here to help you move forward.
-
-You can ask me about our services, pricing, portfolio, branding, websites, academic services, or starting a project.
-    `.trim();
-
-  }
-
-});
-
-function openPolicy() {
-  document.getElementById("privacy-modal").classList.add("active");
 }
 
-function closePolicy() {
-  document.getElementById("privacy-modal").classList.remove("active");
-}
-function openTerms() {
-  document.getElementById("terms-modal").classList.add("active");
-  document.body.classList.add("modal-open");
-}
 
-function closeTerms() {
-  document.getElementById("terms-modal").classList.remove("active");
-  document.body.classList.remove("modal-open");
-}
-window.addEventListener("click", function(e) {
-  const terms = document.getElementById("terms-modal");
-  if (e.target === terms) {
-    closeTerms();
-  }
-});
-function openBlog(id) {
+/* =========================================================
+   GLOBAL MODAL CLICK HANDLER
+   ========================================================= */
 
-  const modal = document.getElementById("blogModal");
-  const content = document.getElementById("blogContent");
+function initializeModalHandlers() {
 
-  let blogData = {
-    1: `
-      <h2>How to Build a Strong Brand Identity</h2>
-      <p>
-        A strong brand identity is more than just a logo. It includes your color system,
-        typography, messaging, and how your audience perceives your business.
-      </p>
-      <p>
-        At VANTYX Studios, we focus on building cohesive visual systems that create
-        trust and recognition across all platforms.
-      </p>
-    `,
-    2: `
-      <h2>Top Graphic Design Trends in 2026</h2>
-      <p>
-        Modern design is shifting towards minimalism, bold typography, and AI-assisted visuals.
-      </p>
-      <p>
-        Brands are focusing more on clarity, motion, and immersive experiences.
-      </p>
-    `,
-    3: `
-      <h2>Why Branding Matters for Startups</h2>
-      <p>
-        Startups that invest in branding early gain faster recognition and customer trust.
-      </p>
-      <p>
-        A strong identity makes your business look established even in early stages.
-      </p>
-    `
-  };
+  window.addEventListener(
+    "click",
+    function (event) {
 
-  content.innerHTML = blogData[id];
-  modal.style.display = "flex";
-}
+      /* CASE */
 
-function closeBlog() {
-  document.getElementById("blogModal").style.display = "none";
-}
+      const caseModal =
+        getElement("caseModal");
 
-/* CLICK OUTSIDE TO CLOSE */
-window.onclick = function(e) {
-  const modal = document.getElementById("blogModal");
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
-}
-function openCase(id) {
-  const modal = document.getElementById("caseModal");
-  const title = document.getElementById("caseTitle");
-  const details = document.getElementById("caseDetails");
+      if (
+        caseModal &&
+        event.target === caseModal
+      ) {
 
-  const data = {
-    1: {
-      title: "Luxury Hotel Branding",
-      content: `
-        <li><strong>The Challenge:</strong> Create a premium identity for a luxury hotel.</li>
-        <li><strong>The Solution:</strong> Elegant gold-accent branding system.</li>
-        <li><strong>Tools Used:</strong> Illustrator, Photoshop</li>
-        <li><strong>The Result:</strong> Increased bookings by 40%</li>
-      `
-    },
-    2: {
-      title: "E-Commerce UI Design",
-      content: `
-        <li><strong>The Challenge:</strong> Improve user experience.</li>
-        <li><strong>The Solution:</strong> Clean conversion-focused UI.</li>
-        <li><strong>Tools Used:</strong> Figma, React</li>
-        <li><strong>The Result:</strong> +30% conversions</li>
-      `
-    },
-    3: {
-      title: "Corporate Brand Identity",
-      content: `
-        <li><strong>The Challenge:</strong> Outdated branding.</li>
-        <li><strong>The Solution:</strong> Modern identity redesign.</li>
-        <li><strong>Tools Used:</strong> Illustrator</li>
-        <li><strong>The Result:</strong> Improved brand perception</li>
-      `
-    },
-    4: {
-      title: "Restaurant Visual Identity",
-      content: `
-        <li><strong>The Challenge:</strong> Build a strong food brand.</li>
-        <li><strong>The Solution:</strong> Vibrant visual identity.</li>
-        <li><strong>Tools Used:</strong> Photoshop</li>
-        <li><strong>The Result:</strong> Higher engagement</li>
-      `
-    }
-  };
+        closeCase();
 
-  title.innerText = data[id].title;
-  details.innerHTML = data[id].content;
-
-  modal.style.display = "flex";
-}
-
-function closeCase() {
-  document.getElementById("caseModal").style.display = "none";
-}
-
-/* CLICK OUTSIDE TO CLOSE */
-window.addEventListener("click", function(e) {
-  const modal = document.getElementById("caseModal");
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
-});
-
-const filterButtons = document.querySelectorAll(".portfolio-filters button");
-const cards = document.querySelectorAll(".portfolio-card");
-
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-
-    // ACTIVE BUTTON STYLE
-    filterButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    const filter = btn.getAttribute("data-filter");
-
-    cards.forEach(card => {
-  const category = card.getAttribute("data-category");
-
-  if (filter === "all" || filter === category) {
-    card.classList.remove("hide");
-  } else {
-    card.classList.add("hide");
-  }
-});
-    });
-
-  });
-
-/* ================= SCROLL TO CONTACT ================= */
-function goToContact() {
-  const contact = document.getElementById("contact");
-
-  if (contact) {
-    contact.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-}
-
-/* ================= VIEW FULL ARCHIVE ================= */
-function showAllProjects() {
-
-  // Reset filters
-  const buttons = document.querySelectorAll(".portfolio-filters button");
-  buttons.forEach(btn => btn.classList.remove("active"));
-
-  const allBtn = document.querySelector('[data-filter="all"]');
-  if (allBtn) allBtn.classList.add("active");
-
-  // Show all cards
-  document.querySelectorAll(".portfolio-card").forEach(card => {
-    card.style.display = "block";
-  });
-
-  // Scroll to portfolio section
-  document.getElementById("portfolio").scrollIntoView({
-    behavior: "smooth"
-  });
-}
-function scrollToContact() {
-  document.getElementById("contact").scrollIntoView({
-    behavior: "smooth"
-  });
-}
-const toggle = document.querySelector(".switch input");
-const prices = document.querySelectorAll(".pricing-card h1");
-
-toggle?.addEventListener("change", () => {
-
-  prices.forEach(price => {
-    if (toggle.checked) {
-      // Annual pricing (example discount)
-      if (price.innerText.includes("$")) {
-        let value = parseInt(price.innerText.replace("$", ""));
-        price.innerText = "$" + (value * 10).toFixed(0);
       }
-    } else {
-      // Reset back (example logic placeholder)
-      if (price.innerText.includes("$")) {
-        let value = parseInt(price.innerText.replace("$", ""));
-        price.innerText = "$" + (value / 10).toFixed(0);
+
+
+      /* BLOG */
+
+      const blogModal =
+        getElement("blogModal");
+
+      if (
+        blogModal &&
+        event.target === blogModal
+      ) {
+
+        closeBlog();
+
       }
+
+
+      /* TERMS */
+
+      const termsModal =
+        getElement("terms-modal");
+
+      if (
+        termsModal &&
+        event.target === termsModal
+      ) {
+
+        closeTerms();
+
+      }
+
+
+      /* PRIVACY */
+
+      const privacyModal =
+        getElement("privacy-modal");
+
+      if (
+        privacyModal &&
+        event.target === privacyModal
+      ) {
+
+        closePolicy();
+
+      }
+
+
+      /* SERVICE */
+
+      const serviceModal =
+        getElement("serviceModal");
+
+      if (
+        serviceModal &&
+        event.target === serviceModal
+      ) {
+
+        closeServiceModal();
+
+      }
+
+
+      /* PROCESS */
+
+      const processModal =
+        getElement("processModal");
+
+      if (
+        processModal &&
+        event.target === processModal
+      ) {
+
+        closeProcessModal();
+
+      }
+
+
+      /* CART */
+
+      const cartModal =
+        getElement("cartModal");
+
+      if (
+        cartModal &&
+        event.target === cartModal
+      ) {
+
+        closeCart();
+
+      }
+
+
+      /* ACCOUNT */
+
+      const accountModal =
+        getElement("accountModal");
+
+      if (
+        accountModal &&
+        event.target === accountModal
+      ) {
+
+        closeAccount();
+
+      }
+
+
+      /* TEAM / CAREERS / PRESS */
+
+      [
+        "teamModal",
+        "careersModal",
+        "pressModal"
+      ].forEach(function (id) {
+
+        const modal =
+          getElement(id);
+
+        if (
+          modal &&
+          event.target === modal
+        ) {
+
+          closeModal(id);
+
+        }
+
+      });
+
+
+      /* GENERIC CUSTOM MODALS */
+
+      document
+        .querySelectorAll(".custom-modal")
+        .forEach(function (modal) {
+
+          if (
+            event.target === modal
+          ) {
+
+            modal.classList.remove(
+              "show"
+            );
+
+            modal.style.display =
+              "none";
+
+          }
+
+        });
+
     }
-  });
+  );
 
-});
-
-
-/* ================= START PROJECT (ANY PLAN) ================= */
-function startProject(plan) {
-
-  // Smooth scroll to contact
-  document.getElementById("contact").scrollIntoView({
-    behavior: "smooth"
-  });
-
-  // Optional: auto-fill message field if exists
-  const messageBox = document.querySelector("#contact textarea");
-  if (messageBox) {
-    messageBox.value = "I am interested in the " + plan + " plan.";
-  }
-}
-
-/* ================= GET QUOTE (ENTERPRISE) ================= */
-function getQuote() {
-
-  document.getElementById("contact").scrollIntoView({
-    behavior: "smooth"
-  });
-
-  const messageBox = document.querySelector("#contact textarea");
-  if (messageBox) {
-    messageBox.value = "I would like a custom enterprise quotation for my project.";
-  }
-}
-// FAQ ACCORDION FUNCTION
-document.querySelectorAll(".faq-question").forEach(btn => {
-  btn.addEventListener("click", () => {
-
-    const item = btn.parentElement;
-
-    // toggle active class
-    item.classList.toggle("active");
-
-  });
-});
-
-function openAI() {
-  document.querySelector(".ai-orb")?.click();
 }
 
 
-/* OPEN MODALS */
-function openTeam() {
-  document.getElementById("teamModal").classList.add("show");
-}
+/* =========================================================
+   LUCIDE ICONS
+   ========================================================= */
 
-function openCareers() {
-  document.getElementById("careersModal").classList.add("show");
-}
+function initializeLucide() {
 
-function openPress() {
-  document.getElementById("pressModal").classList.add("show");
-}
+  if (
+    typeof lucide !== "undefined" &&
+    typeof lucide.createIcons === "function"
+  ) {
 
-function closeModal(id) {
-  document.getElementById(id).classList.remove("show");
-}
-/* CLOSE WHEN CLICK OUTSIDE */
-window.onclick = function(event) {
-  ["teamModal", "careersModal", "pressModal"].forEach(id => {
-    const modal = document.getElementById(id);
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-};
-function openTeam() {
-  document.getElementById("teamModal").classList.add("show");
-}
+    lucide.createIcons();
 
-function openCareers() {
-  document.getElementById("careersModal").classList.add("show");
-}
-
-function openPress() {
-  document.getElementById("pressModal").classList.add("show");
-}
-
-function closeModal(id) {
-  document.getElementById(id).classList.remove("show");
-}
-function performSearch() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  const sections = document.querySelectorAll("section");
-
-  let found = false;
-
-  sections.forEach(section => {
-    const keywords = section.getAttribute("data-search");
-
-    if (keywords && keywords.includes(input)) {
-      section.scrollIntoView({ behavior: "smooth" });
-
-      // highlight effect
-      section.style.boxShadow = "0 0 0 3px #1ABC9C";
-      setTimeout(() => {
-        section.style.boxShadow = "none";
-      }, 2000);
-
-      found = true;
-    }
-  });
-
-  if (!found) {
-    alert("No results found. Try something like 'branding', 'portfolio', or 'pricing'.");
-  }
-}
-document.getElementById("searchInput").addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
-    performSearch();
-  }
-});
-const input = document.getElementById("searchInput");
-const suggestionsBox = document.getElementById("suggestions");
-
-// Collect searchable data
-const data = [
-  "branding", "portfolio", "pricing", "blog", "faq",
-  "ui ux", "design", "logo", "identity",
-  "Luxury Hotel Branding",
-  "E-Commerce UI Design",
-  "Design Trends 2026",
-  "How to Build a Brand"
-];
-
-// ================= LIVE SUGGESTIONS =================
-input.addEventListener("input", () => {
-  const value = input.value.toLowerCase();
-  suggestionsBox.innerHTML = "";
-
-  if (!value) return;
-
-  const filtered = data.filter(item => item.toLowerCase().includes(value));
-
-  filtered.slice(0, 6).forEach(item => {
-    const div = document.createElement("div");
-    div.textContent = item;
-
-    div.onclick = () => {
-      input.value = item;
-      suggestionsBox.innerHTML = "";
-      runFullSearch(item);
-    };
-
-    suggestionsBox.appendChild(div);
-  });
-});
-
-// ================= MAIN SEARCH =================
-function runFullSearch(query) {
-  query = query.toLowerCase();
-
-  // -------- PORTFOLIO FILTER --------
-  document.querySelectorAll(".portfolio-card").forEach(card => {
-    const title = card.dataset.title.toLowerCase();
-    const category = card.dataset.category.toLowerCase();
-
-    if (title.includes(query) || category.includes(query)) {
-      card.classList.remove("hidden");
-    } else {
-      card.classList.add("hidden");
-    }
-  });
-
-  // -------- BLOG FILTER --------
-  document.querySelectorAll(".blog-card").forEach(card => {
-    const title = card.dataset.title.toLowerCase();
-
-    if (title.includes(query)) {
-      card.classList.remove("hidden");
-    } else {
-      card.classList.add("hidden");
-    }
-  });
-
-  // -------- SECTION SCROLL --------
-  const sections = document.querySelectorAll("section");
-
-  sections.forEach(section => {
-    const keywords = section.getAttribute("data-search");
-
-    if (keywords && keywords.includes(query)) {
-      section.scrollIntoView({ behavior: "smooth" });
-
-      section.style.boxShadow = "0 0 0 3px #1ABC9C";
-      setTimeout(() => section.style.boxShadow = "none", 2000);
-    }
-  });
-
-  // -------- AI ASSISTANT HOOK --------
-  triggerAI(query);
-}
-
-// ================= ENTER KEY =================
-input.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    runFullSearch(input.value);
-    suggestionsBox.innerHTML = "";
-  }
-});
-
-// ================= AI ASSISTANT (BASIC) =================
-function triggerAI(query) {
-  const aiBody = document.getElementById("ai-body");
-
-  if (!aiBody) return;
-
-  const msg = document.createElement("div");
-  msg.className = "ai-message bot";
-
-  msg.textContent = `Searching for "${query}"... I found relevant sections and content for you.`;
-
-  aiBody.appendChild(msg);
-}
-
-
-let cart = [];
-
-function openCart() {
-  document.getElementById("cartModal").classList.add("show");
-}
-
-function closeCart() {
-  document.getElementById("cartModal").classList.remove("show");
-}
-
-function addToCart(item) {
-  cart.push(item);
-  updateCart();
-}
-
-function updateCart() {
-  document.getElementById("cartCount").innerText = cart.length;
-
-  let container = document.getElementById("cartItems");
-
-  if (cart.length === 0) {
-    container.innerHTML = "<p>Your cart is empty</p>";
-    return;
   }
 
-  container.innerHTML = cart.map((item, i) => `
-    <div>
-      ${item} 
-      <button onclick="removeItem(${i})">Remove</button>
-    </div>
-  `).join("");
 }
 
-function removeItem(index) {
-  cart.splice(index, 1);
-  updateCart();
-}
 
-function checkout() {
-  alert("Checkout coming soon 🚀");
-}
-function openAccount() {
-  document.getElementById("accountModal").classList.add("show");
-}
+/* =========================================================
+   LOAD SAVED LANGUAGE
+   ========================================================= */
 
-function closeAccount() {
-  document.getElementById("accountModal").classList.remove("show");
-}
+function loadSavedLanguage() {
 
-/* SWITCH TO LOGIN */
-function switchToLogin() {
-  document.getElementById("signupForm").style.display = "none";
-  document.getElementById("loginForm").style.display = "block";
-  document.getElementById("formTitle").innerText = "Welcome Back";
-}
+  const saved =
+    localStorage.getItem(
+      "siteLanguageName"
+    );
 
-/* SWITCH TO SIGNUP */
-function switchToSignup() {
-  document.getElementById("signupForm").style.display = "block";
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("formTitle").innerText = "Create Account";
-}
+  const button =
+    getElement("langBtn");
 
-/* CLOSE ON OUTSIDE CLICK */
-window.addEventListener("click", function (e) {
-  const modal = document.getElementById("accountModal");
-  if (e.target === modal) {
-    modal.classList.remove("show");
-  }
-});
-function loginWithGoogle() {
-  alert("Google login will be connected via Firebase or Google Auth API.");
-}
 
-function loginWithGithub() {
-  alert("GitHub login will be connected later.");
-}
-function setLanguage(code, name) {
-  
-  // Update button text
-  document.getElementById("langBtn").innerText = "🌐 Language: " + name;
+  if (
+    saved &&
+    button
+  ) {
 
-  // Save selection
-  localStorage.setItem("siteLanguage", code);
-  localStorage.setItem("siteLanguageName", name);
+    button.textContent =
+      "🌐 Language: " + saved;
 
-  // Optional: show feedback
-  console.log("Language selected:", code);
-
-  // HERE you will later connect translation system (Google Translate / custom)
-}
-
-/* LOAD SAVED LANGUAGE ON PAGE LOAD */
-window.addEventListener("load", function () {
-  const saved = localStorage.getItem("siteLanguageName");
-
-  if (saved) {
-    document.getElementById("langBtn").innerText = "🌐 Language: " + saved;
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  lucide.createIcons();
-});
-function openServiceModal(service) {
-
-  const modal = document.getElementById("serviceModal");
-  const title = document.getElementById("modalTitle");
-  const text = document.getElementById("modalText");
-
-  const content = {
-
-    branding: {
-      title: "Logo & Brand Identity",
-      text: "We create powerful brand identities including logos, color systems, typography, and brand guidelines that make your business unforgettable."
-    },
-
-    social: {
-      title: "Social Media Design",
-      text: "We design high-converting social media posts, ads, and campaigns that attract attention and increase engagement."
-    },
-
-    print: {
-      title: "Print Design",
-      text: "From posters to brochures, we design professional print materials that clearly communicate your message and brand."
-    },
-
-    business: {
-      title: "Business Branding",
-      text: "We build complete branding systems including logos, stationery, and brand strategy tailored for growth."
-    },
-thesis: {
-  title: "Thesis & Dissertation Writing",
-  text: "We provide full academic support including topic selection, proposal development, literature review, methodology, data analysis, and final thesis writing for Masters and PhD students."
-},
-
-proposal: {
-  title: "Research Proposal Development",
-  text: "Get a professionally structured proposal with clear research problem, objectives, justification, and methodology aligned to academic standards."
-},
-
-analysis: {
-  title: "Data Analysis & SPSS",
-  text: "We handle quantitative and qualitative data analysis using SPSS, Excel, and other tools, including interpretation, tables, and reports."
-}
-  };
-
-  title.innerText = content[service].title;
-  text.innerText = content[service].text;
-
-  modal.classList.add("show");
-}
-
-function closeServiceModal() {
-  document.getElementById("serviceModal").classList.remove("show");
-}
-window.addEventListener("click", function(e) {
-  const modal = document.getElementById("serviceModal");
-
-  if (e.target === modal) {
-    modal.classList.remove("show");
-  }
-});
-const form = document.getElementById("newsletterForm");
-
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const emailInput = document.getElementById("newsletterEmail");
-  const message = document.getElementById("subscribeMsg");
-  const email = emailInput.value.trim();
-
-  // VALIDATION
-  if (!email || !email.includes("@")) {
-    message.innerText = "⚠️ Enter a valid email";
-    message.style.color = "#ff4d4d";
-    return;
   }
 
-  // ================= SEND TO FORMSPREE =================
-  fetch("https://formspree.io/f/YOUR_FORM_ID", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ email: email })
-  });
-
-  // ================= WHATSAPP LEAD =================
-  const phone = "254759015631"; // your number
-  const text = `Hello VANTYX STUDIOS KENYA, I just subscribed with this email: ${email}`;
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank");
-
-  // ================= SUCCESS UI =================
-  message.innerText = "✅ You're in! Redirecting...";
-  message.style.color = "#1ABC9C";
-
-  emailInput.value = "";
-});
-function openModal(id) {
-  document.getElementById(id).classList.add("show");
 }
 
-function closeModal(id) {
-  document.getElementById(id).classList.remove("show");
-}
 
-/* CLOSE ON OUTSIDE CLICK */
-window.addEventListener("click", function(e) {
-  document.querySelectorAll(".custom-modal").forEach(modal => {
-    if (e.target === modal) {
-      modal.classList.remove("show");
-    }
-  });
-});
+/* =========================================================
+   WEBSITE INITIALIZATION
+   ========================================================= */
 
-function openProcessModal(e) {
-  e.preventDefault(); // stop link jump
-  document.getElementById("processModal").classList.add("show");
-  document.body.style.overflow = "hidden"; // lock scroll
-}
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
-function closeProcessModal() {
-  document.getElementById("processModal").classList.remove("show");
-  document.body.style.overflow = "auto";
-}
+    console.log(
+      "VANTYX STUDIOS KENYA: Initializing website..."
+    );
 
-/* CLOSE ON OUTSIDE CLICK */
-window.addEventListener("click", function(e) {
-  const modal = document.getElementById("processModal");
-  if (e.target === modal) {
-    closeProcessModal();
+
+    initializePortfolioFilters();
+
+    initializePricingToggle();
+
+    initializeFAQ();
+
+    initializeSearch();
+
+    initializeNewsletter();
+
+    initializeAI();
+
+    initializeModalHandlers();
+
+    loadSavedLanguage();
+
+    initializeLucide();
+
+
+    console.log(
+      "VANTYX STUDIOS KENYA: Website initialized successfully."
+    );
+
   }
-});
+);
