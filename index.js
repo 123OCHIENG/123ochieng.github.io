@@ -46,9 +46,14 @@ window.onclick = function (e) {
     modal.style.display = "none";
   }
 };
+/* =========================================================
+   VANTYX AI ASSISTANT
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ================= ELEMENTS =================
+  /* ================= ELEMENTS ================= */
+
   const chat = document.getElementById("ai-chat");
   const orb = document.getElementById("ai-orb-btn");
   const closeBtn = document.getElementById("ai-close-btn");
@@ -57,7 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const sendBtn = document.querySelector(".ai-send-btn");
   const body = document.getElementById("ai-body");
 
-  // ================= USER DATA (AI MEMORY) =================
+
+  /* ================= SAFETY CHECK ================= */
+
+  if (!chat || !orb || !closeBtn || !input || !sendBtn || !body) {
+    console.error("VANTYX AI: Required elements are missing.");
+    return;
+  }
+
+
+  /* ================= USER DATA ================= */
+
   let userData = {
     name: "",
     email: "",
@@ -65,64 +80,492 @@ document.addEventListener("DOMContentLoaded", function () {
     stage: "start"
   };
 
-  // ================= OPEN / CLOSE CHAT =================
+
+  /* =========================================================
+     OPEN CHAT
+     ========================================================= */
+
   function openChat() {
+
     chat.classList.add("show");
+
+    input.focus();
+
   }
+
+
+  /* =========================================================
+     CLOSE CHAT
+     ========================================================= */
 
   function closeChat() {
+
     chat.classList.remove("show");
+
   }
 
-  orb.addEventListener("click", openChat);
-  closeBtn.addEventListener("click", closeChat);
-  
-// If clicked outside BOTH chat and orb → close
-  if (!isClickInsideChat && !isClickOnOrb) {
-    closeChat();
-  }
 
-  // ================= SEND MESSAGE =================
-  function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
+  /* =========================================================
+     ORB CLICK
+     ========================================================= */
 
-    // USER MESSAGE
-    const userMsg = document.createElement("div");
-    userMsg.classList.add("ai-message", "user");
-    userMsg.innerText = text;
-    body.appendChild(userMsg);
+  orb.addEventListener("click", function (e) {
 
-    input.value = "";
-    scrollToBottom();
+    e.stopPropagation();
 
-    // BOT RESPONSE
-    setTimeout(() => {
-      const botMsg = document.createElement("div");
-      botMsg.classList.add("ai-message", "bot");
-      botMsg.innerText = getAIResponse(text);
+    openChat();
 
-      body.appendChild(botMsg);
-      scrollToBottom();
-    }, 600);
-  }
-
-  // ================= EVENT LISTENERS =================
-  sendBtn.addEventListener("click", sendMessage);
-
-  input.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") sendMessage();
   });
 
-  // ================= AUTO SCROLL =================
-  function scrollToBottom() {
-    body.scrollTop = body.scrollHeight;
+
+  /* =========================================================
+     CLOSE BUTTON
+     ========================================================= */
+
+  closeBtn.addEventListener("click", function (e) {
+
+    e.stopPropagation();
+
+    closeChat();
+
+  });
+
+
+  /* =========================================================
+     CLICK OUTSIDE CHAT
+     ========================================================= */
+
+  document.addEventListener("click", function (e) {
+
+    const isClickInsideChat = chat.contains(e.target);
+    const isClickOnOrb = orb.contains(e.target);
+
+    if (!isClickInsideChat && !isClickOnOrb) {
+
+      closeChat();
+
+    }
+
+  });
+
+
+  /* =========================================================
+     SEND MESSAGE
+     ========================================================= */
+
+  function sendMessage() {
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+
+    /* ================= USER MESSAGE ================= */
+
+    const userMsg = document.createElement("div");
+
+    userMsg.classList.add(
+      "ai-message",
+      "user"
+    );
+
+    userMsg.innerText = text;
+
+    body.appendChild(userMsg);
+
+
+    /* CLEAR INPUT */
+
+    input.value = "";
+
+
+    scrollToBottom();
+
+
+    /* ================= BOT THINKING ================= */
+
+    const thinking = document.createElement("div");
+
+    thinking.classList.add(
+      "ai-message",
+      "bot",
+      "ai-thinking-message"
+    );
+
+    thinking.innerText = "Thinking...";
+
+    body.appendChild(thinking);
+
+    scrollToBottom();
+
+
+    /* ================= AI RESPONSE ================= */
+
+    setTimeout(function () {
+
+      const response = getAIResponse(text);
+
+      thinking.remove();
+
+
+      const botMsg = document.createElement("div");
+
+      botMsg.classList.add(
+        "ai-message",
+        "bot"
+      );
+
+      botMsg.innerText = response;
+
+      body.appendChild(botMsg);
+
+      scrollToBottom();
+
+    }, 700);
+
   }
 
-  // ================= CLIENT-CONVERTING AI LOGIC =================
 
-function getAIResponse(input) {
-  const text = input.toLowerCase();
+  /* =========================================================
+     SEND BUTTON
+     ========================================================= */
+
+  sendBtn.addEventListener(
+    "click",
+    sendMessage
+  );
+
+
+  /* =========================================================
+     ENTER KEY
+     ========================================================= */
+
+  input.addEventListener(
+    "keydown",
+    function (e) {
+
+      if (e.key === "Enter") {
+
+        e.preventDefault();
+
+        sendMessage();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     AUTO SCROLL
+     ========================================================= */
+
+  function scrollToBottom() {
+
+    body.scrollTop =
+      body.scrollHeight;
+
+  }
+
+
+  /* =========================================================
+     AI RESPONSE ENGINE
+     ========================================================= */
+
+  function getAIResponse(inputText) {
+
+    const text =
+      inputText.toLowerCase().trim();
+
+
+    /* =====================================================
+       STEP 1 — GREETING
+       ===================================================== */
+
+    if (userData.stage === "start") {
+
+      userData.stage = "ask_name";
+
+      return `Hello 👋 Welcome to VANTYX STUDIOS KENYA.
+
+Before we begin, what's your name?`;
+
+    }
+
+
+    /* =====================================================
+       STEP 2 — NAME
+       ===================================================== */
+
+    if (userData.stage === "ask_name") {
+
+      userData.name = inputText;
+
+      userData.stage = "ask_email";
+
+      return `Nice to meet you, ${userData.name}.
+
+What's your email so we can follow up with you?`;
+
+    }
+
+
+    /* =====================================================
+       STEP 3 — EMAIL
+       ===================================================== */
+
+    if (userData.stage === "ask_email") {
+
+      userData.email = inputText;
+
+      userData.stage = "ask_project";
+
+      return `Great.
+
+Tell me about your project. What would you like us to design or build?`;
+
+    }
+
+
+    /* =====================================================
+       STEP 4 — PROJECT
+       ===================================================== */
+
+    if (userData.stage === "ask_project") {
+
+      userData.project = inputText;
+
+      userData.stage = "done";
+
+
+      console.log(
+        "NEW VANTYX CLIENT LEAD:",
+        userData
+      );
+
+
+      /* CREATE CTA */
+
+      setTimeout(function () {
+
+        const cta = document.createElement("div");
+
+        cta.className =
+          "ai-message bot";
+
+
+        cta.innerHTML = `
+          <strong>Ready to start?</strong><br><br>
+
+          <button
+            onclick="
+              document.getElementById('pricing')
+              ?.scrollIntoView({behavior:'smooth'})
+            "
+            style="
+              padding:10px 15px;
+              border:none;
+              border-radius:8px;
+              background:#1ABC9C;
+              color:white;
+              cursor:pointer;
+            "
+          >
+            Start Your Project
+          </button>
+        `;
+
+
+        body.appendChild(cta);
+
+        scrollToBottom();
+
+      }, 500);
+
+
+      return `That sounds like a great project, ${userData.name}.
+
+We can definitely help you achieve it professionally.`;
+
+    }
+
+
+    /* =====================================================
+       STEP 5 — NORMAL AI
+       ===================================================== */
+
+    if (
+      text.includes("hello") ||
+      text.includes("hi")
+    ) {
+
+      return `Welcome back ${userData.name || ""} 👋
+
+How can I assist you today?`;
+
+    }
+
+
+    /* ================= SERVICES ================= */
+
+    if (text.includes("services")) {
+
+      return `
+We offer:
+
+• Branding & Logo Design
+• Graphic Design
+• UI/UX Design
+• Web Development
+• Academic Writing
+• Thesis & Dissertation Support
+• Research Proposal Development
+• Data Analysis & SPSS
+      `.trim();
+
+    }
+
+
+    /* ================= PRICING ================= */
+
+    if (
+      text.includes("pricing") ||
+      text.includes("price") ||
+      text.includes("cost")
+    ) {
+
+      document
+        .getElementById("pricing")
+        ?.scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+      return `
+Our pricing depends on the type and scope of your project.
+
+I've taken you to the Pricing section so you can view the available options.
+      `.trim();
+
+    }
+
+
+    /* ================= PORTFOLIO ================= */
+
+    if (
+      text.includes("portfolio") ||
+      text.includes("work") ||
+      text.includes("projects")
+    ) {
+
+      document
+        .getElementById("portfolio")
+        ?.scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+      return `
+Here are some of our previous projects.
+
+I've taken you to the Portfolio section.
+      `.trim();
+
+    }
+
+
+    /* ================= CONTACT ================= */
+
+    if (
+      text.includes("contact") ||
+      text.includes("email") ||
+      text.includes("phone")
+    ) {
+
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+      return `
+You can contact VANTYX STUDIOS KENYA through the Contact section.
+
+I've taken you there now.
+      `.trim();
+
+    }
+
+
+    /* ================= START PROJECT ================= */
+
+    if (
+      text.includes("start") ||
+      text.includes("project") ||
+      text.includes("hire")
+    ) {
+
+      document
+        .getElementById("pricing")
+        ?.scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+      return `
+Let's get started.
+
+Choose a plan from the Pricing section or request a custom project.
+      `.trim();
+
+    }
+
+
+    /* ================= BRANDING ================= */
+
+    if (
+      text.includes("branding") ||
+      text.includes("logo")
+    ) {
+
+      return `
+Our branding services can include logo design, visual identity, typography, colors, stationery and brand guidelines.
+
+Tell me what type of brand you want to create.
+      `.trim();
+
+    }
+
+
+    /* ================= WEB DESIGN ================= */
+
+    if (
+      text.includes("website") ||
+      text.includes("web development") ||
+      text.includes("web design")
+    ) {
+
+      return `
+We provide professional web design and development focused on modern visuals, responsive layouts and strong user experience.
+
+Tell me what kind of website you need.
+      `.trim();
+
+    }
+
+
+    /* ================= DEFAULT ================= */
+
+    return `
+I'm here to help you move forward.
+
+You can ask me about our services, pricing, portfolio, branding, websites, academic services, or starting a project.
+    `.trim();
+
+  }
+
+});
 
   // ================= STEP 1: GREETING FLOW =================
   if (userData.stage === "start") {
